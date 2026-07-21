@@ -1,65 +1,56 @@
-import Image from 'next/image'
+"use client"
+
+import { useTheme } from "next-themes"
+import { Moon, Sun } from "lucide-react"
 
 export default function Home() {
+  const { theme, setTheme } = useTheme()
+
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl leading-10 font-semibold tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
+    <div className="flex flex-col gap-12">
+      {/* HEADER */}
+      <header className="flex items-center justify-between pb-8 border-b border-border">
+        <div className="space-y-1">
+          <h1 className="text-3xl font-bold tracking-tight">Victor Farias</h1>
+          <p className="text-muted-foreground">Software Engineer | Aichi, Japan</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-12 w-full items-center justify-center gap-2 rounded-full px-5 transition-colors hover:bg-[#383838] md:w-[158px] dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        
+        {/* THEME TOGGLE */}
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="p-2 rounded-md border border-border hover:bg-muted transition-colors"
+          aria-label="Toggle theme"
+        >
+          <Sun className="h-5 w-5 dark:hidden" />
+          <Moon className="h-5 w-5 hidden dark:block" />
+        </button>
+      </header>
+
+      {/* CONTENT TEST */}
+      <section className="space-y-6">
+        <h2 className="text-xl font-semibold">About Me</h2>
+        <p className="leading-7 text-muted-foreground">
+          this is a temporary test page to validate the global design system. does the text contrast feels comfortable to the eyes? the background transition must be smooth, and the borders subtle. 
+        </p>
+      </section>
+
+      {/* CARD TEST */}
+      <section className="p-6 rounded-lg border border-border bg-muted/30">
+        <h3 className="text-lg font-medium mb-2">Tech Stack</h3>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <li>Next.js & React</li>
+          <li>TypeScript</li>
+          <li>Tailwind CSS v4</li>
+          <li>Framer Motion</li>
+        </ul>
+      </section>
+
+      {/* BUTTON TEST */}
+      <section>
+        <button className="px-6 py-3 rounded-md bg-foreground text-background font-medium hover:opacity-90 transition-opacity">
+          Let's Work Together
+        </button>
+      </section>
     </div>
   )
 }
