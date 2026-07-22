@@ -19,7 +19,13 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/providers": ["./src/providers/index.ts"],
+      "@/i18n": ["./src/packages/i18n/index.ts"],
+      "@/locales/*": ["./src/packages/i18n/locales/*"],
+      "@/actions": ["./src/components/actions/index.ts"],
+      "@/ui": ["./src/components/ui/index.ts"],
+      "@/hooks": ["./src/hooks/index.ts"]
     }
   },
   "include": [

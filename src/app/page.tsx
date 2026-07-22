@@ -1,64 +1,110 @@
-import Image from 'next/image'
+"use client"
+
+import { useTranslation } from "react-i18next"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef, useCallback } from "react"
+import { ThemeToggle, LanguageToggle } from "@/actions"
+import { ScrollIndicator } from "@/ui"
+import { useSlides } from "@/hooks"
 
 export default function Home() {
+  const { t } = useTranslation()
+  const [activeSlide, setActiveSlide] = useState(0)
+  const isScrolling = useRef(false)
+  const touchStartY = useRef(0)
+
+  const slides = useSlides()
+
+  const totalSlides = slides.length
+
+  const handleNext = useCallback(() => {
+    if (activeSlide < totalSlides - 1) setActiveSlide(p => p + 1)
+  }, [activeSlide, totalSlides])
+
+  const handlePrev = useCallback(() => {
+    if (activeSlide > 0) setActiveSlide(p => p - 1)
+  }, [activeSlide])
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (isScrolling.current) return
+    if (Math.abs(e.deltaY) < 30) return 
+
+    isScrolling.current = true
+    if (e.deltaY > 0) handleNext()
+    else handlePrev()
+
+    setTimeout(() => { isScrolling.current = false }, 800)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (isScrolling.current) return
+    const touchEndY = e.changedTouches[0].clientY
+    const diff = touchStartY.current - touchEndY
+
+    if (Math.abs(diff) < 40) return 
+
+    isScrolling.current = true
+    if (diff > 0) handleNext()
+    else handlePrev()
+
+    setTimeout(() => { isScrolling.current = false }, 800)
+  }
+
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="flex flex-col lg:flex-row h-screen w-full overflow-hidden bg-background">
+      
+      <header className="relative z-50 flex h-[30vh] lg:h-screen w-full lg:w-[40%] flex-col justify-between border-b lg:border-b-0 lg:border-r border-border bg-muted/30 lg:bg-transparent p-6 lg:p-12 xl:p-24 rounded-br-[4rem] lg:rounded-none">
+        <div className="flex h-full flex-col justify-center">
+          <div className="lg:w-[130%] lg:z-50 relative pointer-events-none">
+            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl lg:text-7xl xl:text-8xl drop-shadow-sm">
+              Victor<br className="hidden lg:block"/> Farias.
+            </h1>
+            <h2 className="mt-2 text-base font-medium text-muted-foreground sm:text-lg lg:mt-6 lg:text-2xl">
+              {t("hero.role")}
+            </h2>
+            <p className="mt-4 hidden max-w-sm text-sm leading-relaxed text-muted-foreground lg:block">
+              {t("metadata.description")}
+            </p>
+          </div>
+        </div>
+        <div className="absolute right-6 top-6 flex items-center gap-4 lg:static lg:mt-auto lg:justify-start">
+          <LanguageToggle />
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <main 
+        className="h-[70vh] lg:h-screen w-full lg:w-[70%] bg-background relative z-0 flex items-center justify-center lg:ml-auto outline-none touch-none"
+        onWheel={handleWheel}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        tabIndex={0}
+      >
+        <div className="relative h-full w-full flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0, filter: "blur(8px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(8px)" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="absolute inset-0 flex flex-col justify-center"
+            >
+              {slides[activeSlide].content}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <ScrollIndicator 
+          canScrollUp={activeSlide > 0} 
+          canScrollDown={activeSlide < totalSlides - 1}
+          onUp={handlePrev}
+          onDown={handleNext}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl leading-10 font-semibold tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-12 w-full items-center justify-center gap-2 rounded-full px-5 transition-colors hover:bg-[#383838] md:w-[158px] dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
       </main>
     </div>
   )

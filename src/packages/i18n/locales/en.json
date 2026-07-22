@@ -1,0 +1,14 @@
+{
+  "metadata": {
+    "title": "Victor Farias | Software Developer",
+    "description": "Minimalist personal profile and digital portfolio."
+  },
+  "hero": {
+    "role": "Software Developer",
+    "location": "Aichi, Japan"
+  },
+  "about": {
+    "title": "About",
+    "description": "Full-Stack Developer focused on the TypeScript and Node.js ecosystem. Based in Japan, I combine the discipline required by the local culture with a passion for clean and scalable architectures."
+  }
+}
