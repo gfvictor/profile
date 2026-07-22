@@ -12,6 +12,16 @@
   --radius: 0.5rem;
 }
 
+.dark {
+  --background: #18181b;
+  --foreground: #e4e4e7;
+  
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  
+  --border: #27272a;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -21,8 +31,7 @@
 
   --color-border: var(--border);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-koho);
 
   --radius-sm: calc(var(--radius) - 0.25rem);
   --redius-md: var(--radius);
@@ -35,8 +44,11 @@
   }
   body {
     @apply bg-background text-foreground selection:bg-foreground/20;
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
   }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

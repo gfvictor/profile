@@ -1,16 +1,12 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { ThemeProvider } from '@/providers'
+import { KoHo } from 'next/font/google'
+import { ThemeProvider, I18nProvider } from '@/providers'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const koho = KoHo({
+  weight: ['200', '300', '400', '500', '600', '700'],
   subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: '--font-koho',
 })
 
 export const metadata: Metadata = {
@@ -26,12 +22,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${koho.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col bg-background font-sans lowercase">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <main className="mx-auto w-full max-w-2xl flex-1 px-6 py-12 md:py-24">{children}</main>
+          <I18nProvider>
+            <main className="w-full flex-1">{children}</main>
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

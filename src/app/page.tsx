@@ -1,56 +1,111 @@
 "use client"
 
-import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
+import { useTranslation } from "react-i18next"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef, useCallback } from "react"
+import { ThemeToggle, LanguageToggle } from "@/actions"
+import { ScrollIndicator } from "@/ui"
+import { useSlides } from "@/hooks"
 
 export default function Home() {
-  const { theme, setTheme } = useTheme()
+  const { t } = useTranslation()
+  const [activeSlide, setActiveSlide] = useState(0)
+  const isScrolling = useRef(false)
+  const touchStartY = useRef(0)
+
+  const slides = useSlides()
+
+  const totalSlides = slides.length
+
+  const handleNext = useCallback(() => {
+    if (activeSlide < totalSlides - 1) setActiveSlide(p => p + 1)
+  }, [activeSlide, totalSlides])
+
+  const handlePrev = useCallback(() => {
+    if (activeSlide > 0) setActiveSlide(p => p - 1)
+  }, [activeSlide])
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (isScrolling.current) return
+    if (Math.abs(e.deltaY) < 30) return 
+
+    isScrolling.current = true
+    if (e.deltaY > 0) handleNext()
+    else handlePrev()
+
+    setTimeout(() => { isScrolling.current = false }, 800)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (isScrolling.current) return
+    const touchEndY = e.changedTouches[0].clientY
+    const diff = touchStartY.current - touchEndY
+
+    if (Math.abs(diff) < 40) return 
+
+    isScrolling.current = true
+    if (diff > 0) handleNext()
+    else handlePrev()
+
+    setTimeout(() => { isScrolling.current = false }, 800)
+  }
 
   return (
-    <div className="flex flex-col gap-12">
-      {/* HEADER */}
-      <header className="flex items-center justify-between pb-8 border-b border-border">
-        <div className="space-y-1">
-          <h1 className="text-3xl font-bold tracking-tight">Victor Farias</h1>
-          <p className="text-muted-foreground">Software Engineer | Aichi, Japan</p>
+    <div className="flex flex-col lg:flex-row h-screen w-full overflow-hidden bg-background">
+      
+      <header className="relative z-50 flex h-[30vh] lg:h-screen w-full lg:w-[40%] flex-col justify-between border-b lg:border-b-0 lg:border-r border-border bg-muted/30 lg:bg-transparent p-6 lg:p-12 xl:p-24 rounded-br-[4rem] lg:rounded-none">
+        <div className="flex h-full flex-col justify-center">
+          <div className="lg:w-[130%] lg:z-50 relative pointer-events-none">
+            <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl lg:text-7xl xl:text-8xl drop-shadow-sm">
+              Victor<br className="hidden lg:block"/> Farias.
+            </h1>
+            <h2 className="mt-2 text-base font-medium text-muted-foreground sm:text-lg lg:mt-6 lg:text-2xl">
+              {t("hero.role")}
+            </h2>
+            <p className="mt-4 hidden max-w-sm text-sm leading-relaxed text-muted-foreground lg:block">
+              {t("metadata.description")}
+            </p>
+          </div>
         </div>
-        
-        {/* THEME TOGGLE */}
-        <button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="p-2 rounded-md border border-border hover:bg-muted transition-colors"
-          aria-label="Toggle theme"
-        >
-          <Sun className="h-5 w-5 dark:hidden" />
-          <Moon className="h-5 w-5 hidden dark:block" />
-        </button>
+        <div className="absolute right-6 top-6 flex items-center gap-4 lg:static lg:mt-auto lg:justify-start">
+          <LanguageToggle />
+          <ThemeToggle />
+        </div>
       </header>
 
-      {/* CONTENT TEST */}
-      <section className="space-y-6">
-        <h2 className="text-xl font-semibold">About Me</h2>
-        <p className="leading-7 text-muted-foreground">
-          this is a temporary test page to validate the global design system. does the text contrast feels comfortable to the eyes? the background transition must be smooth, and the borders subtle. 
-        </p>
-      </section>
+      <main 
+        className="h-[70vh] lg:h-screen w-full lg:w-[70%] bg-background relative z-0 flex items-center justify-center lg:ml-auto outline-none touch-none"
+        onWheel={handleWheel}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        tabIndex={0}
+      >
+        <div className="relative h-full w-full flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0, filter: "blur(8px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(8px)" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="absolute inset-0 flex flex-col justify-center"
+            >
+              {slides[activeSlide].content}
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-      {/* CARD TEST */}
-      <section className="p-6 rounded-lg border border-border bg-muted/30">
-        <h3 className="text-lg font-medium mb-2">Tech Stack</h3>
-        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-          <li>Next.js & React</li>
-          <li>TypeScript</li>
-          <li>Tailwind CSS v4</li>
-          <li>Framer Motion</li>
-        </ul>
-      </section>
-
-      {/* BUTTON TEST */}
-      <section>
-        <button className="px-6 py-3 rounded-md bg-foreground text-background font-medium hover:opacity-90 transition-opacity">
-          Let's Work Together
-        </button>
-      </section>
+        <ScrollIndicator 
+          canScrollUp={activeSlide > 0} 
+          canScrollDown={activeSlide < totalSlides - 1}
+          onUp={handlePrev}
+          onDown={handleNext}
+        />
+      </main>
     </div>
   )
 }
