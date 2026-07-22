@@ -6,5 +6,9 @@
   "hero": {
     "role": "Desenvolvedor de Software",
     "location": "Aichi, Japão"
+  },
+  "about": {
+    "title": "Sobre",
+    "description": "Desenvolvedor Full-Stack focado no ecossistema TypeScript e Node.js. Radicado no Japão, combino a disciplina exigida pela cultura local com uma paixão por arquiteturas limpas e escaláveis."
   }
 }
