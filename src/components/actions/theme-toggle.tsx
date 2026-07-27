@@ -13,7 +13,7 @@ export function ThemeToggle() {
 
   const handleToggle = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
-    
+
     if (!document.startViewTransition) {
       setTheme(newTheme)
       return
