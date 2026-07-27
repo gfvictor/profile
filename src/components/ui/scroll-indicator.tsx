@@ -4,48 +4,46 @@ import { ChevronDown, ChevronUp } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface ScrollIndicatorProps {
-  canScrollUp: boolean
-  canScrollDown: boolean
-  onUp: () => void
-  onDown: () => void
+  isFirst: boolean
+  isLast: boolean
+  onPrev: () => void
+  onNext: () => void
 }
 
-export function ScrollIndicator({ canScrollUp, canScrollDown, onUp, onDown }: ScrollIndicatorProps) {
+export function ScrollIndicator({ isFirst, isLast, onPrev, onNext }: ScrollIndicatorProps) {
   return (
-    <div className="fixed right-6 bottom-6 z-50 flex flex-col items-center gap-3 md:right-10 md:bottom-10 lg:right-12 lg:bottom-12">
-      
-      {/* Seta para Cima */}
+    <div className="absolute bottom-6 left-6 z-50 flex flex-col items-center gap-3 md:bottom-10 md:left-10 lg:bottom-12 lg:left-12">
       <AnimatePresence>
-        {canScrollUp && (
+        {!isFirst && (
           <motion.button
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            onClick={onUp}
-            className="flex h-10 w-10 animate-pulse items-center justify-center rounded-full border border-border bg-background/60 shadow-lg backdrop-blur-md transition-colors hover:bg-muted"
+            onClick={onPrev}
+            className="border-border bg-background/60 hover:bg-muted flex h-10 w-10 animate-pulse items-center justify-center rounded-full border shadow-lg backdrop-blur-md transition-colors"
             aria-label="Back section"
           >
-            <ChevronUp className="h-5 w-5 text-foreground" />
-          </motion.button>
-        )}
-      </AnimatePresence>
-      
-      {/* Seta para Baixo */}
-      <AnimatePresence>
-        {canScrollDown && (
-          <motion.button
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            onClick={onDown}
-            className="flex h-10 w-10 animate-pulse items-center justify-center rounded-full border border-border bg-background/60 shadow-lg backdrop-blur-md transition-colors hover:bg-muted"
-            aria-label="Next section"
-          >
-            <ChevronDown className="h-5 w-5 text-foreground" />
+            <ChevronUp className="h-5 w-5 text-[#b38e00]" />
           </motion.button>
         )}
       </AnimatePresence>
 
+      <div className="relative h-10 w-10">
+        <AnimatePresence>
+          {!isLast && (
+            <motion.button
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              onClick={onNext}
+              className="border-border bg-background/60 hover:bg-muted absolute inset-0 flex h-10 w-10 animate-pulse items-center justify-center rounded-full border shadow-lg backdrop-blur-md transition-colors"
+              aria-label="Next section"
+            >
+              <ChevronDown className="h-5 w-5 text-[#b38e00]" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }
