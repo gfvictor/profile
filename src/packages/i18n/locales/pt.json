@@ -1,11 +1,16 @@
 {
   "metadata": {
-    "title": "Victor Farias | Desenvolvedor de Software",
+    "title": "Victor Farias | Perfil",
     "description": "Perfil pessoal minimalista e portfólio digital."
   },
   "hero": {
-    "role": "Desenvolvedor de Software",
-    "location": "Aichi, Japão"
+    "role": "Software Developer\nWeb Designer",
+    "location": "Aichi, Japão",
+    "phrases": [
+      "construindo ecossistemas digitais.",
+      "engenharia de arquiteturas escaláveis.",
+      "forjando interfaces modernas."
+    ]
   },
   "about": {
     "title": "Sobre",

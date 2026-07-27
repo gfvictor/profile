@@ -1,11 +1,16 @@
 {
   "metadata": {
-    "title": "Victor Farias | Software Developer",
+    "title": "Victor Farias | Profile",
     "description": "Minimalist personal profile and digital portfolio."
   },
   "hero": {
-    "role": "Software Developer",
-    "location": "Aichi, Japan"
+    "role": "Software Developer\nWeb Designer",
+    "location": "Aichi, Japan",
+    "phrases": [
+      "building digital ecosystems.",
+      "engineering scalable architectures.",
+      "crafting modern UI."
+    ]
   },
   "about": {
     "title": "About",

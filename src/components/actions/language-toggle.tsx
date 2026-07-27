@@ -40,7 +40,7 @@ export function LanguageToggle() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background transition-colors hover:bg-muted"
+        className="border-border bg-background hover:bg-muted flex h-10 w-10 items-center justify-center rounded-full border transition-colors"
         aria-label="Toggle language"
       >
         <Image
@@ -59,7 +59,7 @@ export function LanguageToggle() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="absolute right-0 top-full mt-2 flex flex-col gap-1 rounded-[1.25rem] border border-border bg-background p-1.5 shadow-xl"
+            className="border-border bg-background absolute top-full right-0 mt-2 flex flex-col gap-1 rounded-[1.25rem] border p-1.5 shadow-xl"
           >
             {LANGUAGES.map(({ code, icon, alt }) => {
               const isActive = currentLocale === code
@@ -79,10 +79,10 @@ export function LanguageToggle() {
                     })
                   }}
                   className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
-                    isActive ? 'bg-muted opacity-50 cursor-default' : 'hover:bg-muted'
+                    isActive ? 'bg-muted cursor-default opacity-50' : 'hover:bg-muted'
                   }`}
                   disabled={isActive}
-                  aria-label={`Mudar para ${alt}`}
+                  aria-label={`Change to ${alt}`}
                 >
                   <Image
                     src={icon}

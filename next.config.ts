@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['192.168.11.7', '192.168.11.5'],
+  allowedDevOrigins: (process.env.ALLOWED_DEV_ORIGINS ?? '').split(','),
 }
 
 export default nextConfig
