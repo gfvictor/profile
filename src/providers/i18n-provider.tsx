@@ -4,7 +4,7 @@ import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import { useEffect } from 'react'
 
-export function  I18nProvider({ children } : { children: React.ReactNode }) {
+export function I18nProvider({ children }: { children: React.ReactNode }) {
   const { t, i18n } = useTranslation()
 
   useEffect(() => {
