@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "title": "Victor Farias | Perfil",
+    "description": "Perfil pessoal minimalista e portfólio digital."
+  },
+  "hero": {
+    "role": "software developer.\nweb designer.",
+    "phrases": [
+      "construindo ecossistemas digitais.",
+      "projetando arquiteturas escaláveis.",
+      "forjando interfaces modernas."
+    ]
+  },
+  "slides": {
+    "intro": {
+      "eyebrow": "foundation.",
+      "headline": "Engenharia focada em escala e impacto.",
+      "description": "De arquiteturas limpas para empresas, a plataformas digitais otimizadas para escalar pequenos negócios.",
+      "cta": "explorar soluções"
+    },
+    "core": {
+      "eyebrow": "architecture.",
+      "headline": "O contexto dita a engenharia.",
+      "description": "Ancorado em um ecossistema TypeScript robusto (Next.js, NestJS), a infraestrutura é estritamente moldada pelas necessidades reais do negócio. Cada ferramenta é selecionada para resolver gargalos específicos, sob o rigor dos princípios SOLID e Clean Architecture."
+    },
+    "workflow": {
+      "eyebrow": "workflow.",
+      "headline": "Do escopo ao deploy.",
+      "description": "Interfaces premium operando sobre fundações industriais. Traduzo o modelo de negócio em experiências de alta conversão, executando e controlando o ciclo completo de engenharia: do escopo arquitetural ao deploy contínuo.",
+      "cta": "iniciar projeto"
+    },
+    "contact": {
+      "eyebrow": "contact.",
+      "headline": "vamos construir.",
+      "form": {
+        "name": "seu nome",
+        "email": "seu e-mail",
+        "message": "sua mensagem",
+        "submit": "ENVIAR",
+        "terms": "Aceito os <1>Termos</1>",
+        "success_title": "MENSAGEM ENVIADA.",
+        "success_desc": "Agradeço o contato, e logo mais retorno para conversarmos.",
+        "back_to_top": "VOLTAR AO INÍCIO"
+      },
+      "terms_modal": {
+        "title": "TERMOS E POLÍTICAS",
+        "close": "CIENTE",
+        "p1": "Ao enviar este formulário, você concorda que as informações fornecidas serão usadas exclusivamente para contato profissional.",
+        "p2": "1. Coleta: Coleto apenas os dados fornecidos voluntariamente.",
+        "p3": "2. Uso: Seus dados não serão vendidos ou compartilhados com terceiros.",
+        "p4": "3. Retenção: O contato será mantido em minha base para facilitar comunicação futura.",
+        "p5": "Garanto a total confidencialidade e segurança dos dados fornecidos em conformidade com as diretrizes de proteção de dados."
+      }
+    },
+    "origin": {
+      "eyebrow": "origin.",
+      "headline": "Disciplina industrial. Engenharia escalável.",
+      "description": "Mais de uma década forjado pelo rigor da indústria japonesa. Uma base de disciplina que, nos últimos {{devYears}} anos, foi integralmente convertida para o domínio da engenharia de software. Entrego soluções escaláveis com o mesmo nível de precisão industrial,\n sem atalhos.",
+      "specs": {
+        "location": "Japão (2014 - Hoje)",
+        "status": "Residente Permanente",
+        "background": "Indústria",
+        "shift": "Eng. de Software"
+      }
+    },
+    "academics": {
+      "eyebrow": "academics.",
+      "headline": "A fundação acadêmica da infraestrutura.",
+      "description": "Bacharel em Ciência da Computação. Unindo os fundamentos profundos da engenharia de software à pesquisa prática: autor do manual extensivo <span class=\"text-accent/90 font-medium\">\"Git: Versionamento de Código & Fluxo de Trabalho\"</span>. Uma obra desenhada para guiar entusiastas iniciantes e capacitar engenheiros avançados a dominar o versionamento pela raiz.",
+      "specs": {
+        "degree": { "value": "Bacharelado CC" },
+        "research": { "value": "Versionamento" },
+        "target": { "value": "Infraestrutura" }
+      }
+    }
+  }
+}

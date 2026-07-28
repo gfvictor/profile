@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  allowedDevOrigins: (process.env.ALLOWED_DEV_ORIGINS ?? '').split(','),
+  images: {
+    qualities: [75, 100],
+  },
+}
 
-export default nextConfig;
+export default nextConfig

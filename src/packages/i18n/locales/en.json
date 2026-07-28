@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "title": "Victor Farias | Profile",
+    "description": "Minimalist personal profile and digital portfolio."
+  },
+  "hero": {
+    "role": "software developer.\nweb designer.",
+    "phrases": [
+      "engineering scalable architectures.",
+      "crafting pixel-perfect ui/ux.",
+      "deploying robust micro-systems."
+    ]
+  },
+  "slides": {
+    "intro": {
+      "eyebrow": "foundation.",
+      "headline": "Engineering focused on scale and impact.",
+      "description": "From clean-architecture systems for enterprises, to highly optimized digital platforms that drive scalable business growth.",
+      "cta": "explore solutions"
+    },
+    "core": {
+      "eyebrow": "architecture.",
+      "headline": "Context dictates the engineering.",
+      "description": "Anchored by a robust TypeScript ecosystem (Next.js, NestJS), the infrastructure is strictly tailored to the real needs of the business. Every tool is selected to solve specific bottlenecks, governed by SOLID principles and Clean Architecture."
+    },
+    "workflow": {
+      "eyebrow": "workflow.",
+      "headline": "From scope to deploy.",
+      "description": "Premium interfaces operating on industrial foundations. I translate business models into high-conversion experiences, executing and controlling the entire engineering cycle: from architectural scope to continuous deployment.",
+      "cta": "START PROJECT"
+    },
+    "contact": {
+      "eyebrow": "contact.",
+      "headline": "start building.",
+      "form": {
+        "name": "your name",
+        "email": "your email",
+        "message": "your message",
+        "submit": "SEND",
+        "terms": "Accept <1>Terms</1>",
+        "success_title": "MESSAGE SENT.",
+        "success_desc": "Thank you for reaching out, I will get back to you shortly.",
+        "back_to_top": "BACK TO TOP"
+      },
+      "terms_modal": {
+        "title": "TERMS & POLICIES",
+        "close": "ACKNOWLEDGE",
+        "p1": "By submitting this form, you agree that the information provided will be used exclusively for professional contact.",
+        "p2": "1. Collection: I collect only voluntarily provided data.",
+        "p3": "2. Usage: Your data will not be sold or shared.",
+        "p4": "3. Retention: Contact info will be stored in my database for future communication.",
+        "p5": "I ensure complete confidentiality and security of the provided data in accordance with standard data protection guidelines."
+      }
+    },
+    "origin": {
+      "eyebrow": "origin.",
+      "headline": "Industrial discipline. Scalable engineering.",
+      "description": "Over a decade forged by the rigor of Japanese industry. A foundation of discipline that, in the last {{devYears}} years, has been fully channeled into the mastery of software engineering. I deliver scalable solutions with the same level of industrial precision, taking zero shortcuts.",
+      "specs": {
+        "location": "Japan (2014 - Now)",
+        "status": "Permanent Resident",
+        "background": "Manufacturing",
+        "shift": "Software Eng."
+      }
+    },
+    "academics": {
+      "eyebrow": "academics.",
+      "headline": "The academic foundation of infrastructure.",
+      "description": "B.S. in Computer Science. Fusing deep software engineering fundamentals with practical research: author of the extensive manual <span class=\"text-accent/90 font-medium\">\"Git: Version Control & Workflow\"</span>. A work designed to guide enthusiastic beginners and empower advanced engineers to master version control from the root.",
+      "specs": {
+        "degree": { "value": "B.S. CS" },
+        "research": { "value": "Version Control" },
+        "target": { "value": "Infrastructure" }
+      }
+    }
+  }
+}
