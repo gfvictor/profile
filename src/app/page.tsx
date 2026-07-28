@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { ThemeToggle, LanguageToggle } from '@/actions'
 import { useTheme } from 'next-themes'
 import { ScrollIndicator, VerticalIndex, TypewriterText } from '@/ui'
@@ -24,12 +24,26 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true)
-  }, [])
+
+    const handleGoToContact = () => setActiveSlide(7)
+    const handleGoToWorkflow = () => setActiveSlide(4)
+    const handleGoToIntro = () => setActiveSlide(0)
+
+    window.addEventListener('GO_TO_CONTACT', handleGoToContact)
+    window.addEventListener('GO_TO_WORKFLOW', handleGoToWorkflow)
+    window.addEventListener('GO_TO_INTRO', handleGoToIntro)
+
+    return () => {
+      window.removeEventListener('GO_TO_CONTACT', handleGoToContact)
+      window.removeEventListener('GO_TO_WORKFLOW', handleGoToWorkflow)
+      window.removeEventListener('GO_TO_INTRO', handleGoToIntro)
+    }
+  }, [setActiveSlide])
 
   return (
-    <div className="bg-background flex h-screen w-full flex-col overflow-hidden lg:flex-row">
+    <div className="bg-background flex h-[100dvh] w-full flex-col overflow-hidden lg:h-[100vh] lg:flex-row">
       <main
-        className="bg-background relative z-0 order-2 flex h-[70vh] w-full touch-none items-center justify-center outline-none lg:order-1 lg:h-screen lg:flex-1"
+        className="bg-background relative z-0 order-2 flex h-[70vh] w-full touch-none items-center justify-center outline-none lg:order-1 lg:h-[100vh] lg:flex-1"
         {...handlers}
         tabIndex={0}
       >
@@ -62,7 +76,7 @@ export default function Home() {
         />
       </main>
 
-      <header className="bg-background relative z-50 order-1 h-[25vh] w-full flex-shrink-0 overflow-hidden rounded-br-[4px] lg:order-2 lg:h-screen lg:w-[40%] lg:border-b-0 lg:border-l lg:bg-transparent">
+      <header className="bg-background relative z-50 order-1 h-[25vh] w-full flex-shrink-0 overflow-hidden rounded-br-[4px] lg:order-2 lg:h-[100vh] lg:w-[40%] lg:border-b-0 lg:border-l lg:bg-transparent">
         <div className="bg-background/40 absolute top-4 left-4 z-50 flex items-center gap-2 rounded-full p-1.5 backdrop-blur-sm lg:top-8 lg:left-8 lg:bg-transparent lg:backdrop-blur-none">
           <LanguageToggle />
           <ThemeToggle />
@@ -103,20 +117,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute bottom-0 left-0 z-10 flex h-full w-[65%] flex-col justify-end p-6 lg:w-[30%] lg:p-12 xl:p-16">
-          <div className="pointer-events-none lg:-ml-[30%] lg:w-[130%]">
+        <div className="pointer-events-none absolute bottom-0 left-0 z-10 flex h-full w-[80%] flex-col justify-end p-6 lg:w-full lg:p-12 xl:px-24 xl:pt-24 xl:pb-12 2xl:pb-24">
+          <div className="pointer-events-none lg:w-[120%] 2xl:w-[150%]">
             {i18n.language === 'ja' && (
-              <span className="mb-1 ml-1 block text-[10px] font-bold tracking-[0.3em] text-[#b38e00] lg:mb-2">
+              <span className="mb-1 ml-1 block text-[10px] font-bold tracking-[0.3em] text-[#b38e00] lg:mb-1 2xl:mb-2 2xl:text-sm">
                 ファリアス　ビクトル
               </span>
             )}
-            <h1 className="text-foreground text-3xl leading-[1.1] font-bold tracking-tighter drop-shadow-sm sm:text-4xl lg:text-6xl lg:whitespace-nowrap xl:text-7xl">
+            <h1 className="text-foreground text-3xl leading-[1.1] font-bold tracking-tighter drop-shadow-sm sm:text-4xl lg:text-5xl lg:whitespace-nowrap 2xl:text-7xl">
               {i18n.language === 'ja' ? 'Farias Victor.' : 'Victor Farias.'}
             </h1>
-            <h2 className="text-foreground mt-1 text-xs font-medium whitespace-pre-line sm:text-sm lg:mt-2 lg:mt-4 lg:text-xl">
+            <h2 className="text-foreground mt-1 text-xs font-medium whitespace-pre-line sm:text-sm lg:mt-2 lg:text-xl lg:whitespace-nowrap 2xl:mt-4 2xl:text-3xl">
               {t('hero.role')}
             </h2>
-            <div className="text-muted-foreground/80 mt-2 font-mono text-[10px] whitespace-nowrap lowercase lg:mt-4 lg:text-sm">
+            <div className="text-muted-foreground/80 mt-2 font-mono text-[12px] whitespace-nowrap lowercase lg:mt-2 lg:text-lg 2xl:mt-4 2xl:text-2xl">
               <TypewriterText phrases={typewriterPhrases} />
             </div>
           </div>

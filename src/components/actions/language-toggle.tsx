@@ -55,11 +55,11 @@ export function LanguageToggle() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            initial={{ opacity: 0, y: 10, scale: 0.95, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, scale: 1, x: '-50%' }}
+            exit={{ opacity: 0, y: 10, scale: 0.95, x: '-50%' }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="border-border bg-background absolute top-full right-0 mt-2 flex flex-col gap-1 rounded-[1.25rem] border p-1.5 shadow-xl"
+            className="border-border bg-background absolute top-full left-1/2 mt-2 flex flex-col gap-1 rounded-[1.25rem] border p-1.5 shadow-xl"
           >
             {LANGUAGES.map(({ code, icon, alt }) => {
               const isActive = currentLocale === code
@@ -78,8 +78,8 @@ export function LanguageToggle() {
                       setIsOpen(false)
                     })
                   }}
-                  className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
-                    isActive ? 'bg-muted cursor-default opacity-50' : 'hover:bg-muted'
+                  className={`group flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ${
+                    isActive ? 'bg-muted cursor-default' : 'hover:bg-muted'
                   }`}
                   disabled={isActive}
                   aria-label={`Change to ${alt}`}
@@ -89,7 +89,11 @@ export function LanguageToggle() {
                     alt={alt}
                     width={20}
                     height={20}
-                    className="h-5 w-5 rounded-full object-cover shadow-sm"
+                    className={`h-5 w-5 rounded-full object-cover shadow-sm transition-all duration-300 ${
+                      isActive
+                        ? 'opacity-100 grayscale-0'
+                        : 'opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0'
+                    }`}
                   />
                 </button>
               )

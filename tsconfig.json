@@ -25,7 +25,8 @@
       "@/locales/*": ["./src/packages/i18n/locales/*"],
       "@/actions": ["./src/components/actions/index.ts"],
       "@/ui": ["./src/components/ui/index.ts"],
-      "@/hooks": ["./src/hooks/index.ts"]
+      "@/hooks": ["./src/hooks/index.ts"],
+      "@/slides": ["./src/components/slides/index.ts"]
     }
   },
   "include": [

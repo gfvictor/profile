@@ -16,30 +16,33 @@ export function VerticalIndex({ slides, activeSlide, onChange }: VerticalIndexPr
       <div className="pointer-events-auto absolute right-6 bottom-6 z-50 flex flex-col items-end gap-2 lg:hidden">
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="bg-background/95 border-border flex flex-col items-end gap-4 rounded-xl border p-4 shadow-2xl"
-            >
-              {slides.map((slide, index) => {
-                const isActive = activeSlide === index
-                return (
-                  <button
-                    key={slide.id}
-                    onClick={() => {
-                      onChange(index)
-                      setIsOpen(false)
-                    }}
-                    className={`text-[10px] font-bold tracking-widest uppercase transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
-                  >
-                    {String(index + 1).padStart(2, '0')} <span className="text-[#b38e00]">—</span>{' '}
-                    {slide.title}
-                  </button>
-                )
-              })}
-            </motion.div>
+            <>
+              <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="bg-background/95 border-border relative z-50 flex flex-col items-end gap-4 rounded-xl border p-4 shadow-2xl"
+              >
+                {slides.map((slide, index) => {
+                  const isActive = activeSlide === index
+                  return (
+                    <button
+                      key={slide.id}
+                      onClick={() => {
+                        onChange(index)
+                        setIsOpen(false)
+                      }}
+                      className={`text-[10px] font-bold tracking-widest uppercase transition-colors ${isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+                    >
+                      {String(index + 1).padStart(2, '0')} <span className="text-[#b38e00]">—</span>{' '}
+                      {slide.title}
+                    </button>
+                  )
+                })}
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
 
@@ -52,25 +55,25 @@ export function VerticalIndex({ slides, activeSlide, onChange }: VerticalIndexPr
         </button>
       </div>
 
-      <div className="pointer-events-auto absolute right-6 bottom-6 z-50 hidden flex-col items-end gap-4 p-4 lg:right-12 lg:bottom-12 lg:flex">
+      <div className="pointer-events-auto absolute right-6 bottom-6 z-50 hidden flex-col items-end gap-2 p-4 lg:right-12 lg:bottom-12 lg:flex lg:p-0 xl:right-24 2xl:bottom-24 2xl:gap-4">
         {slides.map((slide, index) => {
           const isActive = activeSlide === index
           return (
             <button
               key={slide.id}
               onClick={() => onChange(index)}
-              className={`group flex items-center justify-end gap-3 transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-40 hover:opacity-100'}`}
+              className={`group flex items-center justify-end gap-2 transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-40 hover:opacity-100'} 2xl:gap-3`}
             >
               <span
-                className={`text-[10px] font-medium tracking-widest uppercase transition-all duration-300 ${isActive ? 'text-foreground translate-x-0 opacity-100' : 'translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}
+                className={`text-[8px] font-medium tracking-widest uppercase transition-all duration-300 2xl:text-[10px] ${isActive ? 'text-foreground translate-x-0 opacity-100' : 'translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}
               >
                 {slide.title}
               </span>
               <div
-                className={`h-[1px] bg-[#b38e00] transition-all duration-300 ${isActive ? 'w-8' : 'w-0 group-hover:w-4'}`}
+                className={`h-[1px] bg-[#b38e00] transition-all duration-300 ${isActive ? 'w-4 2xl:w-8' : 'w-0 group-hover:w-2 2xl:group-hover:w-4'}`}
               />
               <span
-                className={`text-[10px] font-bold tracking-widest transition-all duration-300 ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}
+                className={`text-[8px] font-bold tracking-widest transition-all duration-300 2xl:text-[10px] ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}
               >
                 {String(index + 1).padStart(2, '0')}
               </span>

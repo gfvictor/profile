@@ -12,7 +12,7 @@ interface ScrollIndicatorProps {
 
 export function ScrollIndicator({ isFirst, isLast, onPrev, onNext }: ScrollIndicatorProps) {
   return (
-    <div className="absolute bottom-6 left-6 z-50 flex flex-col items-center gap-3 md:bottom-10 md:left-10 lg:bottom-12 lg:left-12">
+    <div className="absolute bottom-6 left-6 z-50 flex flex-col items-center gap-3 md:bottom-10 md:left-10 lg:bottom-12 lg:left-12 xl:left-24 2xl:bottom-24">
       <AnimatePresence>
         {!isFirst && (
           <motion.button

@@ -7,6 +7,7 @@
   --muted: #f4f4f5;
   --muted-foreground: #71717a;
 
+  --accent: #b38e00;
   --border: #e4e4e7;
 
   --radius: 0.5rem;
@@ -19,6 +20,7 @@
   --muted: #27272a;
   --muted-foreground: #a1a1aa;
 
+  --accent: #b38e00;
   --border: #27272a;
 }
 
@@ -29,6 +31,7 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
+  --color-accent: var(--accent);
   --color-border: var(--border);
 
   --font-sans: var(--font-koho);
@@ -51,4 +54,24 @@
 ::view-transition-new(root) {
   animation-duration: 0.4s;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer components {
+  .slide-container {
+    @apply relative flex h-full w-full flex-col items-end overflow-hidden px-6 pt-[15dvh] pb-6 text-right;
+    @apply lg:px-12 lg:pt-[25vh] lg:pb-12;
+    @apply xl:px-24 xl:pt-[25vh] xl:pb-24;
+  }
+
+  .slide-content-wrapper {
+    @apply relative z-10 flex flex-col items-end lg:origin-right lg:scale-100 xl:scale-110;
+  }
+
+  .slide-eyebrow {
+    @apply text-accent mb-4 flex items-center justify-end gap-2 text-xs font-bold tracking-widest uppercase;
+  }
+
+  .cursor-blink {
+    @apply bg-accent inline-block h-3 w-0.75;
+  }
 }
