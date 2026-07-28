@@ -22,7 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${koho.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="bg-background flex min-h-full flex-col font-sans lowercase">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           <I18nProvider>
             <main className="w-full flex-1">{children}</main>
           </I18nProvider>
