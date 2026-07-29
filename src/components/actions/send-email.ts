@@ -46,7 +46,7 @@ export async function sendEmailAction(formData: FormData) {
     name: 'Portfolio Lead',
   }
 
-  const recipients = [{ email: 'contact@codifylab.app' }]
+  const recipients = [{ email: 'contact@codifylab.online' }]
 
   try {
     await client.send({
