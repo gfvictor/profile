@@ -2,7 +2,7 @@
 
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { ContactForm } from '@/components/ui/contact-form'
+import { ContactForm } from '@/ui'
 
 export function ContactSlide() {
   const { t } = useTranslation()

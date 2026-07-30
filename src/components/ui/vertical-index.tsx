@@ -13,7 +13,7 @@ export function VerticalIndex({ slides, activeSlide, onChange }: VerticalIndexPr
 
   return (
     <>
-      <div className="pointer-events-auto absolute right-6 bottom-6 z-50 flex flex-col items-end gap-2 lg:hidden">
+      <div className="hide-on-keyboard pointer-events-auto absolute right-4 bottom-4 z-50 flex flex-col items-end gap-2 sm:right-10 sm:bottom-10 lg:hidden">
         <AnimatePresence>
           {isOpen && (
             <>
@@ -55,7 +55,7 @@ export function VerticalIndex({ slides, activeSlide, onChange }: VerticalIndexPr
         </button>
       </div>
 
-      <div className="pointer-events-auto absolute right-6 bottom-6 z-50 hidden flex-col items-end gap-2 p-4 lg:right-12 lg:bottom-12 lg:flex lg:p-0 xl:right-24 2xl:bottom-24 2xl:gap-4">
+      <div className="hide-on-keyboard pointer-events-auto absolute right-6 bottom-6 z-50 hidden flex-col items-end gap-2 p-4 lg:right-12 lg:bottom-12 lg:flex lg:p-0 xl:right-24 2xl:bottom-24 2xl:gap-4">
         {slides.map((slide, index) => {
           const isActive = activeSlide === index
           const isBuilderMode = activeSlide === 6
