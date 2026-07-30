@@ -46,7 +46,7 @@ export default function Home() {
   }, [setActiveSlide])
 
   return (
-    <div className="bg-background flex h-[100dvh] w-full flex-col overflow-hidden lg:h-[100vh] lg:flex-row">
+    <div className="bg-background flex h-[100svh] w-full flex-col overflow-hidden lg:h-[100vh] lg:flex-row">
       <main
         className={`bg-background relative z-0 order-2 flex w-full touch-none items-center justify-center transition-all duration-700 ease-in-out outline-none lg:order-1 lg:h-[100vh] lg:flex-1 ${
           isBuilderActive ? 'h-[88vh]' : 'h-[75vh]'
@@ -84,9 +84,9 @@ export default function Home() {
       </main>
 
       <header
-        className={`bg-background relative z-50 order-1 w-full flex-shrink-0 transition-all duration-700 ease-in-out lg:order-2 lg:h-[100vh] lg:border-b-0 lg:border-l lg:bg-transparent ${
+        className={`bg-background relative z-50 order-1 w-full flex-shrink-0 touch-none transition-all duration-700 ease-in-out lg:order-2 lg:h-[100vh] lg:border-b-0 lg:border-l lg:bg-transparent ${
           isBuilderActive
-            ? 'border-accent/20 h-[12vh] border-b lg:w-[25%] xl:w-[20%]'
+            ? 'border-accent/20 h-[12vh] border-b lg:w-[25%] xl:w-[22%]'
             : 'h-[25vh] rounded-br-[4px] lg:w-[40%]'
         }`}
       >
@@ -136,10 +136,10 @@ export default function Home() {
           </div>
 
           <div
-            className={`pointer-events-none absolute bottom-0 left-0 z-10 flex w-[80%] flex-col justify-end transition-all duration-700 lg:w-full ${
+            className={`pointer-events-none absolute bottom-0 left-0 z-10 flex w-full flex-col justify-end transition-all duration-700 ${
               isBuilderActive
-                ? 'h-full p-4 pl-[120px] lg:p-8 lg:pl-8 xl:p-12' // Compensate for the toggle buttons on mobile
-                : 'h-full p-6 lg:p-12 xl:px-24 xl:pt-24 xl:pb-12 2xl:pb-24'
+                ? 'h-full p-4 pl-[45vw] sm:pl-[40vw] lg:p-8 lg:pl-8 xl:p-12' // Pushes the text further right and into the center on mobile
+                : 'h-full w-[80%] p-6 sm:w-full sm:px-20 lg:w-full lg:p-12 xl:px-24 xl:pt-24 xl:pb-12 2xl:pb-24'
             }`}
           >
             <div className="pointer-events-none lg:w-[120%] 2xl:w-[150%]">
