@@ -21,13 +21,18 @@
     "core": {
       "eyebrow": "architecture.",
       "headline": "Context dictates the engineering.",
-      "description": "Anchored by a robust TypeScript ecosystem (Next.js, NestJS), the infrastructure is strictly tailored to the real needs of the business. Every tool is selected to solve specific bottlenecks, governed by SOLID principles and Clean Architecture."
+      "description": "Anchored by a robust TypeScript ecosystem [Next.js, NestJS], the infrastructure is strictly tailored to the real needs of the business. Every tool is selected to solve specific bottlenecks, governed by SOLID principles and Clean Architecture."
     },
     "workflow": {
       "eyebrow": "workflow.",
       "headline": "From scope to deploy.",
       "description": "Premium interfaces operating on industrial foundations. I translate business models into high-conversion experiences, executing and controlling the entire engineering cycle: from architectural scope to continuous deployment.",
       "cta": "START PROJECT"
+    },
+    "neatnest": {
+      "eyebrow": "featured.",
+      "headline_suffix": ": Management PWA.",
+      "description": "An intelligent system for domestic and professional inventory control and management. Full-stack engineering [<1>NestJS, Prisma, Angular and SCSS</1>] connecting a modern PWA to a solid bespoke backend, with database hosted on <2>Supabase</2>."
     },
     "contact": {
       "eyebrow": "contact.",
@@ -68,9 +73,165 @@
       "headline": "The academic foundation of infrastructure.",
       "description": "B.S. in Computer Science. Fusing deep software engineering fundamentals with practical research: author of the extensive manual <span class=\"text-accent/90 font-medium\">\"Git: Version Control & Workflow\"</span>. A work designed to guide enthusiastic beginners and empower advanced engineers to master version control from the root.",
       "specs": {
-        "degree": { "value": "B.S. CS" },
-        "research": { "value": "Version Control" },
-        "target": { "value": "Infrastructure" }
+        "degree": {
+          "value": "B.S. CS"
+        },
+        "research": {
+          "value": "Version Control"
+        },
+        "target": {
+          "value": "Infrastructure"
+        }
+      }
+    },
+    "builder": {
+      "eyebrow": "project planner.",
+      "step": "Step",
+      "buttons": {
+        "next": "NEXT",
+        "back": "BACK",
+        "send": "SEND REQUEST",
+        "sending": "SENDING...",
+        "success": "SENT!"
+      },
+      "visualizer": {
+        "title": "PROJECT SPECS",
+        "base": "Base:",
+        "objective": "Objective:",
+        "colors": "Colors:",
+        "addons": "Add-ons:",
+        "assets": "Assets:",
+        "estimated_investment": "Total Investment",
+        "estimated_time": "est. time (after payment)",
+        "upon_request": "Upon Request",
+        "tbd": "TBD",
+        "work_days": "business days",
+        "awaiting": "Awaiting parameters...",
+        "tier": "tier"
+      },
+      "step1": {
+        "title": "select foundation.",
+        "plans": {
+          "basic": {
+            "desc": "single-page with a clean and straight-to-the-point design.",
+            "specs": [
+              {
+                "title": "Fast static landing page",
+                "desc": "ideal for testing ideas and capturing leads."
+              },
+              {
+                "title": "Responsive and dynamic design",
+                "desc": "works perfectly on any device."
+              },
+              {
+                "title": "Optimized Cloud hosting",
+                "desc": "ultra-fast loading to retain visitors."
+              }
+            ]
+          },
+          "intermediate": {
+            "desc": "multiple pages to present your business.",
+            "specs": [
+              {
+                "title": "Up to 5 institutional pages",
+                "desc": "solid digital base for brand presentation."
+              },
+              {
+                "title": "Portfolio / Blog section",
+                "desc": "showcase your work or engage with content."
+              },
+              {
+                "title": "Animations and micro-interactions",
+                "desc": "visual details that elevate perceived value."
+              }
+            ]
+          },
+          "advanced": {
+            "desc": "complete platform with admin dashboard.",
+            "specs": [
+              {
+                "title": "Robust platform [Full-Stack]",
+                "desc": "complete administrative system for management."
+              },
+              {
+                "title": "API and Systems Integration",
+                "desc": "integrates third-party tools and processes."
+              },
+              {
+                "title": "Scalability and Performance",
+                "desc": "architecture ready to handle high traffic volumes."
+              }
+            ]
+          },
+          "scale": {
+            "desc": "cutting-edge solution designed for high scalability.",
+            "specs": [
+              {
+                "title": "Custom-tailored architecture",
+                "desc": "systems and infrastructure designed for your scope."
+              },
+              {
+                "title": "Exclusive UX/UI Design",
+                "desc": "visuals entirely focused on the brand and audience."
+              },
+              {
+                "title": "Technical consulting",
+                "desc": "side-by-side guidance on architectural decisions."
+              }
+            ]
+          }
+        }
+      },
+      "step2": {
+        "title": "project objective.",
+        "objectives": {
+          "Landing Page": "Landing Page",
+          "Site Institucional": "Corporate Site",
+          "Web App": "Web App",
+          "Loja Virtual": "E-Commerce",
+          "Outro": "Other"
+        },
+        "custom_objective_placeholder": "describe your vision...",
+        "colors_label": "Colors and Brand Intention",
+        "colors_placeholder": "e.g.: black and yellow, minimalist look...",
+        "assets_alert": "Asset creation requires bespoke design. This implies <0>additional costs and days</0> to the delivery time.",
+        "logo_label": "Logo?",
+        "images_label": "Images?",
+        "btn_have": "HAVE",
+        "btn_create": "CREATE"
+      },
+      "step3": {
+        "title": "system add-ons.",
+        "included_card": {
+          "qr": "DIGITAL QR ACCESS CARD INCLUDED",
+          "hosting": "MANAGED HOSTING",
+          "price": "[¥4,000/MO]"
+        },
+        "addons": {
+          "auth": {
+            "title": "Auth",
+            "desc": "allow users to create accounts."
+          },
+          "db": {
+            "title": "Database",
+            "desc": "store information securely."
+          },
+          "payments": {
+            "title": "Payments",
+            "desc": "receive online payments."
+          },
+          "seo": {
+            "title": "SEO",
+            "desc": "appear in google search results."
+          }
+        },
+        "auth_warning": "* systems with <0>auth</0> strictly require <1>database</1> infrastructure."
+      },
+      "step4": {
+        "title": "finalize request.",
+        "name_placeholder": "your name",
+        "email_placeholder": "your email",
+        "notes_placeholder": "additional notes"
       }
     }
   }

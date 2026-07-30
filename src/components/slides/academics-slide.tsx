@@ -3,19 +3,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { BookOpen } from 'lucide-react'
-import { SlantedSlide } from '@/ui'
-import {
-  SiTypescript,
-  SiNextdotjs,
-  SiNestjs,
-  SiPostgresql,
-  SiPrisma,
-  SiDrizzle,
-  SiTailwindcss,
-  SiShadcnui,
-  SiGithub,
-} from 'react-icons/si'
-import { ContactForm } from '@/components/ui/contact-form'
+import { SiGithub } from 'react-icons/si'
 
 export function AcademicsSlide() {
   const { t } = useTranslation()
