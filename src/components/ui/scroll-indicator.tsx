@@ -8,11 +8,20 @@ interface ScrollIndicatorProps {
   isLast: boolean
   onPrev: () => void
   onNext: () => void
+  isBuilderActive?: boolean
 }
 
-export function ScrollIndicator({ isFirst, isLast, onPrev, onNext }: ScrollIndicatorProps) {
+export function ScrollIndicator({
+  isFirst,
+  isLast,
+  onPrev,
+  onNext,
+  isBuilderActive,
+}: ScrollIndicatorProps) {
   return (
-    <div className="absolute bottom-6 left-6 z-50 flex flex-col items-center gap-3 md:bottom-10 md:left-10 lg:bottom-12 lg:left-12 xl:left-24 2xl:bottom-24">
+    <div
+      className={`hide-on-keyboard absolute bottom-6 left-6 z-50 flex flex-col items-center gap-3 sm:bottom-10 sm:left-10 lg:bottom-12 lg:left-12 xl:left-24 2xl:bottom-24 ${isBuilderActive ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+    >
       <AnimatePresence>
         {!isFirst && (
           <motion.button

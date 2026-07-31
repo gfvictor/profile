@@ -82,7 +82,7 @@ export function WorkflowSlide() {
           </motion.div>
 
           <motion.button
-            onClick={() => window.dispatchEvent(new CustomEvent('GO_TO_CONTACT'))}
+            onClick={() => window.dispatchEvent(new CustomEvent('GO_TO_BUILDER'))}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 1.55, ease: 'circOut' }}
