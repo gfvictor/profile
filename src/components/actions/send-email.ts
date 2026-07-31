@@ -2,20 +2,38 @@
 
 import { z } from 'zod'
 import { MailtrapClient } from 'mailtrap'
+import { headers } from 'next/headers'
+
+const rateLimitMap = new Map<string, number[]>()
+const RATE_LIMIT_WINDOW_MS = 60000
+const MAX_REQUESTS = 3
 
 const contactSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   email: z.email('Invalid email address'),
   message: z.string().min(1, 'Message is required'),
-  _gotcha: z.string().optional(),
+  _pegatrouxa: z.string().optional(),
 })
 
 export async function sendEmailAction(formData: FormData) {
+  const ip = (await headers()).get('x-forwarded-for') || 'unknown'
+  const now = Date.now()
+  const timestamps = rateLimitMap.get(ip) || []
+  const recentRequests = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS)
+
+  if (recentRequests.length >= MAX_REQUESTS) {
+    console.warn(`Rate limit exceeded for IP: ${ip}`)
+    return { error: 'Muitas requisições. Tente novamente mais tarde.' }
+  }
+
+  recentRequests.push(now)
+  rateLimitMap.set(ip, recentRequests)
+
   const rawData = {
     name: formData.get('name'),
     email: formData.get('email'),
     message: formData.get('message'),
-    _gotcha: formData.get('_gotcha'),
+    _pegatrouxa: formData.get('_pegatrouxa') ?? undefined,
   }
 
   const validatedFields = contactSchema.safeParse(rawData)
@@ -24,9 +42,9 @@ export async function sendEmailAction(formData: FormData) {
     return { error: 'Invalid fields' }
   }
 
-  const { name, email, message, _gotcha } = validatedFields.data
+  const { name, email, message, _pegatrouxa } = validatedFields.data
 
-  if (_gotcha) {
+  if (_pegatrouxa) {
     console.warn('Bot trapped in honeypot:', { name, email })
     return { success: true }
   }
@@ -42,11 +60,11 @@ export async function sendEmailAction(formData: FormData) {
   const client = new MailtrapClient({ token: MAILTRAP_TOKEN })
 
   const sender = {
-    email: 'hello@codifylab.app',
+    email: 'hello@codifylab.online',
     name: 'Portfolio Lead',
   }
 
-  const recipients = [{ email: 'contact@codifylab.app' }]
+  const recipients = [{ email: 'contact@codifylab.online' }]
 
   try {
     await client.send({

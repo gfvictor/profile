@@ -40,6 +40,11 @@
       "description": "強固な産業基盤の上で稼働するプレミアムなUI。ビジネスモデルをコンバージョン率の高い体験へと翻訳し、アーキテクチャの要件定義から継続的デプロイまで、エンジニアリングの全サイクルを実行・管理します。",
       "cta": "プロジェクトを開始"
     },
+    "neatnest": {
+      "eyebrow": "featured.",
+      "headline_suffix": ": 管理PWA.",
+      "description": "家庭用および業務用のインベントリ管理・制御のためのインテリジェントシステム。フルスタックエンジニアリング [<1>NestJS、Prisma、Angular、SCSS</1>] により、最新のPWAと強固な自社開発バックエンドを接続し、<2>Supabase</2>にホストされたデータベースを利用。"
+    },
     "contact": {
       "eyebrow": "contact.",
       "headline": "構築を始める。",
@@ -68,9 +73,165 @@
       "headline": "インフラを支える学術的基盤。",
       "description": "コンピュータサイエンス学士。低レベルの学術的アーキテクチャと実践的な研究を融合し、初心者から上級エンジニアまでがバージョン管理を根本から習得できるよう構築された広範なマニュアル<span class=\"text-accent/90 font-medium\">「Git: バージョン管理とワークフロー」</span>を執筆。",
       "specs": {
-        "degree": { "value": "理学士号" },
-        "research": { "value": "バージョン管理" },
-        "target": { "value": "インフラ" }
+        "degree": {
+          "value": "理学士号"
+        },
+        "research": {
+          "value": "バージョン管理"
+        },
+        "target": {
+          "value": "インフラ"
+        }
+      }
+    },
+    "builder": {
+      "eyebrow": "project planner.",
+      "step": "Step",
+      "buttons": {
+        "next": "次へ",
+        "back": "戻る",
+        "send": "送信する",
+        "sending": "送信中...",
+        "success": "送信完了!"
+      },
+      "visualizer": {
+        "title": "PROJECT SPECS",
+        "base": "ベース:",
+        "objective": "目的:",
+        "colors": "カラー:",
+        "addons": "追加機能:",
+        "assets": "アセット:",
+        "estimated_investment": "予想総投資額",
+        "estimated_time": "予想納期 (支払い後)",
+        "upon_request": "要相談",
+        "tbd": "未定",
+        "work_days": "営業日",
+        "awaiting": "パラメータを待機中...",
+        "tier": "プラン"
+      },
+      "step1": {
+        "title": "ベースを選択.",
+        "plans": {
+          "basic": {
+            "desc": "クリーンで要点を押さえたシングルページ。",
+            "specs": [
+              {
+                "title": "高速な静的ランディングページ",
+                "desc": "アイデアのテストや見込み客の獲得に最適。"
+              },
+              {
+                "title": "レスポンシブな動的デザイン",
+                "desc": "どのデバイスでも完璧に機能します。"
+              },
+              {
+                "title": "最適化されたクラウドホスティング",
+                "desc": "訪問者を逃さない超高速な読み込み。"
+              }
+            ]
+          },
+          "intermediate": {
+            "desc": "ビジネスを紹介するための複数ページ構成。",
+            "specs": [
+              {
+                "title": "最大5つの企業紹介ページ",
+                "desc": "ブランドを提示するための強固なデジタル基盤。"
+              },
+              {
+                "title": "ポートフォリオ / ブログ セクション",
+                "desc": "作品を展示したり、コンテンツで惹きつけたりします。"
+              },
+              {
+                "title": "アニメーションとマイクロインタラクション",
+                "desc": "ブランド価値を高める視覚的なディテール。"
+              }
+            ]
+          },
+          "advanced": {
+            "desc": "管理画面を備えた完全なプラットフォーム。",
+            "specs": [
+              {
+                "title": "堅牢なプラットフォーム [フルスタック]",
+                "desc": "管理のための完全な管理システム。"
+              },
+              {
+                "title": "APIとシステムの統合",
+                "desc": "サードパーティツールやプロセスを統合します。"
+              },
+              {
+                "title": "スケーラビリティとパフォーマンス",
+                "desc": "大量のトラフィックを処理できるアーキテクチャ。"
+              }
+            ]
+          },
+          "scale": {
+            "desc": "高いスケーラビリティを重視した最先端のソリューション。",
+            "specs": [
+              {
+                "title": "オーダーメイドのアーキテクチャ",
+                "desc": "あなたのスコープに合わせて設計されたシステムとインフラ。"
+              },
+              {
+                "title": "独自のUX/UIデザイン",
+                "desc": "ブランドとユーザーに完全に焦点を当てたビジュアル。"
+              },
+              {
+                "title": "技術コンサルティング",
+                "desc": "アーキテクチャの決定における並走サポート。"
+              }
+            ]
+          }
+        }
+      },
+      "step2": {
+        "title": "プロジェクトの目的.",
+        "objectives": {
+          "Landing Page": "ランディングページ",
+          "Site Institucional": "コーポレートサイト",
+          "Web App": "Webアプリ",
+          "Loja Virtual": "ECサイト",
+          "Outro": "その他"
+        },
+        "custom_objective_placeholder": "ビジョンを説明してください...",
+        "colors_label": "カラーとブランドの意図",
+        "colors_placeholder": "例：黒と黄色、ミニマリストな外観...",
+        "assets_alert": "アセット作成には専用のデザインが必要です。これにより、納期に<0>追加費用と日数が加算</0>されます。",
+        "logo_label": "ロゴ?",
+        "images_label": "画像?",
+        "btn_have": "ある",
+        "btn_create": "作成する"
+      },
+      "step3": {
+        "title": "システムアドオン.",
+        "included_card": {
+          "qr": "デジタルQRアクセスカード 込み",
+          "hosting": "マネージドホスティング",
+          "price": "[¥4,000/月]"
+        },
+        "addons": {
+          "auth": {
+            "title": "Auth",
+            "desc": "ユーザーがアカウントを作成できるようにします。"
+          },
+          "db": {
+            "title": "Database",
+            "desc": "情報を安全に保存します。"
+          },
+          "payments": {
+            "title": "Payments",
+            "desc": "オンライン決済を受け付けます。"
+          },
+          "seo": {
+            "title": "SEO",
+            "desc": "Googleの検索結果に表示されるようにします。"
+          }
+        },
+        "auth_warning": "* <0>auth</0> を備えたシステムには、<1>database</1> インフラストラクチャが必須です。"
+      },
+      "step4": {
+        "title": "リクエストを完了.",
+        "name_placeholder": "お名前",
+        "email_placeholder": "メール",
+        "notes_placeholder": "追加のメモ"
       }
     }
   }

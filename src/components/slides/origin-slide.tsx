@@ -6,7 +6,6 @@ import { motion } from 'framer-motion'
 export function OriginSlide() {
   const { t } = useTranslation()
   const devYears = new Date().getFullYear() - 2021
-  const yearsInJapan = new Date().getFullYear() - 2013
 
   return (
     <div className="slide-container">

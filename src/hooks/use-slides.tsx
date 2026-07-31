@@ -4,8 +4,8 @@ import {
   OriginSlide,
   AcademicsSlide,
   WorkflowSlide,
-  OpenScopeDocsSlide,
   NeatNestSlide,
+  BuilderSlide,
   ContactSlide,
 } from '@/slides'
 
@@ -15,11 +15,6 @@ export function useSlides() {
       id: 'intro',
       title: 'intro',
       content: <IntroSlide />,
-    },
-    {
-      id: 'core',
-      title: 'core',
-      content: <CoreSlide />,
     },
     {
       id: 'origin',
@@ -32,19 +27,24 @@ export function useSlides() {
       content: <AcademicsSlide />,
     },
     {
-      id: 'workflow',
-      title: 'workflow',
-      content: <WorkflowSlide />,
-    },
-    {
-      id: 'openscope-docs',
-      title: 'openscope-docs',
-      content: <OpenScopeDocsSlide />,
+      id: 'core',
+      title: 'core',
+      content: <CoreSlide />,
     },
     {
       id: 'neatnest',
       title: 'neatnest',
       content: <NeatNestSlide />,
+    },
+    {
+      id: 'workflow',
+      title: 'workflow',
+      content: <WorkflowSlide />,
+    },
+    {
+      id: 'builder',
+      title: 'plan a project',
+      content: <BuilderSlide />,
     },
     {
       id: 'contact',

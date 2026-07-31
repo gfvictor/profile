@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { useTranslation, Trans } from 'react-i18next'
+import { useTranslation, Trans as Translate } from 'react-i18next'
 import { TermsModal } from './terms-modal'
 import { sendEmailAction } from '@/actions'
 
@@ -80,67 +80,69 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="grid w-full grid-cols-3 gap-x-6 gap-y-4 sm:gap-x-10 sm:gap-y-6"
-    >
-      <div className="absolute top-[-9999px] left-[-9999px]" aria-hidden="true" tabIndex={-1}>
-        <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
-      </div>
+    <>
+      <form onSubmit={handleSubmit} noValidate className="flex w-full flex-col gap-4 sm:gap-6">
+        <div className="absolute top-[-9999px] left-[-9999px]" aria-hidden="true" tabIndex={-1}>
+          <input type="text" name="_pegatrouxa" tabIndex={-1} autoComplete="off" />
+        </div>
 
-      <div className="col-span-1 flex flex-col justify-between gap-4">
-        <div className="relative flex w-full flex-col">
-          <input
-            type="text"
-            name="name"
-            placeholder={t('slides.contact.form.name')}
-            onChange={() => setErrors((prev) => ({ ...prev, name: false }))}
-            className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 font-mono text-xs placeholder-transparent focus:outline-none sm:text-sm ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
-          />
-          <div
-            className={`pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.name ? 'text-red-500' : 'text-muted-foreground/50'}`}
-          >
-            {t('slides.contact.form.name')}{' '}
-            <span className={errors.name ? 'text-red-500' : 'text-accent'}>*</span>
+        <div className="grid w-full grid-cols-5 gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6 lg:grid-cols-3 lg:gap-x-10">
+          <div className="col-span-2 flex flex-col justify-between gap-4 lg:col-span-1">
+            <div className="relative flex w-full flex-col">
+              <input
+                type="text"
+                name="name"
+                placeholder={t('slides.contact.form.name')}
+                onChange={() => setErrors((prev) => ({ ...prev, name: false }))}
+                className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
+              />
+              <div
+                className={`pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.name ? 'text-red-500' : 'text-muted-foreground/50'}`}
+              >
+                {t('slides.contact.form.name')}{' '}
+                <span className={errors.name ? 'text-red-500' : 'text-accent'}>*</span>
+              </div>
+            </div>
+
+            <div className="relative flex w-full flex-col">
+              <input
+                type="email"
+                name="email"
+                placeholder={t('slides.contact.form.email')}
+                onChange={() => setErrors((prev) => ({ ...prev, email: false }))}
+                className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
+              />
+              <div
+                className={`pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.email ? 'text-red-500' : 'text-muted-foreground/50'}`}
+              >
+                {t('slides.contact.form.email')}{' '}
+                <span className={errors.email ? 'text-red-500' : 'text-accent'}>*</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-3 flex flex-col justify-between gap-4 lg:col-span-2">
+            <div className="relative flex w-full flex-col">
+              <textarea
+                name="message"
+                placeholder={t('slides.contact.form.message')}
+                onChange={() => setErrors((prev) => ({ ...prev, message: false }))}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchStart={(e) => e.stopPropagation()}
+                onTouchEnd={(e) => e.stopPropagation()}
+                className={`peer text-foreground border-accent/30 focus:border-accent h-24 w-full touch-pan-y resize-none border bg-transparent p-2 font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.message ? 'border-red-500' : ''}`}
+              />
+              <div
+                className={`pointer-events-none absolute top-2 left-2 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.message ? 'text-red-500' : 'text-muted-foreground/50'}`}
+              >
+                {t('slides.contact.form.message')}{' '}
+                <span className={errors.message ? 'text-red-500' : 'text-accent'}>*</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="relative flex w-full flex-col">
-          <input
-            type="email"
-            name="email"
-            placeholder={t('slides.contact.form.email')}
-            onChange={() => setErrors((prev) => ({ ...prev, email: false }))}
-            className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 font-mono text-xs placeholder-transparent focus:outline-none sm:text-sm ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
-          />
-          <div
-            className={`pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.email ? 'text-red-500' : 'text-muted-foreground/50'}`}
-          >
-            {t('slides.contact.form.email')}{' '}
-            <span className={errors.email ? 'text-red-500' : 'text-accent'}>*</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="col-span-2 flex flex-col justify-between gap-4">
-        <div className="relative flex w-full flex-col">
-          <input
-            type="text"
-            name="message"
-            placeholder={t('slides.contact.form.message')}
-            onChange={() => setErrors((prev) => ({ ...prev, message: false }))}
-            className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 font-mono text-xs placeholder-transparent focus:outline-none sm:text-sm ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
-          />
-          <div
-            className={`pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.message ? 'text-red-500' : 'text-muted-foreground/50'}`}
-          >
-            {t('slides.contact.form.message')}{' '}
-            <span className={errors.message ? 'text-red-500' : 'text-accent'}>*</span>
-          </div>
-        </div>
-
-        <div className="flex w-full items-center justify-between gap-4">
+        <div className="mt-2 flex w-full items-center justify-end gap-6 sm:gap-10">
           <div className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -152,9 +154,9 @@ export function ContactForm() {
             />
             <label
               htmlFor="terms"
-              className={`font-mono text-[8px] tracking-wider lowercase sm:text-[9px] lg:text-[10px] 2xl:text-xs ${errors.terms ? 'text-red-500' : 'text-muted-foreground/60'}`}
+              className={`font-mono text-[10px] tracking-wider lowercase sm:text-[9px] lg:text-[10px] 2xl:text-xs ${errors.terms ? 'text-red-500' : 'text-muted-foreground/60'}`}
             >
-              <Trans
+              <Translate
                 i18nKey="slides.contact.form.terms"
                 components={{
                   1: (
@@ -179,17 +181,17 @@ export function ContactForm() {
             {status === 'loading' ? '...' : t('slides.contact.form.submit')}
           </button>
         </div>
-      </div>
 
-      <TermsModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onAccept={() => {
-          setIsModalOpen(false)
-          if (termsRef.current) termsRef.current.checked = true
-          setErrors((prev) => ({ ...prev, terms: false }))
-        }}
-      />
-    </form>
+        <TermsModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onAccept={() => {
+            setIsModalOpen(false)
+            if (termsRef.current) termsRef.current.checked = true
+            setErrors((prev) => ({ ...prev, terms: false }))
+          }}
+        />
+      </form>
+    </>
   )
 }

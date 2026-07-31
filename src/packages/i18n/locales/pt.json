@@ -21,13 +21,18 @@
     "core": {
       "eyebrow": "architecture.",
       "headline": "O contexto dita a engenharia.",
-      "description": "Ancorado em um ecossistema TypeScript robusto (Next.js, NestJS), a infraestrutura é estritamente moldada pelas necessidades reais do negócio. Cada ferramenta é selecionada para resolver gargalos específicos, sob o rigor dos princípios SOLID e Clean Architecture."
+      "description": "Ancorado em um ecossistema TypeScript robusto [Next.js, NestJS], a infraestrutura é estritamente moldada pelas necessidades reais do negócio. Cada ferramenta é selecionada para resolver gargalos específicos, sob o rigor dos princípios SOLID e Clean Architecture."
     },
     "workflow": {
       "eyebrow": "workflow.",
       "headline": "Do escopo ao deploy.",
       "description": "Interfaces premium operando sobre fundações industriais. Traduzo o modelo de negócio em experiências de alta conversão, executando e controlando o ciclo completo de engenharia: do escopo arquitetural ao deploy contínuo.",
       "cta": "iniciar projeto"
+    },
+    "neatnest": {
+      "eyebrow": "featured.",
+      "headline_suffix": ": PWA de gerenciamento.",
+      "description": "Um sistema inteligente para gerenciamento e controle de inventário doméstico e profissional. Engenharia full-stack [<1>NestJS, Prisma, Angular e SCSS</1>] conectando uma PWA moderna a um backend autoral sólido, e banco de dados hospedado no <2>Supabase</2>."
     },
     "contact": {
       "eyebrow": "contact.",
@@ -68,9 +73,165 @@
       "headline": "A fundação acadêmica da infraestrutura.",
       "description": "Bacharel em Ciência da Computação. Unindo os fundamentos profundos da engenharia de software à pesquisa prática: autor do manual extensivo <span class=\"text-accent/90 font-medium\">\"Git: Versionamento de Código & Fluxo de Trabalho\"</span>. Uma obra desenhada para guiar entusiastas iniciantes e capacitar engenheiros avançados a dominar o versionamento pela raiz.",
       "specs": {
-        "degree": { "value": "Bacharelado CC" },
-        "research": { "value": "Versionamento" },
-        "target": { "value": "Infraestrutura" }
+        "degree": {
+          "value": "Bacharelado CC"
+        },
+        "research": {
+          "value": "Versionamento"
+        },
+        "target": {
+          "value": "Infraestrutura"
+        }
+      }
+    },
+    "builder": {
+      "eyebrow": "project planner.",
+      "step": "Step",
+      "buttons": {
+        "next": "NEXT",
+        "back": "BACK",
+        "send": "SEND REQUEST",
+        "sending": "SENDING...",
+        "success": "SENT!"
+      },
+      "visualizer": {
+        "title": "PROJECT SPECS",
+        "base": "Base:",
+        "objective": "Objetivo:",
+        "colors": "Cores:",
+        "addons": "Add-ons:",
+        "assets": "Assets:",
+        "estimated_investment": "Investimento Total",
+        "estimated_time": "prazo est. (após pagamento)",
+        "upon_request": "Sob Consulta",
+        "tbd": "A definir",
+        "work_days": "dias úteis",
+        "awaiting": "Aguardando parâmetros...",
+        "tier": "tier"
+      },
+      "step1": {
+        "title": "escolha a base.",
+        "plans": {
+          "basic": {
+            "desc": "página única com design limpo e direto ao ponto.",
+            "specs": [
+              {
+                "title": "Landing page estática rápida",
+                "desc": "ideal para testar ideias e capturar contatos."
+              },
+              {
+                "title": "Design responsivo e dinâmico",
+                "desc": "funciona perfeitamente em qualquer dispositivo."
+              },
+              {
+                "title": "Hospedagem em Cloud otimizada",
+                "desc": "carregamento ultra-rápido para não perder visitas."
+              }
+            ]
+          },
+          "intermediate": {
+            "desc": "múltiplas páginas para apresentar o negócio.",
+            "specs": [
+              {
+                "title": "Até 5 páginas institucionais",
+                "desc": "base digital sólida para a apresentação da marca."
+              },
+              {
+                "title": "Sessão de Portfólio / Blog",
+                "desc": "apresente seu trabalho ou engaje com conteúdo."
+              },
+              {
+                "title": "Animações e micro-interações",
+                "desc": "detalhes visuais que elevam a percepção de valor."
+              }
+            ]
+          },
+          "advanced": {
+            "desc": "plataforma completa com painel administrativo.",
+            "specs": [
+              {
+                "title": "Plataforma robusta [Full-Stack]",
+                "desc": "sistema administrativo completo para gerenciamento."
+              },
+              {
+                "title": "Integração de APIs e Sistemas",
+                "desc": "integra ferramentas e processos de terceiros."
+              },
+              {
+                "title": "Escalabilidade e Performance",
+                "desc": "arquitetura pronta para receber alto volume de tráfego."
+              }
+            ]
+          },
+          "scale": {
+            "desc": "solução de ponta projetada para alta escalabilidade.",
+            "specs": [
+              {
+                "title": "Arquitetura feita sob medida",
+                "desc": "sistemas e infraestrutura desenhados para o seu escopo."
+              },
+              {
+                "title": "UX/UI Design exclusivo",
+                "desc": "visual focado totalmente na marca e audiência."
+              },
+              {
+                "title": "Consultoria técnica",
+                "desc": "acompanhamento lado a lado nas decisões arquiteturais."
+              }
+            ]
+          }
+        }
+      },
+      "step2": {
+        "title": "objetivo do projeto.",
+        "objectives": {
+          "Landing Page": "Landing Page",
+          "Site Institucional": "Site Institucional",
+          "Web App": "Web App",
+          "Loja Virtual": "Loja Virtual",
+          "Outro": "Outro"
+        },
+        "custom_objective_placeholder": "descreva sua visão...",
+        "colors_label": "Cores e Intenção da Marca",
+        "colors_placeholder": "ex: preto e amarelo, visual minimalista...",
+        "assets_alert": "A criação de assets exige design sob medida. Isso implica em <0>acréscimo de custos e dias</0> ao prazo de entrega.",
+        "logo_label": "Logo?",
+        "images_label": "Imagens?",
+        "btn_have": "TENHO",
+        "btn_create": "CRIAR"
+      },
+      "step3": {
+        "title": "adicionais do sistema.",
+        "included_card": {
+          "qr": "QR ACCESS CARD DIGITAL INCLUSO",
+          "hosting": "HOSPEDAGEM GERENCIADA",
+          "price": "[¥4.000/MÊS]"
+        },
+        "addons": {
+          "auth": {
+            "title": "Auth",
+            "desc": "permitir que usuários criem contas."
+          },
+          "db": {
+            "title": "Database",
+            "desc": "guardar informações com segurança."
+          },
+          "payments": {
+            "title": "Payments",
+            "desc": "receber pagamentos online."
+          },
+          "seo": {
+            "title": "SEO",
+            "desc": "aparecer nos resultados do google."
+          }
+        },
+        "auth_warning": "* sistemas com <0>auth</0> requerem obrigatoriamente a infra de <1>database</1>."
+      },
+      "step4": {
+        "title": "finalizar solicitação.",
+        "name_placeholder": "seu nome",
+        "email_placeholder": "seu email",
+        "notes_placeholder": "observações adicionais"
       }
     }
   }

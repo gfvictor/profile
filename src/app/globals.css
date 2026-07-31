@@ -46,7 +46,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground selection:bg-foreground/20;
+    @apply bg-background text-foreground selection:bg-foreground/20 transition-colors duration-700 ease-in-out;
   }
 }
 
@@ -58,7 +58,8 @@
 
 @layer components {
   .slide-container {
-    @apply relative flex h-full w-full flex-col items-end overflow-hidden px-6 pt-[15dvh] pb-6 text-right;
+    @apply relative flex h-full w-full flex-col items-end overflow-hidden px-6 pt-[15svh] pb-6 text-right;
+    @apply sm:px-20;
     @apply lg:px-12 lg:pt-[25vh] lg:pb-12;
     @apply xl:px-24 xl:pt-[25vh] xl:pb-24;
   }
