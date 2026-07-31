@@ -13,7 +13,7 @@ const LANGUAGES = [
 
 export function LanguageToggle() {
   const { i18n } = useTranslation()
-  const currentLocale = i18n.resolvedLanguage || 'en'
+  const currentLocale = i18n.resolvedLanguage || 'pt'
   const [isOpen, setIsOpen] = useState(false)
 
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -34,7 +34,7 @@ export function LanguageToggle() {
     }
   }, [])
 
-  const currentLang = LANGUAGES.find((l) => l.code === currentLocale) || LANGUAGES[0]
+  const currentLang = LANGUAGES.find((l) => l.code === currentLocale) || LANGUAGES[1]
 
   return (
     <div className="relative" ref={dropdownRef}>
