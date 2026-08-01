@@ -107,7 +107,8 @@
         "tbd": "A definir",
         "work_days": "dias úteis",
         "awaiting": "Aguardando parâmetros...",
-        "tier": "tier"
+        "tier": "tier",
+        "tax": "(+10% TAX)"
       },
       "step1": {
         "title": "escolha a base.",
