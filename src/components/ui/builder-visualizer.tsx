@@ -155,6 +155,11 @@ export function BuilderVisualizer({ plan, addons, price, time }: BuilderVisualiz
                     className="text-foreground inline-block font-mono text-xs font-bold sm:text-sm lg:text-xl"
                   >
                     {price}
+                    {plan && plan !== 'scale' && (
+                      <span className="text-accent ml-1 text-[8px] font-normal lowercase sm:text-[10px]">
+                        {t('slides.builder.visualizer.tax')}
+                      </span>
+                    )}
                   </motion.span>
                 </AnimatePresence>
               </div>
