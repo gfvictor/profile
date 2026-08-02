@@ -127,6 +127,8 @@ ${contact.notes || 'Nenhuma observação.'}
       days += 1
     }
 
+    price = Math.floor(price * 1.1)
+
     const formattedPrice = new Intl.NumberFormat('ja-JP', {
       style: 'currency',
       currency: 'JPY',
@@ -228,10 +230,10 @@ ${contact.notes || 'Nenhuma observação.'}
                       status === 'loading' ||
                       status === 'success'
                     }
-                    className="border-accent/30 bg-accent/5 text-accent hover:border-accent hover:bg-accent hover:text-background flex h-10 min-w-[90px] items-center justify-center border px-4 font-mono text-xs font-bold tracking-widest uppercase transition-all duration-300 disabled:opacity-50 sm:min-w-[120px] sm:px-6 sm:text-sm"
+                    className="border-accent/30 bg-accent/5 text-accent hover:border-accent hover:bg-accent hover:text-background border px-6 py-2 font-mono text-xs font-bold tracking-widest uppercase transition-all duration-300 disabled:opacity-50"
                     onClick={submitRequest}
                   >
-                    {status === 'loading' ? '...' : t('slides.builder.buttons.send')}
+                    {status === 'loading' ? '...' : status === 'success' ? t('slides.builder.buttons.success') : t('slides.builder.buttons.send')}
                   </button>
                 )}
               </div>

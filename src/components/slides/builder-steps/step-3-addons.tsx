@@ -73,6 +73,15 @@ export function Step3Addons() {
             <span className="text-accent/80" key="2" />,
           ]}
         />
+        <br />
+        <Translate
+          i18nKey="slides.builder.step3.payments_warning"
+          components={[
+            <span className="text-accent/80" key="1" />,
+            <span className="text-accent/80" key="2" />,
+            <span className="text-accent/80" key="3" />,
+          ]}
+        />
       </div>
     </div>
   )
