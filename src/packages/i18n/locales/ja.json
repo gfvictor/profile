@@ -90,9 +90,9 @@
       "buttons": {
         "next": "次へ",
         "back": "戻る",
-        "send": "送信する",
+        "send": "リクエストを送信",
         "sending": "送信中...",
-        "success": "送信完了!"
+        "success": "送信完了！"
       },
       "visualizer": {
         "title": "PROJECT SPECS",
@@ -108,7 +108,7 @@
         "work_days": "営業日",
         "awaiting": "パラメータを待機中...",
         "tier": "プラン",
-        "tax": "(+10% TAX)"
+        "tax": "(税込)"
       },
       "step1": {
         "title": "ベースを選択.",
@@ -226,7 +226,8 @@
             "desc": "Googleの検索結果に表示されるようにします。"
           }
         },
-        "auth_warning": "* <0>auth</0> を備えたシステムには、<1>database</1> インフラストラクチャが必須です。"
+        "auth_warning": "* <0>auth</0> を搭載したシステムには、必ず <1>database</1> のインフラが必要です。",
+        "payments_warning": "* <0>決済 (Stripe)</0> の統合には、必ず <1>auth</1> と <2>database</2> が必要です。"
       },
       "step4": {
         "title": "リクエストを完了.",

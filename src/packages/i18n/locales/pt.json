@@ -88,11 +88,11 @@
       "eyebrow": "project planner.",
       "step": "Step",
       "buttons": {
-        "next": "NEXT",
-        "back": "BACK",
-        "send": "SEND REQUEST",
-        "sending": "SENDING...",
-        "success": "SENT!"
+        "next": "AVANÇAR",
+        "back": "VOLTAR",
+        "send": "ENVIAR PEDIDO",
+        "sending": "ENVIANDO...",
+        "success": "ENVIADO!"
       },
       "visualizer": {
         "title": "PROJECT SPECS",
@@ -108,7 +108,7 @@
         "work_days": "dias úteis",
         "awaiting": "Aguardando parâmetros...",
         "tier": "tier",
-        "tax": "(+10% TAX)"
+        "tax": "(IMPOSTO INCL.)"
       },
       "step1": {
         "title": "escolha a base.",
@@ -226,7 +226,8 @@
             "desc": "aparecer nos resultados do google."
           }
         },
-        "auth_warning": "* sistemas com <0>auth</0> requerem obrigatoriamente a infra de <1>database</1>."
+        "auth_warning": "* sistemas com <0>auth</0> requerem obrigatoriamente a infra de <1>database</1>.",
+        "payments_warning": "* integração de <0>pagamentos (Stripe)</0> requer <1>auth</1> e <2>database</2>."
       },
       "step4": {
         "title": "finalizar solicitação.",

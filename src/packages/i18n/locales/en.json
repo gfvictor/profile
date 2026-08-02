@@ -108,7 +108,7 @@
         "work_days": "business days",
         "awaiting": "Awaiting parameters...",
         "tier": "tier",
-        "tax": "(+10% TAX)"
+        "tax": "(TAX INCLUDED)"
       },
       "step1": {
         "title": "select foundation.",
@@ -226,7 +226,8 @@
             "desc": "appear in google search results."
           }
         },
-        "auth_warning": "* systems with <0>auth</0> strictly require <1>database</1> infrastructure."
+        "auth_warning": "* systems with <0>auth</0> strictly require <1>database</1> infrastructure.",
+        "payments_warning": "* <0>payments (Stripe)</0> integration strictly requires <1>auth</1> and <2>database</2>."
       },
       "step4": {
         "title": "finalize request.",

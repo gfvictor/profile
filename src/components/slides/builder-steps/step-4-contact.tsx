@@ -17,7 +17,7 @@ export function Step4Contact({ pegatrouxaRef }: Step4ContactProps) {
 
   if (status === 'success') {
     return (
-      <div className="flex h-full w-full items-center justify-center pb-4 lg:pb-10">
+      <div className="flex h-full w-full items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
