@@ -46,10 +46,10 @@ export default function Home() {
   }, [setActiveSlide])
 
   return (
-    <div className="bg-background flex h-[100svh] w-full flex-col overflow-hidden lg:h-[100vh] lg:flex-row">
+    <div className="bg-background flex h-svh w-full flex-col overflow-hidden lg:h-[100vh] lg:flex-row">
       <main
         className={`bg-background relative z-0 order-2 flex w-full touch-none items-center justify-center transition-all duration-700 ease-in-out outline-none lg:order-1 lg:h-[100vh] lg:flex-1 ${
-          isBuilderActive ? 'h-[88vh]' : 'h-[75vh]'
+          isBuilderActive ? 'h-[88svh]' : 'h-[75svh]'
         }`}
         {...handlers}
         tabIndex={0}
@@ -86,8 +86,8 @@ export default function Home() {
       <header
         className={`bg-background relative z-50 order-1 w-full flex-shrink-0 touch-none transition-all duration-700 ease-in-out lg:order-2 lg:h-[100vh] lg:border-b-0 lg:border-l lg:bg-transparent ${
           isBuilderActive
-            ? 'border-accent/20 h-[12vh] border-b lg:w-[25%] xl:w-[22%]'
-            : 'h-[25vh] rounded-br-[4px] lg:w-[40%]'
+            ? 'border-accent/20 h-[12svh] border-b lg:w-[25%] xl:w-[22%]'
+            : 'h-[25svh] rounded-br-[4px] lg:w-[40%]'
         }`}
       >
         <div className="bg-background/40 absolute top-4 left-4 z-50 flex items-center gap-2 rounded-full p-1.5 backdrop-blur-sm lg:top-8 lg:left-8 lg:bg-transparent lg:backdrop-blur-none">

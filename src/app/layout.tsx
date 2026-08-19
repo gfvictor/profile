@@ -19,6 +19,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
@@ -27,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${koho.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="bg-background flex min-h-full flex-col font-sans lowercase">
+    <html lang="en" className={`${koho.variable} h-svh antialiased`} suppressHydrationWarning>
+      <body className="bg-background flex min-h-svh flex-col font-sans lowercase">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
