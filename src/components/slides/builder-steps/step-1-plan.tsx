@@ -63,7 +63,7 @@ export function Step1Plan() {
             transition={{ duration: 0.2, ease: 'easeOut' }}
             className="overflow-hidden"
           >
-            <div className="border-accent/50 mt-6 flex flex-col gap-3 border-l-2 pl-3 lg:mt-4 lg:gap-4 lg:pl-4">
+            <div className="border-accent/50 mt-2 flex flex-col gap-3 border-l-2 pl-3 lg:mt-4 lg:gap-4 lg:pl-4">
               {planSpecs[plan].map((spec, i) => (
                 <div key={i} className="flex flex-col">
                   <span className="text-foreground/90 font-mono text-[10px] uppercase sm:text-[11px] lg:text-[11px]">
