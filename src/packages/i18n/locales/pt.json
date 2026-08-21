@@ -204,7 +204,7 @@
       "step3": {
         "title": "adicionais do sistema.",
         "included_card": {
-          "qr": "QR ACCESS CARD DIGITAL INCLUSO",
+          "qr": "APP DE GERENCIAMENTO DEDICADO INCLUSO",
           "hosting": "HOSPEDAGEM GERENCIADA",
           "price": "[¥4.000/MÊS]"
         },
@@ -227,7 +227,7 @@
           }
         },
         "auth_warning": "* sistemas com <0>auth</0> requerem obrigatoriamente a infra de <1>database</1>.",
-        "payments_warning": "* integração de <0>pagamentos (Stripe)</0> requer <1>auth</1> e <2>database</2>."
+        "payments_warning": "* integração de <0>pagamentos (Stripe e Square)</0> requer <1>auth</1> e <2>database</2>."
       },
       "step4": {
         "title": "finalizar solicitação.",
