@@ -34,6 +34,11 @@
       "headline_suffix": ": Management PWA.",
       "description": "An intelligent system for domestic and professional inventory control and management. Full-stack engineering [<1>NestJS, Prisma, Angular and SCSS</1>] connecting a modern PWA to a solid bespoke backend, with database hosted on <2>Supabase</2>."
     },
+    "codifylab": {
+      "eyebrow": "featured",
+      "headline_suffix": ": Management App.",
+      "description": "The intelligent proprietary system that manages and controls your business and digital identity in an advanced way. Full integration with your website, mobile app, and online store. Create, edit, and delete <1>services</1>, manage <1>appointments and reservations</1>, set your <1>business hours and days off</1>, in real time."
+    },
     "contact": {
       "eyebrow": "contact.",
       "headline": "start building.",
