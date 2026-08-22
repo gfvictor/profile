@@ -21,7 +21,7 @@
     "core": {
       "eyebrow": "architecture.",
       "headline": "O contexto dita a engenharia.",
-      "description": "Ancorado em um ecossistema TypeScript robusto [Next.js, NestJS], a infraestrutura é estritamente moldada pelas necessidades reais do negócio. Cada ferramenta é selecionada para resolver gargalos específicos, sob o rigor dos princípios SOLID e Clean Architecture."
+      "description": "Ancorado em um ecossistema TypeScript robusto [<1>Next.js, NestJS</1>], a infraestrutura é estritamente moldada pelas necessidades reais do negócio. Cada ferramenta é selecionada para resolver gargalos específicos, sob o rigor dos princípios SOLID e Clean Architecture."
     },
     "workflow": {
       "eyebrow": "workflow.",
@@ -33,6 +33,11 @@
       "eyebrow": "featured.",
       "headline_suffix": ": PWA de gerenciamento.",
       "description": "Um sistema inteligente para gerenciamento e controle de inventário doméstico e profissional. Engenharia full-stack [<1>NestJS, Prisma, Angular e SCSS</1>] conectando uma PWA moderna a um backend autoral sólido, e banco de dados hospedado no <2>Supabase</2>."
+    },
+    "codifylab": {
+      "eyebrow": "featured",
+      "headline_suffix": ": App de Gerenciamento.",
+      "description": "O sistema inteligente autoral que gerencia e controla de forma avançada o empreedimento e identidade digital. Integração absoluta com seu site, aplicativo e loja online. Crie, edite e exclua <1>serviços</1>, gerencie <1>agendamentos e reservas</1>, defina seus <1>horários de atendimento e folgas</1>, tudo em tempo real."
     },
     "contact": {
       "eyebrow": "contact.",
