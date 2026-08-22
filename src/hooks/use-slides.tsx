@@ -33,7 +33,7 @@ export function useSlides() {
     },
     {
       id: 'neatnest',
-      title: 'neatnest',
+      title: 'codifylab',
       content: <NeatNestSlide />,
     },
     {
