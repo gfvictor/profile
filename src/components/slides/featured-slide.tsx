@@ -59,7 +59,6 @@ export function FeaturedSlide() {
             i18nKey="slides.codifylab.description"
             components={{
               1: <span className="text-accent font-bold" />,
-              2: <span className="text-accent font-bold" />,
             }}
           />
         </motion.p>
