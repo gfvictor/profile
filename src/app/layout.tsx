@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { KoHo } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { ThemeProvider, I18nProvider, BuilderProvider } from '@/providers'
 import './globals.css'
 
@@ -53,6 +54,7 @@ export default function RootLayout({
             </BuilderProvider>
           </I18nProvider>
         </ThemeProvider>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
       </body>
     </html>
   )
