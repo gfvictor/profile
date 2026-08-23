@@ -1,7 +1,10 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react'
+import { sendGAEvent } from '@next/third-parties/google'
 import { Plan } from '@/slides'
+
+const BUILDER_STEP_NAMES = ['plan', 'scope', 'addons', 'contact'] as const
 
 interface Addons {
   auth: boolean
@@ -60,6 +63,15 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   })
   const [contact, setContact] = useState<Contact>({ name: '', email: '', notes: '', terms: false })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+  const isFirstStepRender = useRef(true)
+
+  useEffect(() => {
+    if (isFirstStepRender.current) {
+      isFirstStepRender.current = false
+      return
+    }
+    sendGAEvent('event', 'builder_step_view', { step_name: BUILDER_STEP_NAMES[step - 1] })
+  }, [step])
 
   useEffect(() => {
     setScope((prev) => {
