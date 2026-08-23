@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { KoHo } from 'next/font/google'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
 import { ThemeProvider, I18nProvider, BuilderProvider } from '@/providers'
+import { buildGAInitScript } from '@/lib'
 import './globals.css'
 
 const koho = KoHo({
@@ -54,7 +55,14 @@ export default function RootLayout({
             </BuilderProvider>
           </I18nProvider>
         </ThemeProvider>
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
+        <Script id="ga-init" strategy="afterInteractive">
+          {buildGAInitScript(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!)}
+        </Script>
+        <Script
+          id="ga-script"
+          src={`/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
