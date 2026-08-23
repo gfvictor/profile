@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react'
-import { sendGAEvent } from '@next/third-parties/google'
+import { sendGAEvent } from '@/lib'
 import { Plan } from '@/slides'
 
 const BUILDER_STEP_NAMES = ['plan', 'scope', 'addons', 'contact'] as const
