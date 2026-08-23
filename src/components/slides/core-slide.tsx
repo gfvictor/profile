@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 import { motion } from 'framer-motion'
 import {
   SiTypescript,
@@ -42,7 +42,10 @@ export function CoreSlide() {
           className="border-accent origin-top border-r-2 pr-4 lg:pr-6"
         >
           <p className="text-muted-foreground/90 font-mono text-xs leading-relaxed lg:max-w-xl lg:text-sm">
-            {t('slides.core.description')}
+            <Trans
+              i18nKey="slides.core.description"
+              components={{ 1: <span className="text-accent font-bold" /> }}
+            />
           </p>
         </motion.div>
 
