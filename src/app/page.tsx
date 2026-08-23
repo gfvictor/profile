@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useMemo } from 'react'
+import { sendGAEvent } from '@next/third-parties/google'
 import { ThemeToggle, LanguageToggle } from '@/actions'
 import { useTheme } from 'next-themes'
 import { ScrollIndicator, VerticalIndex, TypewriterText } from '@/ui'
@@ -44,6 +45,10 @@ export default function Home() {
       window.removeEventListener('GO_TO_INTRO', handleGoToIntro)
     }
   }, [setActiveSlide])
+
+  useEffect(() => {
+    sendGAEvent('event', 'slide_view', { slide_name: slides[activeSlide].id })
+  }, [activeSlide, slides])
 
   return (
     <div className="bg-background flex h-svh w-full flex-col overflow-hidden lg:h-[100vh] lg:flex-row">

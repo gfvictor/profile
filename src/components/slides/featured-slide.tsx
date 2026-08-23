@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation, Trans } from 'react-i18next'
 
-export function NeatNestSlide() {
+export function FeaturedSlide() {
   const { t } = useTranslation()
 
   const images = [
@@ -15,7 +15,7 @@ export function NeatNestSlide() {
     '/slides/codifylab/clab6.jpg',
     '/slides/codifylab/clab7.jpg',
     '/slides/codifylab/clab8.jpg',
-    '/slides/codifylab/clab9.jpg'
+    '/slides/codifylab/clab9.jpg',
   ]
 
   const duplicatedImages = [...images, ...images, ...images]
