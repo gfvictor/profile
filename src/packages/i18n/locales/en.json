@@ -21,7 +21,7 @@
     "core": {
       "eyebrow": "architecture.",
       "headline": "Context dictates the engineering.",
-      "description": "Anchored by a robust TypeScript ecosystem [Next.js, NestJS], the infrastructure is strictly tailored to the real needs of the business. Every tool is selected to solve specific bottlenecks, governed by SOLID principles and Clean Architecture."
+      "description": "Anchored by a robust TypeScript ecosystem [<1>Next.js, NestJS</1>], the infrastructure is strictly tailored to the real needs of the business. Every tool is selected to solve specific bottlenecks, governed by SOLID principles and Clean Architecture."
     },
     "workflow": {
       "eyebrow": "workflow.",
