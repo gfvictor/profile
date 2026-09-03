@@ -1,10 +1,18 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react'
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  ReactNode,
+} from 'react'
 import { sendGAEvent } from '@/lib'
 import { Plan } from '@/slides'
 
-const BUILDER_STEP_NAMES = ['plan', 'scope', 'addons', 'contact'] as const
+const BUILDER_STEP_NAMES = ['choice', 'quiz', 'plan', 'scope', 'addons', 'contact'] as const
 
 interface Addons {
   auth: boolean
@@ -23,10 +31,25 @@ interface Scope {
 
 interface Contact {
   name: string
+  whatsapp: string
   email: string
   notes: string
   terms: boolean
 }
+
+export interface QuizAnswer {
+  tier?: Exclude<Plan, null | 'scale'>
+  objective?: string
+  addons?: { auth?: boolean; db?: boolean; payments?: boolean; seo?: boolean }
+}
+
+export interface QuizState {
+  questionIndex: number
+  answers: QuizAnswer[]
+  showResult: boolean
+}
+
+const initialQuizState: QuizState = { questionIndex: 0, answers: [], showResult: false }
 
 interface BuilderContextType {
   step: number
@@ -41,6 +64,10 @@ interface BuilderContextType {
   setContact: React.Dispatch<React.SetStateAction<Contact>>
   status: 'idle' | 'loading' | 'success'
   setStatus: React.Dispatch<React.SetStateAction<'idle' | 'loading' | 'success'>>
+  quiz: QuizState
+  setQuiz: React.Dispatch<React.SetStateAction<QuizState>>
+  resetQuiz: () => void
+  applyQuizRecommendation: (tier: Plan, objective: string, addons: Addons) => void
 }
 
 const BuilderContext = createContext<BuilderContextType | undefined>(undefined)
@@ -61,9 +88,27 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
     hasLogo: true,
     hasImages: true,
   })
-  const [contact, setContact] = useState<Contact>({ name: '', email: '', notes: '', terms: false })
+  const [contact, setContact] = useState<Contact>({
+    name: '',
+    whatsapp: '',
+    email: '',
+    notes: '',
+    terms: false,
+  })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+  const [quiz, setQuiz] = useState<QuizState>(initialQuizState)
+  const resetQuiz = useCallback(() => setQuiz(initialQuizState), [])
   const isFirstStepRender = useRef(true)
+  const pendingQuizAddonsRef = useRef<Addons | null>(null)
+
+  const applyQuizRecommendation = useCallback(
+    (tier: Plan, objective: string, quizAddons: Addons) => {
+      pendingQuizAddonsRef.current = quizAddons
+      setPlan(tier)
+      setScope((prev) => ({ ...prev, objective }))
+    },
+    [],
+  )
 
   useEffect(() => {
     if (isFirstStepRender.current) {
@@ -87,7 +132,12 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
       return prev
     })
 
-    setAddons({ auth: false, db: false, payments: false, seo: false })
+    if (pendingQuizAddonsRef.current) {
+      setAddons(pendingQuizAddonsRef.current)
+      pendingQuizAddonsRef.current = null
+    } else {
+      setAddons({ auth: false, db: false, payments: false, seo: false })
+    }
   }, [plan])
 
   useEffect(() => {
@@ -119,6 +169,10 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
         setContact,
         status,
         setStatus,
+        quiz,
+        setQuiz,
+        resetQuiz,
+        applyQuizRecommendation,
       }}
     >
       {children}
