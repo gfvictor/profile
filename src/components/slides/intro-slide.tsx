@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 import { motion } from 'framer-motion'
 
 export function IntroSlide() {
@@ -32,19 +32,34 @@ export function IntroSlide() {
           className="border-accent origin-top border-r-2 pr-4 lg:pr-6"
         >
           <p className="text-muted-foreground/90 font-mono text-xs leading-relaxed lg:max-w-xl lg:text-sm">
-            {t('slides.intro.description')}
+            <Trans
+              i18nKey="slides.intro.description"
+              components={{
+                1: <span className="text-accent font-bold" />,
+              }}
+            />
           </p>
         </motion.div>
 
-        <motion.button
-          onClick={() => window.dispatchEvent(new CustomEvent('GO_TO_WORKFLOW'))}
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.4, ease: 'circOut' }}
-          className="border-accent/30 bg-accent/5 text-accent hover:border-accent hover:bg-accent hover:text-background mt-8 inline-flex items-center gap-2 border px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-500 ease-out hover:shadow-[0_0_20px_rgba(179,142,0,0.2)] lg:mt-12"
+          className="mt-8 flex flex-wrap items-center justify-end gap-4 lg:mt-12"
         >
-          {t('slides.intro.cta')}
-        </motion.button>
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('GO_TO_BUILDER'))}
+            className="border-accent/30 bg-accent/5 text-accent hover:border-accent hover:bg-accent hover:text-background inline-flex items-center gap-2 border px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-500 ease-out hover:shadow-[0_0_20px_rgba(179,142,0,0.2)]"
+          >
+            {t('slides.intro.cta')}
+          </button>
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('GO_TO_FEATURED'))}
+            className="border-muted-foreground/30 text-muted-foreground hover:border-foreground hover:text-foreground inline-flex items-center gap-2 border px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-500 ease-out"
+          >
+            {t('slides.intro.ctaSecondary')}
+          </button>
+        </motion.div>
       </div>
     </div>
   )

@@ -1,3 +1,5 @@
+export * from './step-1-choice'
+export * from './step-2-quiz'
 export * from './step-1-plan'
 export * from './step-2-scope'
 export * from './step-3-addons'

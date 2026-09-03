@@ -14,9 +14,10 @@
   "slides": {
     "intro": {
       "eyebrow": "foundation.",
-      "headline": "Engenharia focada em escala e impacto.",
-      "description": "De arquiteturas limpas para empresas, a plataformas digitais otimizadas para escalar pequenos negócios.",
-      "cta": "explorar soluções"
+      "headline": "Sistemas que rodam o seu negócio.",
+      "description": "<1>Sites e sistemas sob medida</1> — do agendamento ao pagamento — rodando sob a sua marca. Não importa o tamanho do problema: pequenos negócios ou projetos em escala, sempre a <1>solução certa</1>.",
+      "cta": "simular orçamento",
+      "ctaSecondary": "conhecer o sistema"
     },
     "core": {
       "eyebrow": "architecture.",
@@ -25,9 +26,9 @@
     },
     "workflow": {
       "eyebrow": "workflow.",
-      "headline": "Do escopo ao deploy.",
+      "headline": "seu negócio, analisado. solução sob medida.",
       "description": "Interfaces premium operando sobre fundações industriais. Traduzo o modelo de negócio em experiências de alta conversão, executando e controlando o ciclo completo de engenharia: do escopo arquitetural ao deploy contínuo.",
-      "cta": "iniciar projeto"
+      "cta": "quem constrói →"
     },
     "neatnest": {
       "eyebrow": "featured.",
@@ -36,14 +37,20 @@
     },
     "codifylab": {
       "eyebrow": "featured",
-      "headline_suffix": ": App de Gerenciamento.",
-      "description": "O sistema inteligente autoral que gerencia e controla de forma avançada o empreedimento e identidade digital. Integração absoluta com seu site, aplicativo e loja online. Crie, edite e exclua <1>serviços</1>, gerencie <1>agendamentos e reservas</1>, defina seus <1>horários de atendimento e folgas</1>, tudo em tempo real."
+      "headline_suffix": ": o sistema do seu negócio.",
+      "description": "O sistema inteligente autoral que gerencia e controla de forma avançada o empreedimento e identidade digital. Integração absoluta com seu site, aplicativo e loja online. Crie, edite e exclua <1>serviços</1>, gerencie <1>agendamentos e reservas</1>, defina seus <1>horários de atendimento e folgas</1>, tudo em tempo real.",
+      "testCta": "acesse o teste!",
+      "previewModal": {
+        "title": "página de teste em construção",
+        "subtitle": "por favor, tente novamente em alguns dias!"
+      }
     },
     "contact": {
       "eyebrow": "contact.",
       "headline": "vamos construir.",
       "form": {
         "name": "seu nome",
+        "whatsapp": "seu whatsapp",
         "email": "seu e-mail",
         "message": "sua mensagem",
         "submit": "ENVIAR",
@@ -65,28 +72,10 @@
     "origin": {
       "eyebrow": "origin.",
       "headline": "Disciplina industrial. Engenharia escalável.",
-      "description": "Mais de uma década forjado pelo rigor da indústria japonesa. Uma base de disciplina que, nos últimos {{devYears}} anos, foi integralmente convertida para o domínio da engenharia de software. Entrego soluções escaláveis com o mesmo nível de precisão industrial,\n sem atalhos.",
+      "description": "Mais de uma década forjado pelo rigor da indústria japonesa. Uma base de disciplina que, nos últimos {{devYears}} anos, foi integralmente convertida para o domínio da engenharia de software. Bacharel em Ciência da Computação, unindo os fundamentos profundos da engenharia à pesquisa prática.",
       "specs": {
         "location": "Japão (2014 - Hoje)",
-        "status": "Residente Permanente",
-        "background": "Indústria",
-        "shift": "Eng. de Software"
-      }
-    },
-    "academics": {
-      "eyebrow": "academics.",
-      "headline": "A fundação acadêmica da infraestrutura.",
-      "description": "Bacharel em Ciência da Computação. Unindo os fundamentos profundos da engenharia de software à pesquisa prática: autor do manual extensivo <span class=\"text-accent/90 font-medium\">\"Git: Versionamento de Código & Fluxo de Trabalho\"</span>. Uma obra desenhada para guiar entusiastas iniciantes e capacitar engenheiros avançados a dominar o versionamento pela raiz.",
-      "specs": {
-        "degree": {
-          "value": "Bacharelado CC"
-        },
-        "research": {
-          "value": "Versionamento"
-        },
-        "target": {
-          "value": "Infraestrutura"
-        }
+        "status": "Residente Permanente"
       }
     },
     "builder": {
@@ -114,6 +103,56 @@
         "awaiting": "Aguardando parâmetros...",
         "tier": "tier",
         "tax": "(IMPOSTO INCL.)"
+      },
+      "choice": {
+        "title": "como você quer começar?",
+        "know": {
+          "title": "sei o tier que quero",
+          "desc": "ir direto pra escolha manual"
+        },
+        "help": {
+          "title": "me ajude a escolher",
+          "desc": "responder um quiz rápido"
+        }
+      },
+      "quiz": {
+        "progress": "pergunta",
+        "of": "de",
+        "back": "voltar",
+        "next": "próxima",
+        "recommendation_title": "recomendamos:",
+        "accept": "usar essa recomendação",
+        "manual": "prefiro escolher sozinho",
+        "summary_site": "tipo de site:",
+        "summary_addons": "add-ons:",
+        "summary_no_addons": "nenhum add-on",
+        "q1": {
+          "title": "já tem site ou vai começar do zero?",
+          "a": { "title": "começando do zero", "desc": "quero algo simples e direto" },
+          "b": { "title": "tenho um site básico", "desc": "quero evoluir" },
+          "c": {
+            "title": "preciso de um sistema completo",
+            "desc": "login, pagamento, agendamento"
+          }
+        },
+        "q2": {
+          "title": "seus clientes vão interagir com o site?",
+          "a": { "title": "não, só informação", "desc": "sem interação" },
+          "b": { "title": "sim, agendamento ou contato", "desc": "interação simples" },
+          "c": { "title": "sim, compra ou pagamento", "desc": "loja online" }
+        },
+        "q3": {
+          "title": "qual seu momento agora?",
+          "a": { "title": "testando uma ideia", "desc": "quero validar rápido" },
+          "b": { "title": "negócio já rodando", "desc": "quero presença mais forte" },
+          "c": { "title": "operação estabelecida", "desc": "preciso de algo robusto" }
+        },
+        "q4": {
+          "title": "o que o site precisa fazer?",
+          "a": { "title": "apresentar e informar", "desc": "quem sou, serviços, contato" },
+          "b": { "title": "área própria dedicada", "desc": "agendamentos, pedidos, histórico" },
+          "c": { "title": "vender online", "desc": "produtos ou serviços" }
+        }
       },
       "step1": {
         "title": "escolha a base.",
@@ -237,6 +276,7 @@
       "step4": {
         "title": "finalizar solicitação.",
         "name_placeholder": "seu nome",
+        "whatsapp_placeholder": "seu whatsapp",
         "email_placeholder": "seu email",
         "notes_placeholder": "observações adicionais"
       }

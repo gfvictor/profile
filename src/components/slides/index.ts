@@ -1,7 +1,6 @@
 export * from './intro-slide'
 export * from './core-slide'
 export * from './origin-slide'
-export * from './academics-slide'
 export * from './workflow-slide'
 export * from './featured-slide'
 export * from './builder-slide'
