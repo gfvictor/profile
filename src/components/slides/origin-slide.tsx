@@ -2,6 +2,8 @@
 
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import { SiGithub } from 'react-icons/si'
+import { BookOpen } from 'lucide-react'
 
 export function OriginSlide() {
   const { t } = useTranslation()
@@ -51,13 +53,29 @@ export function OriginSlide() {
             <span className="text-accent/50 mb-1">Status</span>
             <span>{t('slides.origin.specs.status')}</span>
           </div>
-          <div className="flex flex-col">
-            <span className="text-accent/50 mb-1">Background</span>
-            <span>{t('slides.origin.specs.background')}</span>
+          <div className="flex flex-col items-end">
+            <span className="text-accent/50 mb-1">Profile</span>
+            <a
+              href="https://github.com/gfvictor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-accent/20 bg-accent/5 hover:bg-accent hover:text-background text-foreground flex w-fit items-center gap-1.5 border px-2 py-1 transition-colors"
+            >
+              <SiGithub className="h-3 w-3" />
+              GitHub
+            </a>
           </div>
-          <div className="flex flex-col">
-            <span className="text-accent/50 mb-1">Current</span>
-            <span>{t('slides.origin.specs.shift')}</span>
+          <div className="flex flex-col items-end">
+            <span className="text-accent/50 mb-1">Research</span>
+            <a
+              href="https://github.com/gfvictor/ebook-git/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-accent/20 bg-accent/5 hover:bg-accent hover:text-background text-foreground flex w-fit items-center gap-1.5 border px-2 py-1 transition-colors"
+            >
+              <BookOpen className="h-3 w-3" />
+              Git Manual
+            </a>
           </div>
         </motion.div>
       </div>
