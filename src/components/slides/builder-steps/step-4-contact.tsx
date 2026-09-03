@@ -78,14 +78,28 @@ export function Step4Contact({ pegatrouxaRef }: Step4ContactProps) {
 
         <div className="relative flex w-full flex-col">
           <input
+            type="tel"
+            placeholder={t('slides.builder.step4.whatsapp_placeholder')}
+            value={contact.whatsapp}
+            onChange={(e) => setContact((prev) => ({ ...prev, whatsapp: e.target.value }))}
+            className="peer text-foreground border-accent/30 focus:border-accent placeholder:font-koho h-10 w-full border-b bg-transparent px-1 font-mono text-[16px] transition-colors placeholder:text-transparent placeholder:lowercase focus:outline-none sm:text-sm"
+          />
+          <div className="text-muted-foreground/50 pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm">
+            {t('slides.builder.step4.whatsapp_placeholder')} <span className="text-accent">*</span>
+          </div>
+        </div>
+
+        <div className="relative flex w-full flex-col">
+          <input
             type="email"
             placeholder={t('slides.builder.step4.email_placeholder')}
             value={contact.email}
             onChange={(e) => setContact((prev) => ({ ...prev, email: e.target.value }))}
-            className="peer text-foreground border-accent/30 focus:border-accent placeholder:font-koho h-10 w-full border-b bg-transparent px-1 font-mono text-[16px] transition-colors placeholder:text-transparent placeholder:lowercase focus:outline-none sm:text-sm"
+            className="peer text-foreground border-accent/30 focus:border-accent placeholder:font-koho h-10 w-full border-b bg-transparent px-1 text-left font-mono text-[16px] transition-colors placeholder:text-transparent placeholder:lowercase focus:outline-none sm:text-sm"
           />
           <div className="text-muted-foreground/50 pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm">
-            {t('slides.builder.step4.email_placeholder')} <span className="text-accent">*</span>
+            {t('slides.builder.step4.email_placeholder')}{' '}
+            <span className="lowercase opacity-70">(opcional)</span>
           </div>
         </div>
 
