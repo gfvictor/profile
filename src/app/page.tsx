@@ -23,28 +23,39 @@ export default function Home() {
     slides.length,
   )
 
-  const isBuilderActive = activeSlide === 6
+  const isBuilderActive = slides[activeSlide]?.id === 'builder'
 
   useEffect(() => {
     setMounted(true)
 
-    const handleGoToContact = () => setActiveSlide(7)
-    const handleGoToWorkflow = () => setActiveSlide(5)
-    const handleGoToBuilder = () => setActiveSlide(6)
-    const handleGoToIntro = () => setActiveSlide(0)
+    const goToSlideId = (id: string) => {
+      const index = slides.findIndex((s) => s.id === id)
+      if (index !== -1) setActiveSlide(index)
+    }
+
+    const handleGoToContact = () => goToSlideId('contact')
+    const handleGoToWorkflow = () => goToSlideId('workflow')
+    const handleGoToBuilder = () => goToSlideId('builder')
+    const handleGoToIntro = () => goToSlideId('intro')
+    const handleGoToFeatured = () => goToSlideId('featured')
+    const handleGoToOrigin = () => goToSlideId('origin')
 
     window.addEventListener('GO_TO_CONTACT', handleGoToContact)
     window.addEventListener('GO_TO_WORKFLOW', handleGoToWorkflow)
     window.addEventListener('GO_TO_BUILDER', handleGoToBuilder)
     window.addEventListener('GO_TO_INTRO', handleGoToIntro)
+    window.addEventListener('GO_TO_FEATURED', handleGoToFeatured)
+    window.addEventListener('GO_TO_ORIGIN', handleGoToOrigin)
 
     return () => {
       window.removeEventListener('GO_TO_CONTACT', handleGoToContact)
       window.removeEventListener('GO_TO_WORKFLOW', handleGoToWorkflow)
       window.removeEventListener('GO_TO_BUILDER', handleGoToBuilder)
       window.removeEventListener('GO_TO_INTRO', handleGoToIntro)
+      window.removeEventListener('GO_TO_FEATURED', handleGoToFeatured)
+      window.removeEventListener('GO_TO_ORIGIN', handleGoToOrigin)
     }
-  }, [setActiveSlide])
+  }, [setActiveSlide, slides])
 
   useEffect(() => {
     sendGAEvent('event', 'slide_view', { slide_name: slides[activeSlide].id })

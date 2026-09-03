@@ -3,7 +3,6 @@ import {
   IntroSlide,
   CoreSlide,
   OriginSlide,
-  AcademicsSlide,
   WorkflowSlide,
   FeaturedSlide,
   BuilderSlide,
@@ -19,19 +18,9 @@ export function useSlides() {
         content: <IntroSlide />,
       },
       {
-        id: 'origin',
-        title: 'origin',
-        content: <OriginSlide />,
-      },
-      {
-        id: 'academics',
-        title: 'academics',
-        content: <AcademicsSlide />,
-      },
-      {
-        id: 'core',
-        title: 'core',
-        content: <CoreSlide />,
+        id: 'builder',
+        title: 'plan a project',
+        content: <BuilderSlide />,
       },
       {
         id: 'featured',
@@ -44,9 +33,14 @@ export function useSlides() {
         content: <WorkflowSlide />,
       },
       {
-        id: 'builder',
-        title: 'plan a project',
-        content: <BuilderSlide />,
+        id: 'origin',
+        title: 'origin',
+        content: <OriginSlide />,
+      },
+      {
+        id: 'core',
+        title: 'core',
+        content: <CoreSlide />,
       },
       {
         id: 'contact',
