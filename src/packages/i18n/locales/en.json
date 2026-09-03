@@ -14,9 +14,10 @@
   "slides": {
     "intro": {
       "eyebrow": "foundation.",
-      "headline": "Engineering focused on scale and impact.",
-      "description": "From clean-architecture systems for enterprises, to highly optimized digital platforms that drive scalable business growth.",
-      "cta": "explore solutions"
+      "headline": "Systems that run your business.",
+      "description": "<1>Custom sites and systems</1> — from booking to payments — running under your own brand. No matter the size of the problem: small businesses or projects at scale, always the <1>right solution</1>.",
+      "cta": "get a quote",
+      "ctaSecondary": "see the system"
     },
     "core": {
       "eyebrow": "architecture.",
@@ -25,9 +26,9 @@
     },
     "workflow": {
       "eyebrow": "workflow.",
-      "headline": "From scope to deploy.",
+      "headline": "your business, analyzed. a solution built to fit.",
       "description": "Premium interfaces operating on industrial foundations. I translate business models into high-conversion experiences, executing and controlling the entire engineering cycle: from architectural scope to continuous deployment.",
-      "cta": "START PROJECT"
+      "cta": "who builds it →"
     },
     "neatnest": {
       "eyebrow": "featured.",
@@ -36,14 +37,20 @@
     },
     "codifylab": {
       "eyebrow": "featured",
-      "headline_suffix": ": Management App.",
-      "description": "The intelligent proprietary system that manages and controls your business and digital identity in an advanced way. Full integration with your website, mobile app, and online store. Create, edit, and delete <1>services</1>, manage <1>appointments and reservations</1>, set your <1>business hours and days off</1>, in real time."
+      "headline_suffix": ": the system for your business.",
+      "description": "The intelligent proprietary system that manages and controls your business and digital identity in an advanced way. Full integration with your website, mobile app, and online store. Create, edit, and delete <1>services</1>, manage <1>appointments and reservations</1>, set your <1>business hours and days off</1>, in real time.",
+      "testCta": "try the live demo!",
+      "previewModal": {
+        "title": "test page under construction",
+        "subtitle": "please check back in a few days!"
+      }
     },
     "contact": {
       "eyebrow": "contact.",
       "headline": "start building.",
       "form": {
         "name": "your name",
+        "whatsapp": "your whatsapp",
         "email": "your email",
         "message": "your message",
         "submit": "SEND",
@@ -65,28 +72,10 @@
     "origin": {
       "eyebrow": "origin.",
       "headline": "Industrial discipline. Scalable engineering.",
-      "description": "Over a decade forged by the rigor of Japanese industry. A foundation of discipline that, in the last {{devYears}} years, has been fully channeled into the mastery of software engineering. I deliver scalable solutions with the same level of industrial precision, taking zero shortcuts.",
+      "description": "Over a decade forged by the rigor of Japanese industry. A foundation of discipline that, in the last {{devYears}} years, has been fully channeled into the mastery of software engineering. B.S. in Computer Science, fusing deep engineering fundamentals with practical research.",
       "specs": {
         "location": "Japan (2014 - Now)",
-        "status": "Permanent Resident",
-        "background": "Manufacturing",
-        "shift": "Software Eng."
-      }
-    },
-    "academics": {
-      "eyebrow": "academics.",
-      "headline": "The academic foundation of infrastructure.",
-      "description": "B.S. in Computer Science. Fusing deep software engineering fundamentals with practical research: author of the extensive manual <span class=\"text-accent/90 font-medium\">\"Git: Version Control & Workflow\"</span>. A work designed to guide enthusiastic beginners and empower advanced engineers to master version control from the root.",
-      "specs": {
-        "degree": {
-          "value": "B.S. CS"
-        },
-        "research": {
-          "value": "Version Control"
-        },
-        "target": {
-          "value": "Infrastructure"
-        }
+        "status": "Permanent Resident"
       }
     },
     "builder": {
@@ -114,6 +103,53 @@
         "awaiting": "Awaiting parameters...",
         "tier": "tier",
         "tax": "(TAX INCLUDED)"
+      },
+      "choice": {
+        "title": "how do you want to start?",
+        "know": {
+          "title": "i know what tier i want",
+          "desc": "go straight to manual selection"
+        },
+        "help": {
+          "title": "help me choose",
+          "desc": "answer a quick quiz"
+        }
+      },
+      "quiz": {
+        "progress": "question",
+        "of": "of",
+        "back": "back",
+        "next": "next",
+        "recommendation_title": "we recommend:",
+        "accept": "use this recommendation",
+        "manual": "i'll choose myself",
+        "summary_site": "site type:",
+        "summary_addons": "add-ons:",
+        "summary_no_addons": "no add-ons",
+        "q1": {
+          "title": "do you already have a site, or starting from scratch?",
+          "a": { "title": "starting from scratch", "desc": "want something simple and direct" },
+          "b": { "title": "have a basic site", "desc": "want to evolve it" },
+          "c": { "title": "need a complete system", "desc": "login, payments, booking" }
+        },
+        "q2": {
+          "title": "will your customers interact with the site?",
+          "a": { "title": "no, just information", "desc": "no interaction" },
+          "b": { "title": "yes, booking or contact", "desc": "simple interaction" },
+          "c": { "title": "yes, purchase or payment", "desc": "online store" }
+        },
+        "q3": {
+          "title": "what's your moment right now?",
+          "a": { "title": "testing an idea", "desc": "want to validate fast" },
+          "b": { "title": "business already running", "desc": "want a stronger presence" },
+          "c": { "title": "established operation", "desc": "need something robust" }
+        },
+        "q4": {
+          "title": "what does the site need to do?",
+          "a": { "title": "present and inform", "desc": "who i am, services, contact" },
+          "b": { "title": "a dedicated own area", "desc": "bookings, orders, history" },
+          "c": { "title": "sell online", "desc": "products or services" }
+        }
       },
       "step1": {
         "title": "select foundation.",
@@ -237,6 +273,7 @@
       "step4": {
         "title": "finalize request.",
         "name_placeholder": "your name",
+        "whatsapp_placeholder": "your whatsapp",
         "email_placeholder": "your email",
         "notes_placeholder": "additional notes"
       }

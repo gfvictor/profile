@@ -12,6 +12,7 @@ export function ContactForm() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [errors, setErrors] = useState<{
     name?: boolean
+    whatsapp?: boolean
     email?: boolean
     message?: boolean
     terms?: boolean
@@ -23,13 +24,15 @@ export function ContactForm() {
 
     const formData = new FormData(e.currentTarget)
     const name = formData.get('name') as string
+    const whatsapp = formData.get('whatsapp') as string
     const email = formData.get('email') as string
     const message = formData.get('message') as string
     const terms = (e.currentTarget.elements.namedItem('terms') as HTMLInputElement).checked
 
     const newErrors = {
       name: !name.trim(),
-      email: !email.trim() || !/^\S+@\S+\.\S+$/.test(email),
+      whatsapp: !whatsapp.trim(),
+      email: !!email.trim() && !/^\S+@\S+\.\S+$/.test(email),
       message: !message.trim(),
       terms: !terms,
     }
@@ -87,7 +90,7 @@ export function ContactForm() {
         </div>
 
         <div className="grid w-full grid-cols-5 gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6 lg:grid-cols-3 lg:gap-x-10">
-          <div className="col-span-2 flex flex-col justify-between gap-4 lg:col-span-1">
+          <div className="col-span-2 flex flex-col gap-4 lg:col-span-1">
             <div className="relative flex w-full flex-col">
               <input
                 type="text"
@@ -106,23 +109,38 @@ export function ContactForm() {
 
             <div className="relative flex w-full flex-col">
               <input
+                type="tel"
+                name="whatsapp"
+                placeholder={t('slides.contact.form.whatsapp')}
+                onChange={() => setErrors((prev) => ({ ...prev, whatsapp: false }))}
+                className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.whatsapp ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
+              />
+              <div
+                className={`pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.whatsapp ? 'text-red-500' : 'text-muted-foreground/50'}`}
+              >
+                {t('slides.contact.form.whatsapp')}{' '}
+                <span className={errors.whatsapp ? 'text-red-500' : 'text-accent'}>*</span>
+              </div>
+            </div>
+
+            <div className="relative flex w-full flex-col">
+              <input
                 type="email"
                 name="email"
                 placeholder={t('slides.contact.form.email')}
                 onChange={() => setErrors((prev) => ({ ...prev, email: false }))}
-                className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
+                className={`peer text-foreground h-10 w-full border-b bg-transparent px-1 text-left font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-accent/30 focus:border-accent'}`}
               />
               <div
-                className={`pointer-events-none absolute top-[10px] left-1 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.email ? 'text-red-500' : 'text-muted-foreground/50'}`}
+                className={`pointer-events-none absolute top-[10px] left-1 w-full text-left font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.email ? 'text-red-500' : 'text-muted-foreground/50'}`}
               >
-                {t('slides.contact.form.email')}{' '}
-                <span className={errors.email ? 'text-red-500' : 'text-accent'}>*</span>
+                {t('slides.contact.form.email')}
               </div>
             </div>
           </div>
 
-          <div className="col-span-3 flex flex-col justify-between gap-4 lg:col-span-2">
-            <div className="relative flex w-full flex-col">
+          <div className="col-span-3 flex h-full flex-col gap-4 lg:col-span-2">
+            <div className="relative flex w-full flex-1 flex-col">
               <textarea
                 name="message"
                 placeholder={t('slides.contact.form.message')}
@@ -130,7 +148,7 @@ export function ContactForm() {
                 onWheel={(e) => e.stopPropagation()}
                 onTouchStart={(e) => e.stopPropagation()}
                 onTouchEnd={(e) => e.stopPropagation()}
-                className={`peer text-foreground border-accent/30 focus:border-accent h-24 w-full touch-pan-y resize-none border bg-transparent p-2 font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.message ? 'border-red-500' : ''}`}
+                className={`peer text-foreground border-accent/30 focus:border-accent h-full w-full touch-pan-y resize-none border bg-transparent p-2 font-mono text-[16px] placeholder-transparent focus:outline-none sm:text-sm ${errors.message ? 'border-red-500' : ''}`}
               />
               <div
                 className={`pointer-events-none absolute top-2 left-2 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm ${errors.message ? 'text-red-500' : 'text-muted-foreground/50'}`}

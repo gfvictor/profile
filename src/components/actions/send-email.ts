@@ -10,7 +10,8 @@ const MAX_REQUESTS = 3
 
 const contactSchema = z.object({
   name: z.string().min(1, 'Name is required'),
-  email: z.email('Invalid email address'),
+  whatsapp: z.string().min(1, 'WhatsApp is required'),
+  email: z.email('Invalid email address').optional().or(z.literal('')),
   message: z.string().min(1, 'Message is required'),
   _pegatrouxa: z.string().optional(),
 })
@@ -31,6 +32,7 @@ export async function sendEmailAction(formData: FormData) {
 
   const rawData = {
     name: formData.get('name'),
+    whatsapp: formData.get('whatsapp'),
     email: formData.get('email'),
     message: formData.get('message'),
     _pegatrouxa: formData.get('_pegatrouxa') ?? undefined,
@@ -42,10 +44,10 @@ export async function sendEmailAction(formData: FormData) {
     return { error: 'Invalid fields' }
   }
 
-  const { name, email, message, _pegatrouxa } = validatedFields.data
+  const { name, whatsapp, email, message, _pegatrouxa } = validatedFields.data
 
   if (_pegatrouxa) {
-    console.warn('Bot trapped in honeypot:', { name, email })
+    console.warn('Bot trapped in honeypot:', { name, whatsapp, email })
     return { success: true }
   }
 
@@ -53,7 +55,7 @@ export async function sendEmailAction(formData: FormData) {
 
   if (!MAILTRAP_TOKEN) {
     await new Promise((r) => setTimeout(r, 1000))
-    console.warn('Mailtrap Sandbox - Message received: ', { name, email, message })
+    console.warn('Mailtrap Sandbox - Message received: ', { name, whatsapp, email, message })
     return { success: true, simulated: true }
   }
 
@@ -71,7 +73,7 @@ export async function sendEmailAction(formData: FormData) {
       from: sender,
       to: recipients,
       subject: `New contact from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      text: `Name: ${name}\nWhatsApp: ${whatsapp}\nEmail: ${email || 'N/A'}\nMessage: ${message}`,
     })
 
     return { success: true }
