@@ -47,6 +47,10 @@ export function ModalShell({
       {isOpen && (
         <div
           className={`fixed inset-0 z-[999] flex items-center justify-center p-4 backdrop-blur-sm sm:p-12 ${backdropClassName}`}
+          onWheel={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+          onTouchEnd={(e) => e.stopPropagation()}
         >
           <motion.div
             initial={{ opacity: 0 }}

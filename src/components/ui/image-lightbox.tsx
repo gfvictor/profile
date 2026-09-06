@@ -29,7 +29,12 @@ export function ImageLightbox({ images, index, onClose, onNavigate }: ImageLight
   return (
     <ModalShell isOpen={index !== null} onClose={onClose} backdropClassName="bg-background/90">
       {index !== null && (
-        <>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          className="flex w-full max-w-2xl items-center justify-center"
+        >
           <button
             type="button"
             onClick={onClose}
@@ -60,7 +65,7 @@ export function ImageLightbox({ images, index, onClose, onNavigate }: ImageLight
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="border-accent/30 relative z-0 aspect-[4/5] w-full max-w-2xl overflow-hidden border shadow-2xl"
+            className="border-accent/30 relative z-0 aspect-[4/5] w-full overflow-hidden border shadow-2xl"
             onClick={(e) => e.stopPropagation()}
             style={{
               backgroundImage: `url(${images[index]})`,
@@ -69,7 +74,7 @@ export function ImageLightbox({ images, index, onClose, onNavigate }: ImageLight
               backgroundRepeat: 'no-repeat',
             }}
           />
-        </>
+        </motion.div>
       )}
     </ModalShell>
   )
