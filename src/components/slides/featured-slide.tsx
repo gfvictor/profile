@@ -3,44 +3,14 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
-import { CornerLeftDown } from 'lucide-react'
-import { ImageLightbox, ModalShell } from '@/ui'
+import { CornerLeftDown, ArrowUp } from 'lucide-react'
+import { ImageLightbox } from '@/ui'
 
-function PreviewModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const { t } = useTranslation()
-
-  return (
-    <ModalShell isOpen={isOpen} onClose={onClose}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        className="border-accent bg-background relative z-10 flex w-full max-w-sm flex-col items-center gap-6 border p-8 text-center shadow-2xl"
-      >
-        <button
-          type="button"
-          onClick={onClose}
-          className="border-accent/30 bg-accent/5 text-accent hover:bg-accent hover:text-background absolute top-4 right-4 flex h-7 w-7 items-center justify-center border font-mono text-xs transition-colors"
-        >
-          X
-        </button>
-
-        <span className="font-koho text-foreground text-xl lowercase">
-          {t('slides.codifylab.previewModal.title')}
-        </span>
-
-        <span className="text-muted-foreground font-mono text-[10px] tracking-wider uppercase">
-          {t('slides.codifylab.previewModal.subtitle')}
-        </span>
-      </motion.div>
-    </ModalShell>
-  )
-}
+const TESTER_URL = 'https://tester.codifylab.app/tester'
 
 export function FeaturedSlide() {
   const { t } = useTranslation()
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false)
 
   const images = [
     '/slides/codifylab/clab1.jpg',
@@ -89,13 +59,14 @@ export function FeaturedSlide() {
             transition={{ duration: 0.3, ease: 'linear' }}
             className="text-foreground mb-4 text-xl font-medium tracking-tight sm:text-2xl lg:mb-6 lg:max-w-2xl lg:text-3xl"
           >
-            <button
-              type="button"
-              onClick={() => setIsPreviewOpen(true)}
-              className="decoration-accent/50 hover:text-accent hover:decoration-accent cursor-pointer border-0 bg-transparent p-0 underline decoration-2 underline-offset-4 transition-colors duration-300"
+            <a
+              href={TESTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="decoration-accent/50 hover:text-accent hover:decoration-accent underline decoration-2 underline-offset-4 transition-colors duration-300"
             >
               CodifyLab
-            </button>
+            </a>
             {t('slides.codifylab.headline_suffix')}
           </motion.h2>
         </div>
@@ -114,35 +85,50 @@ export function FeaturedSlide() {
           />
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.4, ease: 'circOut' }}
-          className="w-full max-w-[320px] overflow-hidden sm:max-w-md lg:mt-2 lg:max-w-2xl xl:max-w-4xl"
-          style={{
-            maskImage: 'linear-gradient(90deg, transparent 0%, black 15%, black 100%)',
-            WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 15%, black 100%)',
-          }}
-        >
+        <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-2xl xl:max-w-4xl">
           <motion.div
-            animate={{ x: ['0%', '-33.333333%'] }}
-            transition={{ duration: 25, ease: 'linear', repeat: Infinity }}
-            className="flex w-max gap-8 py-4 pr-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.4, ease: 'circOut' }}
+            className="w-full overflow-hidden lg:mt-2"
+            style={{
+              maskImage: 'linear-gradient(90deg, transparent 0%, black 15%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 15%, black 100%)',
+            }}
           >
-            {duplicatedImages.map((img, idx) => (
-              <div
-                key={idx}
-                onClick={() => setLightboxIndex(idx % images.length)}
-                className="border-border/30 bg-muted/40 relative aspect-[4/5] w-[140px] shrink-0 cursor-pointer overflow-hidden rounded-md border shadow-sm lg:w-[180px]"
-              >
+            <motion.div
+              animate={{ x: ['0%', '-33.333333%'] }}
+              transition={{ duration: 25, ease: 'linear', repeat: Infinity }}
+              className="flex w-max gap-8 py-4 pr-8"
+            >
+              {duplicatedImages.map((img, idx) => (
                 <div
-                  className="absolute inset-0 m-0 bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url(${img})` }}
-                />
-              </div>
-            ))}
+                  key={idx}
+                  onClick={() => setLightboxIndex(idx % images.length)}
+                  className="border-border/30 bg-muted/40 relative aspect-[4/5] w-[140px] shrink-0 cursor-pointer overflow-hidden rounded-md border shadow-sm lg:w-[180px]"
+                >
+                  <div
+                    className="absolute inset-0 m-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${img})` }}
+                  />
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: [0, 4, 0] }}
+            transition={{
+              opacity: { duration: 0.6, delay: 1, ease: 'easeOut' },
+              y: { duration: 2.4, delay: 1, repeat: Infinity, ease: 'easeInOut' },
+            }}
+            className="text-accent absolute -bottom-6 left-24 flex -translate-x-1/2 items-center gap-1 font-mono text-[9px] font-bold tracking-widest whitespace-nowrap uppercase sm:-bottom-8 sm:text-[10px]"
+          >
+            <ArrowUp className="h-3 w-3" />
+            <span>{t('slides.codifylab.enlargeCta')}</span>
+          </motion.div>
+        </div>
 
         <ImageLightbox
           images={images}
@@ -150,8 +136,6 @@ export function FeaturedSlide() {
           onClose={() => setLightboxIndex(null)}
           onNavigate={setLightboxIndex}
         />
-
-        <PreviewModal isOpen={isPreviewOpen} onClose={() => setIsPreviewOpen(false)} />
       </div>
     </div>
   )
