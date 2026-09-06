@@ -7,7 +7,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { sendGAEvent } from '@/lib'
 import { ThemeToggle, LanguageToggle } from '@/actions'
 import { useTheme } from 'next-themes'
-import { ScrollIndicator, VerticalIndex, TypewriterText } from '@/ui'
+import { CookieConsent, VerticalIndex, TypewriterText } from '@/ui'
 import { useSlides, useSlideNavigation } from '@/hooks'
 
 export default function Home() {
@@ -19,9 +19,7 @@ export default function Home() {
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const slides = useSlides()
-  const { activeSlide, setActiveSlide, handleNext, handlePrev, handlers } = useSlideNavigation(
-    slides.length,
-  )
+  const { activeSlide, setActiveSlide, handlers } = useSlideNavigation(slides.length)
 
   const isBuilderActive = slides[activeSlide]?.id === 'builder'
 
@@ -84,13 +82,6 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
         </div>
-
-        <ScrollIndicator
-          isFirst={activeSlide === 0}
-          isLast={activeSlide === slides.length - 1}
-          onPrev={handlePrev}
-          onNext={handleNext}
-        />
 
         <VerticalIndex
           slides={slides.map((s) => ({ id: s.id, title: s.title }))}
@@ -193,6 +184,8 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      <CookieConsent />
     </div>
   )
 }
