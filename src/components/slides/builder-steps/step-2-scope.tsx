@@ -6,7 +6,7 @@ import { useBuilder } from '@/providers'
 
 export function Step2Scope() {
   const { t } = useTranslation()
-  const { plan, scope, setScope } = useBuilder()
+  const { plan, scope, setScope, quizAccepted } = useBuilder()
 
   const availableObjs =
     plan === 'basic'
@@ -21,42 +21,46 @@ export function Step2Scope() {
         {t('slides.builder.step2.title')}
       </h4>
 
-      <div className="flex flex-col">
-        <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-4">
-          {availableObjs.map((obj) => (
-            <button
-              key={t(`slides.builder.step2.objectives.${obj}`)}
-              onClick={() => setScope((prev) => ({ ...prev, objective: obj }))}
-              className={`border p-2 font-mono text-[9px] uppercase transition-colors sm:p-2.5 sm:text-[10px] lg:p-3 lg:text-[10px] ${
-                scope.objective === obj
-                  ? 'border-accent bg-accent/10 text-accent'
-                  : 'border-border text-muted-foreground hover:border-accent/50'
-              }`}
-            >
-              {t(`slides.builder.step2.objectives.${obj}`)}
-            </button>
-          ))}
-        </div>
+      {!quizAccepted && (
+        <div className="flex flex-col">
+          <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-4">
+            {availableObjs.map((obj) => (
+              <button
+                key={t(`slides.builder.step2.objectives.${obj}`)}
+                onClick={() => setScope((prev) => ({ ...prev, objective: obj }))}
+                className={`border p-2 font-mono text-[9px] uppercase transition-colors sm:p-2.5 sm:text-[10px] lg:p-3 lg:text-[10px] ${
+                  scope.objective === obj
+                    ? 'border-accent bg-accent/10 text-accent'
+                    : 'border-border text-muted-foreground hover:border-accent/50'
+                }`}
+              >
+                {t(`slides.builder.step2.objectives.${obj}`)}
+              </button>
+            ))}
+          </div>
 
-        <AnimatePresence>
-          {scope.objective === 'Outro' && (
-            <motion.div
-              initial={{ opacity: 0, height: 0, marginTop: 0 }}
-              animate={{ opacity: 1, height: 'auto', marginTop: 4 }}
-              exit={{ opacity: 0, height: 0, marginTop: 0 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="overflow-hidden"
-            >
-              <textarea
-                placeholder={t('slides.builder.step2.custom_objective_placeholder')}
-                value={scope.customObjective}
-                onChange={(e) => setScope((prev) => ({ ...prev, customObjective: e.target.value }))}
-                className="border-border bg-background/50 focus:border-accent placeholder:font-koho placeholder:text-muted-foreground/50 h-12 w-full resize-none border p-2 font-mono text-[10px] transition-colors outline-none placeholder:text-xs placeholder:lowercase sm:text-xs lg:h-20 lg:text-xs"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          <AnimatePresence>
+            {scope.objective === 'Outro' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                animate={{ opacity: 1, height: 'auto', marginTop: 4 }}
+                exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="overflow-hidden"
+              >
+                <textarea
+                  placeholder={t('slides.builder.step2.custom_objective_placeholder')}
+                  value={scope.customObjective}
+                  onChange={(e) =>
+                    setScope((prev) => ({ ...prev, customObjective: e.target.value }))
+                  }
+                  className="border-border bg-background/50 focus:border-accent placeholder:font-koho placeholder:text-muted-foreground/50 h-12 w-full resize-none border p-2 font-mono text-[10px] transition-colors outline-none placeholder:text-xs placeholder:lowercase sm:text-xs lg:h-20 lg:text-xs"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
 
       {plan !== 'scale' && (
         <div className="flex flex-col gap-3 lg:gap-6">
