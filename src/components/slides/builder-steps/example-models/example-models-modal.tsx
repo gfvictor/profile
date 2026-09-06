@@ -23,7 +23,7 @@ export function ExampleModelsModal({ isOpen, onClose }: { isOpen: boolean; onClo
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
-        className="border-accent bg-background relative z-10 flex h-[min(760px,85vh)] w-full max-w-md flex-col border shadow-2xl"
+        className="border-accent/30 bg-background relative z-10 flex h-[min(760px,85vh)] w-full max-w-md flex-col border shadow-2xl"
       >
         <div className="border-accent/30 flex items-center justify-between border-b p-4">
           <h2 className="text-accent font-mono text-sm font-bold tracking-widest uppercase">
