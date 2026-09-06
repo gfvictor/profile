@@ -22,10 +22,10 @@ function QuizOption({
       onClick={onClick}
       className="border-accent/40 hover:border-accent hover:bg-accent/5 flex w-full flex-col gap-1 border p-3 text-left transition-colors lg:p-4"
     >
-      <span className="text-foreground font-mono text-xs tracking-wider uppercase sm:text-sm">
+      <span className="text-foreground font-mono text-sm tracking-wider uppercase sm:text-base">
         {title}
       </span>
-      <span className="text-muted-foreground font-mono text-[10px] lowercase opacity-80 sm:text-xs">
+      <span className="text-muted-foreground font-mono text-xs lowercase opacity-80 sm:text-sm">
         {description}
       </span>
     </button>
@@ -162,7 +162,7 @@ export function Step2Quiz() {
   const activeAddons = (['auth', 'db', 'payments', 'seo'] as const).filter((key) => addons[key])
 
   return (
-    <div className="flex h-full flex-col gap-4">
+    <div className="flex h-full flex-col gap-8">
       {!showResult && (
         <span className="text-muted-foreground font-mono text-[9px] tracking-widest uppercase lg:text-[10px]">
           {t('slides.builder.quiz.progress')} {questionIndex + 1} {t('slides.builder.quiz.of')}{' '}
@@ -188,13 +188,13 @@ export function Step2Quiz() {
             <div className="border-border/60 mt-1 flex flex-col items-center gap-1.5 border-t pt-3">
               <span className="text-muted-foreground font-mono text-[9px] tracking-widest uppercase lg:text-[10px]">
                 {t('slides.builder.quiz.summary_site')}{' '}
-                <span className="text-foreground">
+                <span className="text-accent">
                   {t(`slides.builder.step2.objectives.${objective}`)}
                 </span>
               </span>
               <span className="text-muted-foreground font-mono text-[9px] tracking-widest uppercase lg:text-[10px]">
                 {t('slides.builder.quiz.summary_addons')}{' '}
-                <span className="text-foreground">
+                <span className="text-accent">
                   {activeAddons.length > 0
                     ? activeAddons
                         .map((key) => t(`slides.builder.step3.addons.${key}.title`))
@@ -250,7 +250,7 @@ export function Step2Quiz() {
             <h4 className="font-koho text-foreground text-xl lowercase lg:text-2xl">
               {t(`slides.builder.quiz.${question.key}.title`)}
             </h4>
-            <div className="flex flex-col gap-2 lg:gap-3">
+            <div className="flex flex-col gap-3 lg:gap-4">
               {(['a', 'b', 'c'] as const).map((key) => (
                 <QuizOption
                   key={key}
@@ -263,7 +263,7 @@ export function Step2Quiz() {
 
             <button
               onClick={goBack}
-              className="text-muted-foreground hover:text-foreground mt-auto self-center font-mono text-xs tracking-widest uppercase transition-colors"
+              className="text-muted-foreground hover:text-foreground mt-4 self-center font-mono text-xs tracking-widest uppercase transition-colors"
             >
               {t('slides.builder.quiz.back')}
             </button>
