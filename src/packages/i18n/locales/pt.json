@@ -11,6 +11,11 @@
       "forjando interfaces modernas."
     ]
   },
+  "cookieConsent": {
+    "message": "Usamos cookies para analisar o tráfego do site via Google Analytics.",
+    "decline": "recusar",
+    "accept": "aceitar"
+  },
   "slides": {
     "intro": {
       "eyebrow": "foundation.",
@@ -40,10 +45,7 @@
       "headline_suffix": ": o sistema do seu negócio.",
       "description": "O sistema inteligente autoral que gerencia e controla de forma avançada o empreedimento e identidade digital. Integração absoluta com seu site, aplicativo e loja online. Crie, edite e exclua <1>serviços</1>, gerencie <1>agendamentos e reservas</1>, defina seus <1>horários de atendimento e folgas</1>, tudo em tempo real.",
       "testCta": "acesse o teste!",
-      "previewModal": {
-        "title": "página de teste em construção",
-        "subtitle": "por favor, tente novamente em alguns dias!"
-      }
+      "enlargeCta": "clique para ampliar"
     },
     "contact": {
       "eyebrow": "contact.",
@@ -113,6 +115,32 @@
         "help": {
           "title": "me ajude a escolher",
           "desc": "responder um quiz rápido"
+        },
+        "examples": "ver modelos de exemplo"
+      },
+      "exampleModels": {
+        "title": "modelos de exemplo",
+        "siteTypeLabel": "tipo de site:",
+        "addonsLabel": "add-ons:",
+        "tabs": {
+          "basic": "basic",
+          "intermediate": "intermediate",
+          "advanced": "advanced"
+        },
+        "basic": {
+          "purpose": "landing page única — direto ao ponto.",
+          "siteType": "Landing Page",
+          "addons": "nenhum"
+        },
+        "intermediate": {
+          "purpose": "site Institucional — com login e histórico do cliente.",
+          "siteType": "Site Institucional",
+          "addons": "auth + db"
+        },
+        "advanced": {
+          "purpose": "loja virtual completa — catálogo, carrinho e checkout.",
+          "siteType": "Loja Virtual",
+          "addons": "auth + db + payments"
         }
       },
       "quiz": {
