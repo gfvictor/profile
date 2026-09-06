@@ -68,6 +68,8 @@ interface BuilderContextType {
   setQuiz: React.Dispatch<React.SetStateAction<QuizState>>
   resetQuiz: () => void
   applyQuizRecommendation: (tier: Plan, objective: string, addons: Addons) => void
+  quizAccepted: boolean
+  setQuizAccepted: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const BuilderContext = createContext<BuilderContextType | undefined>(undefined)
@@ -97,6 +99,7 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
   const [quiz, setQuiz] = useState<QuizState>(initialQuizState)
+  const [quizAccepted, setQuizAccepted] = useState(false)
   const resetQuiz = useCallback(() => setQuiz(initialQuizState), [])
   const isFirstStepRender = useRef(true)
   const pendingQuizAddonsRef = useRef<Addons | null>(null)
@@ -173,6 +176,8 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
         setQuiz,
         resetQuiz,
         applyQuizRecommendation,
+        quizAccepted,
+        setQuizAccepted,
       }}
     >
       {children}

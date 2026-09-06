@@ -9,6 +9,7 @@ import { ThemeToggle, LanguageToggle } from '@/actions'
 import { useTheme } from 'next-themes'
 import { CookieConsent, VerticalIndex, TypewriterText } from '@/ui'
 import { useSlides, useSlideNavigation } from '@/hooks'
+import { useBuilder } from '@/providers'
 
 export default function Home() {
   const { t, i18n } = useTranslation()
@@ -20,8 +21,10 @@ export default function Home() {
   const [mounted, setMounted] = useState(false)
   const slides = useSlides()
   const { activeSlide, setActiveSlide, handlers } = useSlideNavigation(slides.length)
+  const { step } = useBuilder()
 
   const isBuilderActive = slides[activeSlide]?.id === 'builder'
+  const isHeaderCompact = isBuilderActive && step >= 3
 
   useEffect(() => {
     setMounted(true)
@@ -63,7 +66,7 @@ export default function Home() {
     <div className="bg-background flex h-svh w-full flex-col overflow-hidden lg:h-[100vh] lg:flex-row">
       <main
         className={`bg-background relative z-0 order-2 flex w-full touch-none items-center justify-center transition-all duration-700 ease-in-out outline-none lg:order-1 lg:h-[100vh] lg:flex-1 ${
-          isBuilderActive ? 'h-[88svh]' : 'h-[75svh]'
+          isHeaderCompact ? 'h-[88svh]' : 'h-[75svh]'
         }`}
         {...handlers}
         tabIndex={0}
@@ -92,7 +95,7 @@ export default function Home() {
 
       <header
         className={`bg-background relative z-50 order-1 w-full flex-shrink-0 touch-none transition-all duration-700 ease-in-out lg:order-2 lg:h-[100vh] lg:border-b-0 lg:border-l lg:bg-transparent ${
-          isBuilderActive
+          isHeaderCompact
             ? 'border-accent/20 h-[12svh] border-b lg:w-[25%] xl:w-[22%]'
             : 'h-[25svh] rounded-br-[4px] lg:w-[40%]'
         }`}
@@ -103,10 +106,10 @@ export default function Home() {
         </div>
 
         <div
-          className={`absolute inset-0 overflow-hidden ${!isBuilderActive ? 'rounded-br-[4px] lg:rounded-none' : ''}`}
+          className={`absolute inset-0 overflow-hidden ${!isHeaderCompact ? 'rounded-br-[4px] lg:rounded-none' : ''}`}
         >
           <div
-            className={`h-full w-full transition-opacity duration-700 ${isBuilderActive ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
+            className={`h-full w-full transition-opacity duration-700 ${isHeaderCompact ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
           >
             <div
               className="absolute top-0 right-0 z-0 h-full w-[60%] lg:w-[80%]"
@@ -144,8 +147,8 @@ export default function Home() {
 
           <div
             className={`pointer-events-none absolute bottom-0 left-0 z-10 flex w-full flex-col justify-end transition-all duration-700 ${
-              isBuilderActive
-                ? 'h-full p-4 pl-[45vw] sm:pl-[40vw] lg:p-8 lg:pl-8 xl:p-12' // Pushes the text further right and into the center on mobile
+              isHeaderCompact
+                ? 'h-full p-4 pl-[45vw] sm:pl-[40vw] lg:p-8 lg:pl-8 xl:p-12'
                 : 'h-full w-[80%] p-6 sm:w-full sm:px-20 lg:w-full lg:p-12 xl:px-24 xl:pt-24 xl:pb-12 2xl:pb-24'
             }`}
           >
@@ -160,7 +163,7 @@ export default function Home() {
               </h1>
               <h2
                 className={`text-foreground font-medium whitespace-pre-line transition-all duration-700 ${
-                  isBuilderActive
+                  isHeaderCompact
                     ? 'mt-1 text-xs sm:text-sm lg:mt-2 lg:text-lg 2xl:text-xl'
                     : 'mt-1 text-xs sm:text-sm lg:mt-2 lg:text-xl 2xl:mt-4 2xl:text-3xl'
                 }`}
@@ -169,7 +172,7 @@ export default function Home() {
               </h2>
               <div
                 className={`grid transition-all duration-500 ease-in-out ${
-                  isBuilderActive
+                  isHeaderCompact
                     ? 'pointer-events-none grid-rows-[0fr] opacity-0'
                     : 'mt-2 grid-rows-[1fr] opacity-100 lg:mt-2 2xl:mt-4'
                 }`}

@@ -8,7 +8,7 @@ import type { Plan } from '@/slides'
 
 export function Step1Plan() {
   const { t } = useTranslation()
-  const { plan, setPlan } = useBuilder()
+  const { plan, setPlan, setQuizAccepted } = useBuilder()
 
   const planDetails: Record<NonNullable<Plan>, string> = {
     basic: t('slides.builder.step1.plans.basic.desc'),
@@ -48,7 +48,10 @@ export function Step1Plan() {
             title={p!}
             description={planDetails[p!]}
             isActive={plan === p}
-            onClick={() => setPlan(p)}
+            onClick={() => {
+              setPlan(p)
+              setQuizAccepted(false)
+            }}
           />
         ))}
       </div>
