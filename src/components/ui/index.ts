@@ -1,5 +1,5 @@
 export * from './modal-shell'
-export * from './scroll-indicator'
+export * from './cookie-consent'
 export * from './vertical-index'
 export * from './typewriter-text'
 export * from './builder-option'
