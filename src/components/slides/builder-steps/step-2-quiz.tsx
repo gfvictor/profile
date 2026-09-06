@@ -72,7 +72,7 @@ const QUESTIONS: {
 
 export function Step2Quiz() {
   const { t } = useTranslation()
-  const { setStep, quiz, setQuiz, resetQuiz, applyQuizRecommendation, scope, setScope } =
+  const { setStep, quiz, setQuiz, resetQuiz, applyQuizRecommendation, setQuizAccepted } =
     useBuilder()
   const { questionIndex, answers, showResult } = quiz
 
@@ -155,21 +155,15 @@ export function Step2Quiz() {
   const acceptRecommendation = () => {
     const { tier, objective, addons } = computeResult()
     applyQuizRecommendation(tier, objective, addons)
-    setStep(5)
+    setQuizAccepted(true)
+    setStep(4)
   }
 
   const { tier, objective, addons } = computeResult()
   const activeAddons = (['auth', 'db', 'payments', 'seo'] as const).filter((key) => addons[key])
 
   return (
-    <div className="flex h-full flex-col gap-8">
-      {!showResult && (
-        <span className="text-muted-foreground font-mono text-[9px] tracking-widest uppercase lg:text-[10px]">
-          {t('slides.builder.quiz.progress')} {questionIndex + 1} {t('slides.builder.quiz.of')}{' '}
-          {QUESTIONS.length}
-        </span>
-      )}
-
+    <div className="flex h-full flex-col">
       <AnimatePresence mode="wait">
         {showResult ? (
           <motion.div
@@ -204,19 +198,6 @@ export function Step2Quiz() {
               </span>
             </div>
 
-            <div className="mt-3 flex w-full flex-col gap-2">
-              <label className="text-muted-foreground font-mono text-[9px] uppercase lg:text-[10px]">
-                {t('slides.builder.step2.colors_label')}
-              </label>
-              <input
-                type="text"
-                placeholder={t('slides.builder.step2.colors_placeholder')}
-                value={scope.colors}
-                onChange={(e) => setScope((prev) => ({ ...prev, colors: e.target.value }))}
-                className="border-border bg-background/50 focus:border-accent placeholder:font-koho placeholder:text-muted-foreground/50 w-full border p-2 font-mono text-[10px] transition-colors outline-none placeholder:text-xs placeholder:lowercase lg:p-3 lg:text-xs"
-              />
-            </div>
-
             <div className="mt-4 flex flex-col items-center gap-3">
               <button
                 onClick={acceptRecommendation}
@@ -225,7 +206,10 @@ export function Step2Quiz() {
                 {t('slides.builder.quiz.accept')}
               </button>
               <button
-                onClick={() => setStep(3)}
+                onClick={() => {
+                  setQuizAccepted(false)
+                  setStep(3)
+                }}
                 className="border-border text-muted-foreground hover:border-foreground/50 hover:text-foreground border px-6 py-2 font-mono text-[10px] tracking-widest uppercase transition-colors"
               >
                 {t('slides.builder.quiz.manual')}
@@ -247,6 +231,10 @@ export function Step2Quiz() {
             transition={{ duration: 0.2 }}
             className="flex flex-1 flex-col gap-4"
           >
+            <span className="text-muted-foreground font-mono text-[9px] tracking-widest uppercase lg:text-[10px]">
+              {t('slides.builder.quiz.progress')} {questionIndex + 1} {t('slides.builder.quiz.of')}{' '}
+              {QUESTIONS.length}
+            </span>
             <h4 className="font-koho text-foreground text-xl lowercase lg:text-2xl">
               {t(`slides.builder.quiz.${question.key}.title`)}
             </h4>
