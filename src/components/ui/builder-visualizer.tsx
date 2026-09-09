@@ -1,5 +1,5 @@
 import { Plan } from '@/components/slides/builder-slide'
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface BuilderVisualizerProps {
@@ -156,7 +156,7 @@ export function BuilderVisualizer({ plan, addons, price, time }: BuilderVisualiz
                   >
                     {price}
                     {plan && plan !== 'scale' && (
-                      <span className="text-accent ml-1 text-[8px] font-normal lowercase sm:text-[10px]">
+                      <span className="text-accent ml-1 text-[8px] font-normal whitespace-nowrap lowercase sm:text-[10px] lg:ml-0 lg:block">
                         {t('slides.builder.visualizer.tax')}
                       </span>
                     )}
@@ -165,7 +165,10 @@ export function BuilderVisualizer({ plan, addons, price, time }: BuilderVisualiz
               </div>
               <div className="mt-2 flex flex-col lg:mt-0 lg:text-right">
                 <span className="text-muted-foreground font-mono text-[8px] uppercase sm:text-[9px] lg:text-[10px]">
-                  {t('slides.builder.visualizer.estimated_time')}
+                  <Trans
+                    i18nKey="slides.builder.visualizer.estimated_time"
+                    components={{ 1: <span className="whitespace-nowrap" /> }}
+                  />
                 </span>
                 <AnimatePresence mode="popLayout">
                   <motion.span

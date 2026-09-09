@@ -98,7 +98,7 @@
         "addons": "Add-ons:",
         "assets": "Assets:",
         "estimated_investment": "Total Investment",
-        "estimated_time": "est. time (after payment)",
+        "estimated_time": "est. time <1>(after payment)</1>",
         "upon_request": "Upon Request",
         "tbd": "TBD",
         "work_days": "business days",
