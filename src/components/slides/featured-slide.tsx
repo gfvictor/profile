@@ -85,7 +85,7 @@ export function FeaturedSlide() {
           />
         </motion.p>
 
-        <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-2xl xl:max-w-4xl">
+        <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
