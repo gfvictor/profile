@@ -58,18 +58,13 @@ export function VerticalIndex({ slides, activeSlide, onChange }: VerticalIndexPr
       <div className="hide-on-keyboard pointer-events-auto absolute right-6 bottom-6 z-50 hidden flex-col items-end gap-2 p-4 lg:right-12 lg:bottom-12 lg:flex lg:p-0 xl:right-24 2xl:bottom-24 2xl:gap-4">
         {slides.map((slide, index) => {
           const isActive = activeSlide === index
-          const isBuilderMode = activeSlide === 6
 
           return (
             <button
               key={slide.id}
               onClick={() => onChange(index)}
               className={`group flex items-center justify-end gap-2 transition-all duration-300 ${
-                isActive
-                  ? 'opacity-100'
-                  : isBuilderMode
-                    ? 'pointer-events-none opacity-0'
-                    : 'opacity-40 hover:opacity-100'
+                isActive ? 'opacity-100' : 'opacity-40 hover:opacity-100'
               } 2xl:gap-3`}
             >
               <span

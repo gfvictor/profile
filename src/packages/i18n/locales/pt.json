@@ -98,7 +98,7 @@
         "addons": "Add-ons:",
         "assets": "Assets:",
         "estimated_investment": "Investimento Total",
-        "estimated_time": "prazo est. (após pagamento)",
+        "estimated_time": "prazo est. <1>(após pagamento)</1>",
         "upon_request": "Sob Consulta",
         "tbd": "A definir",
         "work_days": "dias úteis",
