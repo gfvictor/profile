@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 import { useTranslation, Trans } from 'react-i18next'
 import { CornerLeftDown, ArrowUp } from 'lucide-react'
 import { ImageLightbox } from '@/ui'
@@ -63,9 +64,16 @@ export function FeaturedSlide() {
               href={TESTER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="decoration-accent/50 hover:text-accent hover:decoration-accent underline decoration-2 underline-offset-4 transition-colors duration-300"
+              className="inline-block align-middle transition-opacity duration-300 hover:opacity-70"
             >
-              CodifyLab
+              <Image
+                src="/codifylab-logo.svg"
+                alt="CodifyLab"
+                width={720}
+                height={180}
+                unoptimized
+                className="inline-block h-9 w-auto -translate-y-[4px]"
+              />
             </a>
             {t('slides.codifylab.headline_suffix')}
           </motion.h2>
