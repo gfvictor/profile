@@ -9,9 +9,72 @@ const koho = KoHo({
   variable: '--font-koho',
 })
 
+const siteUrl = 'https://codifylab.online'
+const title = 'Victor Farias | Desenvolvedor de Software'
+const description =
+  'Desenvolvedor de software criando sistemas sob medida para pequenos negócios — de agendamento a pagamento, com a sua marca. Fundador da Codify Lab.'
+
 export const metadata: Metadata = {
-  title: 'Victor Farias | Software Developer',
-  description: 'Minimalist personal profile and digital portfolio.',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  keywords: [
+    'criar site',
+    'criar site profissional',
+    'criar site para meu negócio',
+    'criar aplicativo',
+    'criar loja virtual',
+    'criar loja online',
+    'site customizado',
+    'app customizado',
+    'desenvolvedor de site no Japão',
+    'criar site no Japão',
+    'programador no Japão',
+    'site customizado no Japão',
+    'app customizado no Japão',
+    'criar landing page no Japão',
+    'sistema de agendamento online',
+    'sistema para pequenos negócios',
+    'quanto custa criar um site',
+  ],
+  authors: [{ name: 'Victor Farias', url: siteUrl }],
+  creator: 'Victor Farias',
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: 'Victor Farias',
+    locale: 'pt_BR',
+    alternateLocale: ['en_US'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Victor Farias',
+  jobTitle: 'Desenvolvedor de Software',
+  url: siteUrl,
+  image: `${siteUrl}/avatar/victor-light.jpg`,
+  sameAs: ['https://github.com/gfvictor'],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Codify Lab',
+    url: siteUrl,
+  },
 }
 
 export const viewport: Viewport = {
@@ -28,7 +91,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${koho.variable} h-svh antialiased`} suppressHydrationWarning>
+    <html lang="pt-BR" className={`${koho.variable} h-svh antialiased`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body className="bg-background flex min-h-svh flex-col font-sans lowercase">
         <ThemeProvider
           attribute="class"
