@@ -10,6 +10,7 @@ const koho = KoHo({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://codifylab.online'),
   title: 'Victor Farias | Software Developer',
   description: 'Minimalist personal profile and digital portfolio.',
 }
