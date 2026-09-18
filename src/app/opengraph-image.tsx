@@ -93,8 +93,8 @@ export default async function Image() {
         <img
           src={logoSrc}
           alt="Codify Lab"
-          width={190}
-          height={40}
+          width={240}
+          height={50}
           style={{ position: 'absolute', left: '6%', top: '8%' }}
         />
 
@@ -109,16 +109,16 @@ export default async function Image() {
             maxWidth: '56%',
           }}
         >
-          <div style={{ display: 'flex', fontWeight: 700, fontSize: 64, color: '#27272a' }}>
+          <div style={{ display: 'flex', fontWeight: 700, fontSize: 84, color: '#27272a' }}>
             Victor Farias.
           </div>
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              marginTop: 12,
+              marginTop: 16,
               fontWeight: 500,
-              fontSize: 24,
+              fontSize: 32,
               color: '#27272a',
             }}
           >
@@ -135,7 +135,7 @@ export default async function Image() {
             display: 'flex',
             maxWidth: '56%',
             fontFamily: 'JetBrainsMono',
-            fontSize: 17,
+            fontSize: 22,
           }}
         >
           <span style={{ display: 'flex', color: '#b38e00', marginRight: 6 }}>{'>'}</span>
