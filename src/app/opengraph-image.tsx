@@ -4,7 +4,7 @@ import { join } from 'node:path'
 
 export const runtime = 'nodejs'
 export const alt = 'Victor Farias — Desenvolvedor de Software'
-export const size = { width: 2400, height: 1260 }
+export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 async function toDataUri(path: string, mime: string) {
@@ -42,8 +42,8 @@ export default async function Image() {
         <img
           src={photoSrc}
           alt="Victor Farias"
-          width={2400}
-          height={1260}
+          width={1200}
+          height={630}
           style={{
             position: 'absolute',
             left: '38%',
@@ -84,7 +84,7 @@ export default async function Image() {
             right: 0,
             top: 0,
             bottom: 0,
-            width: 14,
+            width: 7,
             display: 'flex',
             backgroundColor: '#b38e00',
           }}
@@ -93,8 +93,8 @@ export default async function Image() {
         <img
           src={logoSrc}
           alt="Codify Lab"
-          width={480}
-          height={100}
+          width={240}
+          height={50}
           style={{ position: 'absolute', left: '6%', top: '8%' }}
         />
 
@@ -109,16 +109,16 @@ export default async function Image() {
             maxWidth: '56%',
           }}
         >
-          <div style={{ display: 'flex', fontWeight: 700, fontSize: 168, color: '#27272a' }}>
+          <div style={{ display: 'flex', fontWeight: 700, fontSize: 84, color: '#27272a' }}>
             Victor Farias.
           </div>
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              marginTop: 32,
+              marginTop: 16,
               fontWeight: 500,
-              fontSize: 64,
+              fontSize: 32,
               color: '#27272a',
             }}
           >
@@ -135,10 +135,10 @@ export default async function Image() {
             display: 'flex',
             maxWidth: '56%',
             fontFamily: 'JetBrainsMono',
-            fontSize: 44,
+            fontSize: 22,
           }}
         >
-          <span style={{ display: 'flex', color: '#b38e00', marginRight: 12 }}>{'>'}</span>
+          <span style={{ display: 'flex', color: '#b38e00', marginRight: 6 }}>{'>'}</span>
           <span style={{ display: 'flex', color: '#71717a' }}>
             construindo ecossistemas digitais.
           </span>
