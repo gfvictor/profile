@@ -35,7 +35,7 @@ export function Step1Choice() {
   const [isExamplesOpen, setIsExamplesOpen] = useState(false)
 
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-6 text-center">
+    <div className="flex h-full flex-col items-center justify-center gap-8 text-center">
       <h4 className="font-koho text-foreground text-xl lowercase lg:text-2xl">
         {t('slides.builder.choice.title')}
       </h4>
@@ -55,7 +55,7 @@ export function Step1Choice() {
       <button
         type="button"
         onClick={() => setIsExamplesOpen(true)}
-        className="text-muted-foreground hover:text-accent font-mono text-[10px] tracking-widest uppercase underline underline-offset-4 transition-colors"
+        className="text-muted-foreground hover:text-accent font-mono text-[10px] tracking-widest uppercase underline underline-offset-8 transition-colors"
       >
         {t('slides.builder.choice.examples')}
       </button>

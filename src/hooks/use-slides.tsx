@@ -19,7 +19,7 @@ export function useSlides() {
       },
       {
         id: 'builder',
-        title: 'plan a project',
+        title: 'project planner',
         content: <BuilderSlide />,
       },
       {

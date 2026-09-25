@@ -67,6 +67,7 @@ interface BuilderContextType {
   quiz: QuizState
   setQuiz: React.Dispatch<React.SetStateAction<QuizState>>
   resetQuiz: () => void
+  resetBuilder: () => void
   applyQuizRecommendation: (tier: Plan, objective: string, addons: Addons) => void
   quizAccepted: boolean
   setQuizAccepted: React.Dispatch<React.SetStateAction<boolean>>
@@ -103,6 +104,21 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   const resetQuiz = useCallback(() => setQuiz(initialQuizState), [])
   const isFirstStepRender = useRef(true)
   const pendingQuizAddonsRef = useRef<Addons | null>(null)
+
+  const resetBuilder = useCallback(() => {
+    setStep(1)
+    setPlan(null)
+    setAddons({ auth: false, db: false, payments: false, seo: false })
+    setScope({
+      objective: '',
+      customObjective: '',
+      colors: '',
+      hasLogo: true,
+      hasImages: true,
+    })
+    setQuiz(initialQuizState)
+    setQuizAccepted(false)
+  }, [])
 
   const applyQuizRecommendation = useCallback(
     (tier: Plan, objective: string, quizAddons: Addons) => {
@@ -175,6 +191,7 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
         quiz,
         setQuiz,
         resetQuiz,
+        resetBuilder,
         applyQuizRecommendation,
         quizAccepted,
         setQuizAccepted,

@@ -18,11 +18,13 @@
   },
   "slides": {
     "intro": {
-      "eyebrow": "foundation.",
+      "eyebrow": "intro.",
       "headline": "Systems that run your business.",
       "description": "<1>Custom sites and systems</1> — from booking to payments — running under your own brand. No matter the size of the problem: small businesses or projects at scale, always the <1>right solution</1>.",
       "cta": "get a quote",
-      "ctaSecondary": "see the system"
+      "ctaEyebrow": "have your own idea?",
+      "ctaSecondary": "see the system",
+      "ctaSecondaryEyebrow": "want a ready-made solution?"
     },
     "core": {
       "eyebrow": "architecture.",
@@ -45,7 +47,18 @@
       "headline_suffix": ": the system for your business.",
       "description": "The intelligent proprietary system that manages and controls your business and digital identity in an advanced way. Full integration with your website, mobile app, and online store. Create, edit, and delete <1>services</1>, manage <1>appointments and reservations</1>, set your <1>business hours and days off</1>, in real time.",
       "testCta": "try the live demo!",
-      "enlargeCta": "click to enlarge"
+      "enlargeCta": "click to enlarge",
+      "captions": [
+        "dashboard: a <1>quick view</1> of the operation",
+        "<1>bookings</1> and <1>appointments</1>,<2/> confirmed in one tap",
+        "central hub for <1>managing the business</1>",
+        "<1>service</1> catalog with photos and pricing",
+        "<1>inventory control</1> for products and supplies",
+        "<1>business hours</1> and <1>schedule</1> setup",
+        "block off dates for<2/> <1>holidays</1> and <1>time off</1>",
+        "qr code for <1>instant site access</1>",
+        "connect <1>Stripe</1> or <1>Square</1><2/> to accept payments"
+      ]
     },
     "contact": {
       "eyebrow": "contact.",
@@ -86,6 +99,7 @@
       "buttons": {
         "next": "NEXT",
         "back": "BACK",
+        "restart": "START OVER",
         "send": "SEND REQUEST",
         "sending": "SENDING...",
         "success": "SENT!"
@@ -109,7 +123,7 @@
       "choice": {
         "title": "how do you want to start?",
         "know": {
-          "title": "i know what tier i want",
+          "title": "i've already picked a model",
           "desc": "go straight to manual selection"
         },
         "help": {
@@ -133,8 +147,8 @@
           "addons": "none"
         },
         "intermediate": {
-          "purpose": "a real institutional site, with customer login and history.",
-          "siteType": "Institutional Site",
+          "purpose": "a web app — with login, booking and customer history.",
+          "siteType": "Web App",
           "addons": "auth + db"
         },
         "advanced": {

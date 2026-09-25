@@ -10,7 +10,9 @@ import { FumacaTruckPreview } from './fumaca-truck-preview'
 
 type Tier = 'basic' | 'intermediate' | 'advanced'
 
-const INTERMEDIATE_IMAGES = [1, 2, 3, 4, 5, 6].map((n) => `/models/intermediate/model2-${n}.webp`)
+const INTERMEDIATE_IMAGES = [1, 2, 3, 4, 5, 6, 7].map(
+  (n) => `/models/intermediate-2/model2-${n}.PNG`,
+)
 const ADVANCED_IMAGES = [1, 2, 3, 4].map((n) => `/models/advanced/model3-${n}.webp`)
 
 export function ExampleModelsModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {

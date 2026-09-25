@@ -49,15 +49,25 @@ export function IntroSlide() {
         >
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('GO_TO_BUILDER'))}
-            className="border-accent/30 bg-accent/5 text-accent hover:border-accent hover:bg-accent hover:text-background inline-flex items-center gap-2 border px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-500 ease-out hover:shadow-[0_0_20px_rgba(179,142,0,0.2)]"
+            className="border-accent/30 bg-accent/5 text-accent hover:border-accent hover:bg-accent hover:text-background inline-flex w-64 flex-col items-center gap-1.5 border px-10 py-5 transition-all duration-500 ease-out hover:shadow-[0_0_20px_rgba(179,142,0,0.2)]"
           >
-            {t('slides.intro.cta')}
+            <span className="font-mono text-[11px] tracking-wide whitespace-nowrap lowercase opacity-95 lg:text-xs">
+              {t('slides.intro.ctaEyebrow')}
+            </span>
+            <span className="text-sm font-bold tracking-widest whitespace-nowrap uppercase lg:text-base lg:whitespace-pre-line">
+              {t('slides.intro.cta')}
+            </span>
           </button>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('GO_TO_FEATURED'))}
-            className="border-muted-foreground/30 text-muted-foreground hover:border-foreground hover:text-foreground inline-flex items-center gap-2 border px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-500 ease-out"
+            className="border-muted-foreground/30 text-muted-foreground hover:border-foreground hover:text-foreground inline-flex w-64 flex-col items-center gap-1.5 border px-10 py-5 transition-all duration-500 ease-out"
           >
-            {t('slides.intro.ctaSecondary')}
+            <span className="font-mono text-[11px] tracking-wide whitespace-nowrap lowercase opacity-70 lg:text-xs">
+              {t('slides.intro.ctaSecondaryEyebrow')}
+            </span>
+            <span className="text-sm font-bold tracking-widest uppercase lg:text-base">
+              {t('slides.intro.ctaSecondary')}
+            </span>
           </button>
         </motion.div>
       </div>

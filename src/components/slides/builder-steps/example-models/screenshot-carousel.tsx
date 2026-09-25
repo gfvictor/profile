@@ -12,9 +12,9 @@ export function ScreenshotCarousel({ images, alt }: { images: string[]; alt: str
   const goNext = () => setIndex((prev) => (prev + 1) % images.length)
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="relative">
-        <div className="border-border/60 relative aspect-[375/760] w-[min(340px,28.6vh)] overflow-hidden rounded-2xl border shadow-lg">
+    <div className="flex w-full flex-col items-center gap-3">
+      <div className="relative w-full">
+        <div className="border-border/60 relative mx-auto aspect-[375/760] w-[min(340px,28.6vh)] overflow-hidden rounded-2xl border shadow-lg">
           {images.map((img, i) => (
             <motion.div
               key={img}
@@ -40,18 +40,18 @@ export function ScreenshotCarousel({ images, alt }: { images: string[]; alt: str
         <button
           type="button"
           onClick={goPrev}
-          className="border-accent/30 bg-accent/5 text-foreground hover:bg-background absolute top-1/2 left-[-24px] flex h-8 w-8 -translate-y-1/2 items-center justify-center border shadow-md backdrop-blur-sm transition-colors"
+          className="border-accent/30 bg-accent/5 text-accent hover:bg-accent hover:text-background absolute top-1/2 left-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center border transition-colors"
           aria-label="Previous"
         >
-          <ChevronLeft className="text-accent h-4 w-4" />
+          <ChevronLeft className="h-4 w-4" />
         </button>
         <button
           type="button"
           onClick={goNext}
-          className="border-accent/30 bg-accent/5 text-foreground hover:bg-background absolute top-1/2 right-[-24px] flex h-8 w-8 -translate-y-1/2 items-center justify-center border shadow-md backdrop-blur-sm transition-colors"
+          className="border-accent/30 bg-accent/5 text-accent hover:bg-accent hover:text-background absolute top-1/2 right-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center border transition-colors"
           aria-label="Next"
         >
-          <ChevronRight className="text-accent h-4 w-4" />
+          <ChevronRight className="h-4 w-4" />
         </button>
       </div>
 

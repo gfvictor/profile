@@ -72,8 +72,15 @@ const QUESTIONS: {
 
 export function Step2Quiz() {
   const { t } = useTranslation()
-  const { setStep, quiz, setQuiz, resetQuiz, applyQuizRecommendation, setQuizAccepted } =
-    useBuilder()
+  const {
+    setStep,
+    quiz,
+    setQuiz,
+    resetQuiz,
+    resetBuilder,
+    applyQuizRecommendation,
+    setQuizAccepted,
+  } = useBuilder()
   const { questionIndex, answers, showResult } = quiz
 
   const showResultRef = useRef(showResult)
@@ -215,12 +222,20 @@ export function Step2Quiz() {
                 {t('slides.builder.quiz.manual')}
               </button>
             </div>
-            <button
-              onClick={goBack}
-              className="text-muted-foreground/60 hover:text-foreground mt-2 font-mono text-xs tracking-widest uppercase transition-colors"
-            >
-              {t('slides.builder.quiz.back')}
-            </button>
+            <div className="mt-2 flex flex-col items-center gap-8">
+              <button
+                onClick={goBack}
+                className="text-muted-foreground/60 hover:text-foreground font-mono text-xs tracking-widest uppercase transition-colors"
+              >
+                {t('slides.builder.quiz.back')}
+              </button>
+              <button
+                onClick={resetBuilder}
+                className="text-muted-foreground/40 hover:text-foreground font-mono text-[10px] tracking-widest uppercase transition-colors"
+              >
+                {t('slides.builder.buttons.restart')}
+              </button>
+            </div>
           </motion.div>
         ) : (
           <motion.div

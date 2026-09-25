@@ -18,11 +18,13 @@
   },
   "slides": {
     "intro": {
-      "eyebrow": "foundation.",
+      "eyebrow": "intro.",
       "headline": "Sistemas que rodam o seu negócio.",
       "description": "<1>Sites e sistemas sob medida</1> — do agendamento ao pagamento — rodando sob a sua marca. Não importa o tamanho do problema: pequenos negócios ou projetos em escala, sempre a <1>solução certa</1>.",
       "cta": "simular orçamento",
-      "ctaSecondary": "conhecer o sistema"
+      "ctaEyebrow": "tem uma ideia própria?",
+      "ctaSecondary": "conheça o sistema",
+      "ctaSecondaryEyebrow": "quer uma solução pronta?"
     },
     "core": {
       "eyebrow": "architecture.",
@@ -45,7 +47,18 @@
       "headline_suffix": ": o sistema do seu negócio.",
       "description": "O sistema inteligente autoral que gerencia e controla de forma avançada o empreedimento e identidade digital. Integração absoluta com seu site, aplicativo e loja online. Crie, edite e exclua <1>serviços</1>, gerencie <1>agendamentos e reservas</1>, defina seus <1>horários de atendimento e folgas</1>, tudo em tempo real.",
       "testCta": "acesse o teste!",
-      "enlargeCta": "clique para ampliar"
+      "enlargeCta": "clique para ampliar",
+      "captions": [
+        "painel geral: <1>visão rápida</1> da operação",
+        "<1>agenda</1> e <1>reservas</1>,<2/> confirmadas em 1 toque",
+        "central de <1>gestão de conteúdo</1> do negócio",
+        "catálogo de <1>serviços</1> com fotos e preços",
+        "controle de <1>estoque de produtos</1> e insumos",
+        "configuração de <1>expediente</1> e <1>horários</1>",
+        "bloqueio de datas para<2/> <1>feriados</1> e <1>imprevistos</1>",
+        "qr code de <1>acesso rápido</1> ao site",
+        "conecte <1>Stripe</1> ou <1>Square</1><2/> para receber pagamentos"
+      ]
     },
     "contact": {
       "eyebrow": "contact.",
@@ -86,6 +99,7 @@
       "buttons": {
         "next": "AVANÇAR",
         "back": "VOLTAR",
+        "restart": "COMEÇAR DE NOVO",
         "send": "ENVIAR PEDIDO",
         "sending": "ENVIANDO...",
         "success": "ENVIADO!"
@@ -109,7 +123,7 @@
       "choice": {
         "title": "como você quer começar?",
         "know": {
-          "title": "sei o tier que quero",
+          "title": "já escolhi o modelo",
           "desc": "ir direto pra escolha manual"
         },
         "help": {
@@ -133,8 +147,8 @@
           "addons": "nenhum"
         },
         "intermediate": {
-          "purpose": "site Institucional — com login e histórico do cliente.",
-          "siteType": "Site Institucional",
+          "purpose": "web app — com login, agendamento e histórico do cliente.",
+          "siteType": "Web App",
           "addons": "auth + db"
         },
         "advanced": {
