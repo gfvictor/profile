@@ -140,6 +140,7 @@ export function FeaturedSlide() {
 
         <ImageLightbox
           images={images}
+          captionsI18nKey="slides.codifylab.captions"
           index={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
           onNavigate={setLightboxIndex}
