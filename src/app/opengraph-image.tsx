@@ -28,123 +28,121 @@ export default async function Image() {
   ])
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        position: 'relative',
+        backgroundColor: '#fafafa',
+        fontFamily: 'KoHo',
+      }}
+    >
+      <img
+        src={photoSrc}
+        alt="Victor Farias"
+        width={1200}
+        height={630}
+        style={{
+          position: 'absolute',
+          left: '38%',
+          top: 0,
+          width: '62%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center 15%',
+        }}
+      />
+
       <div
         style={{
-          width: '100%',
-          height: '100%',
+          position: 'absolute',
+          left: '38%',
+          top: 0,
+          right: 0,
+          bottom: 0,
           display: 'flex',
-          position: 'relative',
-          backgroundColor: '#fafafa',
-          fontFamily: 'KoHo',
+          backgroundImage: 'linear-gradient(100deg, #fafafa 0%, rgba(250,250,250,0) 35%)',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: '38%',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          display: 'flex',
+          backgroundImage: 'linear-gradient(0deg, #fafafa 0%, rgba(250,250,250,0) 40%)',
+        }}
+      />
+
+      <div
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: 7,
+          display: 'flex',
+          backgroundColor: '#b38e00',
+        }}
+      />
+
+      <img
+        src={logoSrc}
+        alt="Codify Lab"
+        width={240}
+        height={50}
+        style={{ position: 'absolute', left: '6%', top: '8%' }}
+      />
+
+      <div
+        style={{
+          position: 'absolute',
+          left: '6%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          maxWidth: '56%',
         }}
       >
-        <img
-          src={photoSrc}
-          alt="Victor Farias"
-          width={1200}
-          height={630}
-          style={{
-            position: 'absolute',
-            left: '38%',
-            top: 0,
-            width: '62%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center 15%',
-          }}
-        />
-
+        <div style={{ display: 'flex', fontWeight: 700, fontSize: 84, color: '#27272a' }}>
+          Victor Farias.
+        </div>
         <div
           style={{
-            position: 'absolute',
-            left: '38%',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            backgroundImage: 'linear-gradient(100deg, #fafafa 0%, rgba(250,250,250,0) 35%)',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            left: '38%',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            display: 'flex',
-            backgroundImage: 'linear-gradient(0deg, #fafafa 0%, rgba(250,250,250,0) 40%)',
-          }}
-        />
-
-        <div
-          style={{
-            position: 'absolute',
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: 7,
-            display: 'flex',
-            backgroundColor: '#b38e00',
-          }}
-        />
-
-        <img
-          src={logoSrc}
-          alt="Codify Lab"
-          width={240}
-          height={50}
-          style={{ position: 'absolute', left: '6%', top: '8%' }}
-        />
-
-        <div
-          style={{
-            position: 'absolute',
-            left: '6%',
-            top: '50%',
-            transform: 'translateY(-50%)',
             display: 'flex',
             flexDirection: 'column',
-            maxWidth: '56%',
+            marginTop: 16,
+            fontWeight: 500,
+            fontSize: 32,
+            color: '#27272a',
           }}
         >
-          <div style={{ display: 'flex', fontWeight: 700, fontSize: 84, color: '#27272a' }}>
-            Victor Farias.
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginTop: 16,
-              fontWeight: 500,
-              fontSize: 32,
-              color: '#27272a',
-            }}
-          >
-            <span style={{ display: 'flex' }}>software developer.</span>
-            <span style={{ display: 'flex' }}>web designer.</span>
-          </div>
-        </div>
-
-        <div
-          style={{
-            position: 'absolute',
-            left: '6%',
-            bottom: '8%',
-            display: 'flex',
-            maxWidth: '56%',
-            fontFamily: 'JetBrainsMono',
-            fontSize: 22,
-          }}
-        >
-          <span style={{ display: 'flex', color: '#b38e00', marginRight: 6 }}>{'>'}</span>
-          <span style={{ display: 'flex', color: '#71717a' }}>
-            construindo ecossistemas digitais.
-          </span>
+          <span style={{ display: 'flex' }}>software developer.</span>
+          <span style={{ display: 'flex' }}>web designer.</span>
         </div>
       </div>
-    ),
+
+      <div
+        style={{
+          position: 'absolute',
+          left: '6%',
+          bottom: '8%',
+          display: 'flex',
+          maxWidth: '56%',
+          fontFamily: 'JetBrainsMono',
+          fontSize: 22,
+        }}
+      >
+        <span style={{ display: 'flex', color: '#b38e00', marginRight: 6 }}>{'>'}</span>
+        <span style={{ display: 'flex', color: '#71717a' }}>
+          construindo ecossistemas digitais.
+        </span>
+      </div>
+    </div>,
     {
       ...size,
       fonts: [
