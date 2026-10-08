@@ -16,9 +16,9 @@ const BUILDER_STEP_NAMES = ['choice', 'quiz', 'plan', 'scope', 'addons', 'contac
 
 interface Addons {
   auth: boolean
-  db: boolean
   payments: boolean
   seo: boolean
+  social: boolean
 }
 
 interface Scope {
@@ -40,7 +40,8 @@ interface Contact {
 export interface QuizAnswer {
   tier?: Exclude<Plan, null | 'scale'>
   objective?: string
-  addons?: { auth?: boolean; db?: boolean; payments?: boolean; seo?: boolean }
+  addons?: { auth?: boolean; payments?: boolean; seo?: boolean }
+  forceAdvanced?: boolean
 }
 
 export interface QuizState {
@@ -80,9 +81,9 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useState<Plan>(null)
   const [addons, setAddons] = useState<Addons>({
     auth: false,
-    db: false,
     payments: false,
     seo: false,
+    social: false,
   })
   const [scope, setScope] = useState<Scope>({
     objective: '',
@@ -108,7 +109,7 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   const resetBuilder = useCallback(() => {
     setStep(1)
     setPlan(null)
-    setAddons({ auth: false, db: false, payments: false, seo: false })
+    setAddons({ auth: false, payments: false, seo: false, social: false })
     setScope({
       objective: '',
       customObjective: '',
@@ -155,7 +156,7 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
       setAddons(pendingQuizAddonsRef.current)
       pendingQuizAddonsRef.current = null
     } else {
-      setAddons({ auth: false, db: false, payments: false, seo: false })
+      setAddons({ auth: false, payments: false, seo: false, social: false })
     }
   }, [plan])
 
@@ -166,12 +167,14 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
         scope.objective === 'Landing Page' || scope.objective === 'Site Institucional'
       if (isSimple) {
         next.auth = false
-        next.db = false
         next.payments = false
+      }
+      if (plan !== 'advanced') {
+        next.social = false
       }
       return next
     })
-  }, [scope.objective])
+  }, [scope.objective, plan])
 
   return (
     <BuilderContext.Provider

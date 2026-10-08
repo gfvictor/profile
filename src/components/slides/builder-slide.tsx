@@ -53,10 +53,10 @@ Novo Projeto (Builder)
 Plano: ${plan}
 
 Add-ons:
-- Auth: ${addons.auth ? 'Sim' : 'Não'}
-- Database: ${addons.db ? 'Sim' : 'Não'}
+- Cadastro: ${addons.auth ? 'Sim' : 'Não'}
 - Pagamentos: ${addons.payments ? 'Sim' : 'Não'}
-- SEO: ${addons.seo ? 'Sim' : 'Não'}
+- Visibilidade: ${addons.seo ? 'Sim' : 'Não'}
+- Social: ${addons.social ? 'Sim' : 'Não'}
 
 Escopo:
 - Objetivo: ${scope.objective} ${scope.objective === 'Outro' ? `(${scope.customObjective})` : ''}
@@ -105,12 +105,8 @@ ${contact.notes || 'Nenhuma observação.'}
     }
 
     if (addons.auth) {
-      price += 10000
-      days += 1
-    }
-    if (addons.db) {
-      price += 20000
-      days += 2
+      price += 30000
+      days += 3
     }
     if (addons.payments) {
       price += 30000
@@ -118,6 +114,10 @@ ${contact.notes || 'Nenhuma observação.'}
     }
     if (addons.seo) {
       price += 5000
+      days += 1
+    }
+    if (addons.social) {
+      price += 15000
       days += 1
     }
 
