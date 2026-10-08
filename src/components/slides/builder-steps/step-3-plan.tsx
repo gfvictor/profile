@@ -1,86 +1,119 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { BuilderOption } from '@/ui'
+import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useBuilder } from '@/providers'
-import type { Plan } from '@/slides'
+
+type Tier = 'basic' | 'intermediate' | 'advanced'
+
+const TIERS: Tier[] = ['basic', 'intermediate', 'advanced']
+
+const BASE: Record<Tier, { price: number; days: number }> = {
+  basic: { price: 45000, days: 3 },
+  intermediate: { price: 85000, days: 5 },
+  advanced: { price: 155000, days: 10 },
+}
+
+const FEATURE_ROWS: {
+  key: 'auth' | 'payments' | 'seo' | 'social'
+  included: Record<Tier, boolean>
+}[] = [
+  { key: 'auth', included: { basic: false, intermediate: true, advanced: true } },
+  { key: 'payments', included: { basic: false, intermediate: true, advanced: true } },
+  { key: 'seo', included: { basic: true, intermediate: true, advanced: true } },
+  { key: 'social', included: { basic: false, intermediate: false, advanced: true } },
+]
+
+const formatPrice = (price: number) =>
+  new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(
+    Math.floor(price * 1.1),
+  )
 
 export function Step3Plan() {
   const { t } = useTranslation()
   const { plan, setPlan, setQuizAccepted } = useBuilder()
 
-  const planDetails: Record<NonNullable<Plan>, string> = {
-    basic: t('slides.builder.step1.plans.basic.desc'),
-    intermediate: t('slides.builder.step1.plans.intermediate.desc'),
-    advanced: t('slides.builder.step1.plans.advanced.desc'),
-    scale: t('slides.builder.step1.plans.scale.desc'),
-  }
-
-  const planSpecs: Record<NonNullable<Plan>, { title: string; desc: string }[]> = {
-    basic: t('slides.builder.step1.plans.basic.specs', { returnObjects: true }) as {
-      title: string
-      desc: string
-    }[],
-    intermediate: t('slides.builder.step1.plans.intermediate.specs', { returnObjects: true }) as {
-      title: string
-      desc: string
-    }[],
-    advanced: t('slides.builder.step1.plans.advanced.specs', { returnObjects: true }) as {
-      title: string
-      desc: string
-    }[],
-    scale: t('slides.builder.step1.plans.scale.specs', { returnObjects: true }) as {
-      title: string
-      desc: string
-    }[],
+  const selectPlan = (tier: Tier) => {
+    setPlan(tier)
+    setQuizAccepted(false)
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h4 className="font-koho text-foreground mb-1 text-xl lowercase lg:mb-4 lg:text-2xl">
+    <div className="flex flex-col gap-3 lg:gap-4">
+      <h4 className="font-koho text-foreground mb-1 text-xl lowercase lg:mb-2 lg:text-2xl">
         {t('slides.builder.step1.title')}
       </h4>
-      <div className="grid grid-cols-2 gap-2 lg:gap-4">
-        {(['basic', 'intermediate', 'advanced', 'scale'] as Plan[]).map((p) => (
-          <BuilderOption
-            key={p!}
-            title={p!}
-            description={planDetails[p!]}
-            isActive={plan === p}
-            onClick={() => {
-              setPlan(p)
-              setQuizAccepted(false)
-            }}
-          />
-        ))}
-      </div>
 
-      <AnimatePresence mode="wait">
-        {plan && (
-          <motion.div
-            key={plan}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="overflow-hidden"
-          >
-            <div className="border-accent/50 mt-2 flex flex-col gap-3 border-l-2 pl-3 lg:mt-4 lg:gap-4 lg:pl-4">
-              {planSpecs[plan].map((spec, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="text-foreground/90 font-mono text-[10px] uppercase sm:text-[11px] lg:text-[11px]">
-                    <span className="text-accent">✓</span> {spec.title}
-                  </span>
-                  <span className="font-koho text-muted-foreground/60 text-[11px] lowercase sm:text-xs lg:mt-1 lg:text-sm">
-                    {spec.desc}
-                  </span>
+      <div className="overflow-x-auto">
+        <div className="grid min-w-[420px] grid-cols-[1fr_repeat(3,1fr)] items-center gap-x-2 gap-y-2 lg:gap-x-4 lg:gap-y-3">
+          <div />
+          {TIERS.map((tier) => (
+            <div key={tier} className="flex flex-col items-center gap-0.5 text-center">
+              <span className="text-foreground font-mono text-[10px] font-bold tracking-widest uppercase lg:text-xs">
+                {tier}
+              </span>
+              <span className="text-accent font-mono text-[9px] font-bold lg:text-[11px]">
+                {formatPrice(BASE[tier].price)}
+              </span>
+              <span className="text-muted-foreground font-mono text-[8px] lowercase lg:text-[9px]">
+                {BASE[tier].days} {t('slides.builder.visualizer.work_days')}
+              </span>
+            </div>
+          ))}
+
+          {FEATURE_ROWS.map((row) => (
+            <Fragment key={row.key}>
+              <span className="text-muted-foreground font-mono text-[9px] uppercase lg:text-[10px]">
+                {t(`slides.builder.step3.addons.${row.key}.title`)}
+              </span>
+              {TIERS.map((tier) => (
+                <div
+                  key={`${row.key}-${tier}`}
+                  className="flex items-center justify-center font-mono text-xs lg:text-sm"
+                >
+                  {row.included[tier] ? (
+                    <span className="text-accent">✓</span>
+                  ) : (
+                    <span className="text-muted-foreground/30">—</span>
+                  )}
                 </div>
               ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </Fragment>
+          ))}
+
+          <span className="text-muted-foreground font-mono text-[9px] uppercase lg:text-[10px]">
+            {t('slides.builder.step1.table.access')}
+          </span>
+          <div className="text-muted-foreground/90 text-center font-mono text-[8px] lowercase lg:text-[9px]">
+            {t('slides.builder.step1.table.access_solo')}
+          </div>
+          <div className="text-muted-foreground/90 text-center font-mono text-[8px] lowercase lg:text-[9px]">
+            {t('slides.builder.step1.table.access_solo')}
+          </div>
+          <div className="text-accent text-center font-mono text-[8px] lowercase lg:text-[9px]">
+            {t('slides.builder.step1.table.access_team')}
+          </div>
+
+          <div />
+          {TIERS.map((tier) => (
+            <button
+              key={`select-${tier}`}
+              onClick={() => selectPlan(tier)}
+              className={`border px-2 py-1.5 font-mono text-[9px] tracking-wider uppercase transition-colors lg:text-[10px] ${
+                plan === tier
+                  ? 'border-accent bg-accent/10 text-accent'
+                  : 'border-border text-muted-foreground hover:border-accent/50'
+              }`}
+            >
+              {t('slides.builder.step1.table.select')}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-muted-foreground/60 text-center font-mono text-[8px] lowercase lg:text-[9px]">
+        {t('slides.builder.step1.table.legend')}
+      </p>
     </div>
   )
 }

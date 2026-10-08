@@ -117,7 +117,7 @@
         "tbd": "A definir",
         "work_days": "dias úteis",
         "awaiting": "Aguardando parâmetros...",
-        "tier": "tier",
+        "tier": "plano",
         "tax": "(IMPOSTO INCL.)"
       },
       "choice": {
@@ -197,76 +197,27 @@
         }
       },
       "step1": {
-        "title": "escolha a base.",
+        "title": "escolha o plano.",
         "plans": {
           "basic": {
-            "desc": "página única com design limpo e direto ao ponto.",
-            "specs": [
-              {
-                "title": "Landing page estática rápida",
-                "desc": "ideal para testar ideias e capturar contatos."
-              },
-              {
-                "title": "Design responsivo e dinâmico",
-                "desc": "funciona perfeitamente em qualquer dispositivo."
-              },
-              {
-                "title": "Hospedagem em Cloud otimizada",
-                "desc": "carregamento ultra-rápido para não perder visitas."
-              }
-            ]
+            "desc": "página única com design limpo e direto ao ponto."
           },
           "intermediate": {
-            "desc": "múltiplas páginas para apresentar o negócio.",
-            "specs": [
-              {
-                "title": "Até 5 páginas institucionais",
-                "desc": "base digital sólida para a apresentação da marca."
-              },
-              {
-                "title": "Sessão de Portfólio / Blog",
-                "desc": "apresente seu trabalho ou engaje com conteúdo."
-              },
-              {
-                "title": "Animações e micro-interações",
-                "desc": "detalhes visuais que elevam a percepção de valor."
-              }
-            ]
+            "desc": "múltiplas páginas, com cadastro e pagamento disponíveis."
           },
           "advanced": {
-            "desc": "plataforma completa com painel administrativo.",
-            "specs": [
-              {
-                "title": "Plataforma robusta [Full-Stack]",
-                "desc": "sistema administrativo completo para gerenciamento."
-              },
-              {
-                "title": "Integração de APIs e Sistemas",
-                "desc": "integra ferramentas e processos de terceiros."
-              },
-              {
-                "title": "Escalabilidade e Performance",
-                "desc": "arquitetura pronta para receber alto volume de tráfego."
-              }
-            ]
+            "desc": "plataforma completa, com equipe e integrações."
           },
           "scale": {
-            "desc": "solução de ponta projetada para alta escalabilidade.",
-            "specs": [
-              {
-                "title": "Arquitetura feita sob medida",
-                "desc": "sistemas e infraestrutura desenhados para o seu escopo."
-              },
-              {
-                "title": "UX/UI Design exclusivo",
-                "desc": "visual focado totalmente na marca e audiência."
-              },
-              {
-                "title": "Consultoria técnica",
-                "desc": "acompanhamento lado a lado nas decisões arquiteturais."
-              }
-            ]
+            "desc": "solução de ponta projetada para alta escalabilidade."
           }
+        },
+        "table": {
+          "access": "Acesso",
+          "access_solo": "solo",
+          "access_team": "admin + equipe",
+          "select": "selecionar",
+          "legend": "✓ = disponível como add-on (pago à parte)"
         }
       },
       "step2": {
