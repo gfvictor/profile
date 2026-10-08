@@ -184,10 +184,10 @@
           "c": { "title": "sim, compra ou pagamento", "desc": "loja online" }
         },
         "q3": {
-          "title": "qual seu momento agora?",
-          "a": { "title": "testando uma ideia", "desc": "quero validar rápido" },
-          "b": { "title": "negócio já rodando", "desc": "quero presença mais forte" },
-          "c": { "title": "operação estabelecida", "desc": "preciso de algo robusto" }
+          "title": "só você vai usar o sistema, ou tem equipe?",
+          "a": { "title": "só eu", "desc": "cadastro único, sem complicação" },
+          "b": { "title": "eu + equipe", "desc": "preciso de múltiplos acessos" },
+          "c": { "title": "preciso integrar outro sistema", "desc": "ex: pdv, erp que já uso" }
         },
         "q4": {
           "title": "o que o site precisa fazer?",
@@ -296,24 +296,24 @@
         },
         "addons": {
           "auth": {
-            "title": "Auth",
-            "desc": "permitir que usuários criem contas."
-          },
-          "db": {
-            "title": "Database",
-            "desc": "guardar informações com segurança."
+            "title": "Cadastro",
+            "desc": "cliente cria login pra agendar e ver o histórico."
           },
           "payments": {
-            "title": "Payments",
-            "desc": "receber pagamentos online."
+            "title": "Pagamento",
+            "desc": "cliente paga direto pelo site (stripe ou square)."
           },
           "seo": {
-            "title": "SEO",
-            "desc": "aparecer nos resultados do google."
+            "title": "Visibilidade",
+            "desc": "seu site pronto pro google."
+          },
+          "social": {
+            "title": "Social",
+            "desc": "posts automáticos pra divulgar seu catálogo."
           }
         },
-        "auth_warning": "* sistemas com <0>auth</0> requerem obrigatoriamente a infra de <1>database</1>.",
-        "payments_warning": "* integração de <0>pagamentos (Stripe e Square)</0> requer <1>auth</1> e <2>database</2>."
+        "payments_warning": "* <0>pagamento</0> requer <1>cadastro</1>.",
+        "social_warning": "* <0>social</0> disponível só no plano advanced."
       },
       "step4": {
         "title": "finalizar solicitação.",
