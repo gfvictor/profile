@@ -41,31 +41,31 @@ const QUESTIONS: {
     answers: {
       a: { tier: 'basic' },
       b: { tier: 'intermediate' },
-      c: { tier: 'advanced' },
+      c: { tier: 'intermediate', addons: { auth: true, payments: true } },
     },
   },
   {
     key: 'q2',
     answers: {
       a: { tier: 'basic' },
-      b: { tier: 'intermediate', addons: { db: true } },
-      c: { tier: 'advanced', addons: { auth: true, db: true, payments: true } },
+      b: { tier: 'intermediate', addons: { auth: true } },
+      c: { tier: 'intermediate', addons: { auth: true, payments: true } },
     },
   },
   {
     key: 'q3',
     answers: {
-      a: { tier: 'basic' },
-      b: { tier: 'intermediate', addons: { seo: true } },
-      c: { tier: 'advanced', addons: { seo: true, db: true } },
+      a: {},
+      b: { forceAdvanced: true },
+      c: { forceAdvanced: true },
     },
   },
   {
     key: 'q4',
     answers: {
       a: { objective: 'Site Institucional' },
-      b: { objective: 'Web App', addons: { auth: true, db: true } },
-      c: { objective: 'Loja Virtual', addons: { auth: true, db: true, payments: true } },
+      b: { objective: 'Web App', addons: { auth: true } },
+      c: { objective: 'Loja Virtual', addons: { auth: true, payments: true } },
     },
   },
 ]
@@ -119,6 +119,8 @@ export function Step2Quiz() {
   }
 
   const computeResult = () => {
+    const forceAdvanced = answers.some((a) => a.forceAdvanced)
+
     const tierVotes = answers.map((a) => a.tier).filter(Boolean) as Tier[]
     const counts: Record<Tier, number> = { basic: 0, intermediate: 0, advanced: 0 }
     tierVotes.forEach((vote) => counts[vote]++)
@@ -127,7 +129,11 @@ export function Step2Quiz() {
     const leaders = (['basic', 'intermediate', 'advanced'] as Tier[]).filter(
       (candidate) => counts[candidate] === maxCount,
     )
-    const tier = leaders.length === 1 ? leaders[0] : tierVotes[0] || 'basic'
+    const tier = forceAdvanced
+      ? 'advanced'
+      : leaders.length === 1
+        ? leaders[0]
+        : tierVotes[0] || 'basic'
 
     let objective = answers.find((a) => a.objective)?.objective || 'Site Institucional'
     if (tier === 'basic') {
@@ -142,18 +148,17 @@ export function Step2Quiz() {
     const rawAddons = answers.reduce(
       (acc, a) => ({
         auth: acc.auth || !!a.addons?.auth,
-        db: acc.db || !!a.addons?.db,
         payments: acc.payments || !!a.addons?.payments,
         seo: acc.seo || !!a.addons?.seo,
       }),
-      { auth: false, db: false, payments: false, seo: false },
+      { auth: false, payments: false, seo: false },
     )
     const isSimple = objective === 'Landing Page' || objective === 'Site Institucional'
     const addons = {
       auth: isSimple ? false : rawAddons.auth,
-      db: isSimple ? false : rawAddons.db,
-      payments: isSimple ? false : rawAddons.payments && tier !== 'intermediate',
+      payments: isSimple ? false : rawAddons.payments,
       seo: rawAddons.seo,
+      social: false,
     }
 
     return { tier, objective, addons }
@@ -167,7 +172,7 @@ export function Step2Quiz() {
   }
 
   const { tier, objective, addons } = computeResult()
-  const activeAddons = (['auth', 'db', 'payments', 'seo'] as const).filter((key) => addons[key])
+  const activeAddons = (['auth', 'payments', 'seo'] as const).filter((key) => addons[key])
 
   return (
     <div className="flex h-full flex-col">
