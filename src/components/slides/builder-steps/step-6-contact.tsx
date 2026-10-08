@@ -6,11 +6,11 @@ import { useTranslation, Trans as Translate } from 'react-i18next'
 import { TermsModal } from '@/ui'
 import { useBuilder } from '@/providers'
 
-interface Step4ContactProps {
+interface Step6ContactProps {
   pegatrouxaRef: React.RefObject<HTMLInputElement | null>
 }
 
-export function Step4Contact({ pegatrouxaRef }: Step4ContactProps) {
+export function Step6Contact({ pegatrouxaRef }: Step6ContactProps) {
   const { t } = useTranslation()
   const { contact, setContact, status, setStatus, setStep, setPlan } = useBuilder()
   const [isModalOpen, setIsModalOpen] = useState(false)

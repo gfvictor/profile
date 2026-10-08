@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { sendEmailAction } from '@/actions'
 import { useBuilder } from '@/providers'
 
-import { Step1Choice, Step2Quiz, Step1Plan, Step2Scope, Step3Addons, Step4Contact } from '@/steps'
+import { Step1Choice, Step2Quiz, Step3Plan, Step4Scope, Step5Addons, Step6Contact } from '@/steps'
 
 export type Plan = 'basic' | 'intermediate' | 'advanced' | 'scale' | null
 
@@ -146,13 +146,13 @@ ${contact.notes || 'Nenhuma observação.'}
       case 2:
         return <Step2Quiz />
       case 3:
-        return <Step1Plan />
+        return <Step3Plan />
       case 4:
-        return <Step2Scope />
+        return <Step4Scope />
       case 5:
-        return <Step3Addons />
+        return <Step5Addons />
       case 6:
-        return <Step4Contact pegatrouxaRef={pegatrouxaRef} />
+        return <Step6Contact pegatrouxaRef={pegatrouxaRef} />
       default:
         return null
     }

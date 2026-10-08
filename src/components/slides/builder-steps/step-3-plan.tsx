@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useBuilder } from '@/providers'
 import type { Plan } from '@/slides'
 
-export function Step1Plan() {
+export function Step3Plan() {
   const { t } = useTranslation()
   const { plan, setPlan, setQuizAccepted } = useBuilder()
 

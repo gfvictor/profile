@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation, Trans as Translate } from 'react-i18next'
 import { useBuilder } from '@/providers'
 
-export function Step2Scope() {
+export function Step4Scope() {
   const { t } = useTranslation()
   const { plan, scope, setScope, quizAccepted } = useBuilder()
 

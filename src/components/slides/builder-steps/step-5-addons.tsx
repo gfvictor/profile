@@ -4,7 +4,7 @@ import { BuilderOption } from '@/ui'
 import { useTranslation, Trans as Translate } from 'react-i18next'
 import { useBuilder } from '@/providers'
 
-export function Step3Addons() {
+export function Step5Addons() {
   const { t } = useTranslation()
   const { plan, scope, addons, setAddons } = useBuilder()
 
