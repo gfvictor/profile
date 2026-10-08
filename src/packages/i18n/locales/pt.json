@@ -130,7 +130,10 @@
           "title": "me ajude a escolher",
           "desc": "responder um quiz rápido"
         },
-        "examples": "ver modelos de exemplo"
+        "examples": "ver modelos de exemplo",
+        "scale": {
+          "cta": "precisa de mais que isso?"
+        }
       },
       "exampleModels": {
         "title": "modelos de exemplo",

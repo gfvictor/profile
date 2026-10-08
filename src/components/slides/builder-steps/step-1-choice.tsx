@@ -31,11 +31,11 @@ function ChoiceButton({
 
 export function Step1Choice() {
   const { t } = useTranslation()
-  const { setStep } = useBuilder()
+  const { setStep, setPlan } = useBuilder()
   const [isExamplesOpen, setIsExamplesOpen] = useState(false)
 
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-8 text-center">
+    <div className="flex h-full flex-col items-center justify-center gap-6 text-center lg:gap-8">
       <h4 className="font-koho text-foreground text-xl lowercase lg:text-2xl">
         {t('slides.builder.choice.title')}
       </h4>
@@ -50,6 +50,22 @@ export function Step1Choice() {
           description={t('slides.builder.choice.help.desc')}
           onClick={() => setStep(2)}
         />
+      </div>
+
+      <div className="flex flex-col items-center gap-1">
+        <button
+          type="button"
+          onClick={() => {
+            setPlan('scale')
+            setStep(6)
+          }}
+          className="text-muted-foreground hover:text-accent font-mono text-[10px] tracking-widest uppercase underline underline-offset-8 transition-colors"
+        >
+          {t('slides.builder.choice.scale.cta')}
+        </button>
+        <span className="text-muted-foreground/50 font-mono text-[9px] lowercase">
+          {t('slides.builder.step1.plans.scale.desc')}
+        </span>
       </div>
 
       <button

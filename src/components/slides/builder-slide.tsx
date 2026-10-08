@@ -18,14 +18,11 @@ export function BuilderSlide() {
   const pegatrouxaRef = useRef<HTMLInputElement>(null)
 
   const nextStep = () => {
-    if (step < 6) {
-      if (step === 3 && plan === 'scale') setStep(6)
-      else setStep(step + 1)
-    }
+    if (step < 6) setStep(step + 1)
   }
   const prevStep = () => {
     if (step > 1) {
-      if (step === 6 && plan === 'scale') setStep(3)
+      if (step === 6 && plan === 'scale') setStep(1)
       else setStep(step - 1)
     }
   }
