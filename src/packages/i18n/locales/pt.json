@@ -146,12 +146,12 @@
         "intermediate": {
           "purpose": "web app — com login, agendamento e histórico do cliente.",
           "siteType": "Web App",
-          "addons": "auth + db"
+          "addons": "cadastro"
         },
         "advanced": {
           "purpose": "loja virtual completa — catálogo, carrinho e checkout.",
           "siteType": "Loja Virtual",
-          "addons": "auth + db + payments"
+          "addons": "cadastro + pagamento"
         }
       },
       "quiz": {

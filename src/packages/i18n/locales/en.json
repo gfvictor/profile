@@ -146,12 +146,12 @@
         "intermediate": {
           "purpose": "a web app — with login, booking and customer history.",
           "siteType": "Web App",
-          "addons": "auth + db"
+          "addons": "auth"
         },
         "advanced": {
           "purpose": "a full online store — catalog, cart and checkout.",
           "siteType": "Online Store",
-          "addons": "auth + db + payments"
+          "addons": "auth + payments"
         }
       },
       "quiz": {
