@@ -18,14 +18,14 @@ export function useSlides() {
         content: <IntroSlide />,
       },
       {
-        id: 'builder',
-        title: 'project planner',
-        content: <BuilderSlide />,
-      },
-      {
         id: 'featured',
         title: 'codifylab',
         content: <FeaturedSlide />,
+      },
+      {
+        id: 'builder',
+        title: 'project planner',
+        content: <BuilderSlide />,
       },
       {
         id: 'workflow',
