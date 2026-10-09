@@ -121,14 +121,8 @@
         "tax": "(IMPOSTO INCL.)"
       },
       "choice": {
-        "title": "como você quer começar?",
-        "know": {
-          "title": "já escolhi o modelo",
-          "desc": "ir direto pra escolha manual"
-        },
         "help": {
-          "title": "me ajude a escolher",
-          "desc": "responder um quiz rápido"
+          "title": "quer ajuda pra escolher?"
         },
         "examples": "ver modelos de exemplo",
         "scale": {
@@ -201,21 +195,14 @@
       },
       "step1": {
         "title": "escolha o plano.",
-        "plans": {
-          "basic": {
-            "desc": "página única com design limpo e direto ao ponto."
-          },
-          "intermediate": {
-            "desc": "múltiplas páginas, com cadastro e pagamento disponíveis."
-          },
-          "advanced": {
-            "desc": "plataforma completa, com equipe e integrações."
-          },
-          "scale": {
-            "desc": "solução de ponta projetada para alta escalabilidade."
-          }
-        },
         "table": {
+          "sessions": {
+            "label": "Seções",
+            "basic": "4 seções",
+            "intermediate": "7 seções",
+            "advanced": "sob medida"
+          },
+          "integrations": "Integrações",
           "access": "Acesso",
           "access_solo": "solo",
           "access_team": "admin + equipe",
@@ -229,10 +216,8 @@
           "Landing Page": "Landing Page",
           "Site Institucional": "Site Institucional",
           "Web App": "Web App",
-          "Loja Virtual": "Loja Virtual",
-          "Outro": "Outro"
+          "Loja Virtual": "Loja Virtual"
         },
-        "custom_objective_placeholder": "descreva sua visão...",
         "colors_label": "Cores e Intenção da Marca",
         "colors_placeholder": "ex: preto e amarelo, visual minimalista...",
         "assets_alert": "A criação de assets exige design sob medida. Isso implica em <0>acréscimo de custos e dias</0> ao prazo de entrega.",
@@ -242,11 +227,12 @@
         "btn_create": "CRIAR"
       },
       "step3": {
-        "title": "adicionais do sistema.",
+        "title": "funcionalidades do site.",
         "included_card": {
+          "site": "SITE PROFISSIONAL",
           "qr": "APP DE GERENCIAMENTO DEDICADO INCLUSO",
           "hosting": "HOSPEDAGEM GERENCIADA",
-          "price": "[¥4.000/MÊS]"
+          "price": "[¥4.400/MÊS - IMPOSTO INCL.]"
         },
         "addons": {
           "auth": {
@@ -259,7 +245,7 @@
           },
           "seo": {
             "title": "Visibilidade",
-            "desc": "seu site pronto pro google."
+            "desc": "seu site pronto para pesquisas no google."
           },
           "social": {
             "title": "Social",

@@ -12,7 +12,7 @@ import React, {
 import { sendGAEvent } from '@/lib'
 import { Plan } from '@/slides'
 
-const BUILDER_STEP_NAMES = ['choice', 'quiz', 'plan', 'scope', 'addons', 'contact'] as const
+const BUILDER_STEP_NAMES = ['plan', 'quiz', 'addons', 'scope', 'contact'] as const
 
 interface Addons {
   auth: boolean
@@ -23,7 +23,6 @@ interface Addons {
 
 interface Scope {
   objective: string
-  customObjective: string
   colors: string
   hasLogo: boolean
   hasImages: boolean
@@ -51,6 +50,25 @@ export interface QuizState {
 }
 
 const initialQuizState: QuizState = { questionIndex: 0, answers: [], showResult: false }
+
+export function getPlanObjectives(plan: Plan): string[] {
+  return plan === 'basic'
+    ? ['Landing Page']
+    : plan === 'intermediate'
+      ? ['Landing Page', 'Site Institucional', 'Web App', 'Loja Virtual']
+      : ['Landing Page', 'Site Institucional', 'Web App', 'Loja Virtual']
+}
+
+export function getAvailableObjectives(plan: Plan, addons: Addons): string[] {
+  const needsSystem = addons.auth || addons.payments || addons.social
+
+  return getPlanObjectives(plan).filter((obj) => {
+    if (obj === 'Landing Page') return !needsSystem
+    if (obj === 'Site Institucional') return !addons.social
+    if (obj === 'Loja Virtual') return addons.payments
+    return true
+  })
+}
 
 interface BuilderContextType {
   step: number
@@ -87,7 +105,6 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   })
   const [scope, setScope] = useState<Scope>({
     objective: '',
-    customObjective: '',
     colors: '',
     hasLogo: true,
     hasImages: true,
@@ -112,7 +129,6 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
     setAddons({ auth: false, payments: false, seo: false, social: false })
     setScope({
       objective: '',
-      customObjective: '',
       colors: '',
       hasLogo: true,
       hasImages: true,
@@ -143,10 +159,7 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
       if (plan === 'basic' && prev.objective !== 'Landing Page') {
         return { ...prev, objective: 'Landing Page' }
       }
-      if (
-        plan === 'intermediate' &&
-        !['Landing Page', 'Site Institucional', 'Web App'].includes(prev.objective)
-      ) {
+      if (plan === 'intermediate' && !getPlanObjectives(plan).includes(prev.objective)) {
         return { ...prev, objective: 'Site Institucional' }
       }
       return prev
@@ -163,11 +176,13 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setAddons((prev) => {
       const next = { ...prev }
-      const isSimple =
-        scope.objective === 'Landing Page' || scope.objective === 'Site Institucional'
-      if (isSimple) {
+      if (scope.objective === 'Landing Page') {
         next.auth = false
         next.payments = false
+        next.social = false
+      }
+      if (scope.objective === 'Site Institucional') {
+        next.social = false
       }
       if (plan !== 'advanced') {
         next.social = false
@@ -175,6 +190,15 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
       return next
     })
   }, [scope.objective, plan])
+
+  useEffect(() => {
+    setScope((prev) => {
+      if (prev.objective && !getAvailableObjectives(plan, addons).includes(prev.objective)) {
+        return { ...prev, objective: '' }
+      }
+      return prev
+    })
+  }, [addons, plan])
 
   return (
     <BuilderContext.Provider

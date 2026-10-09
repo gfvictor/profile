@@ -121,14 +121,8 @@
         "tax": "(TAX INCLUDED)"
       },
       "choice": {
-        "title": "how do you want to start?",
-        "know": {
-          "title": "i've already picked a model",
-          "desc": "go straight to manual selection"
-        },
         "help": {
-          "title": "help me choose",
-          "desc": "answer a quick quiz"
+          "title": "help me choose"
         },
         "examples": "view example models",
         "scale": {
@@ -201,21 +195,14 @@
       },
       "step1": {
         "title": "select foundation.",
-        "plans": {
-          "basic": {
-            "desc": "single-page with a clean and straight-to-the-point design."
-          },
-          "intermediate": {
-            "desc": "multiple pages, with accounts and payments available."
-          },
-          "advanced": {
-            "desc": "complete platform, with team access and integrations."
-          },
-          "scale": {
-            "desc": "cutting-edge solution designed for high scalability."
-          }
-        },
         "table": {
+          "sessions": {
+            "label": "Sections",
+            "basic": "4 sections",
+            "intermediate": "7 sections",
+            "advanced": "tailored"
+          },
+          "integrations": "Integrations",
           "access": "Access",
           "access_solo": "solo",
           "access_team": "admin + team",
@@ -229,10 +216,8 @@
           "Landing Page": "Landing Page",
           "Site Institucional": "Corporate Site",
           "Web App": "Web App",
-          "Loja Virtual": "E-Commerce",
-          "Outro": "Other"
+          "Loja Virtual": "E-Commerce"
         },
-        "custom_objective_placeholder": "describe your vision...",
         "colors_label": "Colors and Brand Intention",
         "colors_placeholder": "e.g.: black and yellow, minimalist look...",
         "assets_alert": "Asset creation requires bespoke design. This implies <0>additional costs and days</0> to the delivery time.",
@@ -242,11 +227,12 @@
         "btn_create": "CREATE"
       },
       "step3": {
-        "title": "system add-ons.",
+        "title": "site features.",
         "included_card": {
+          "site": "PROFESSIONAL WEBSITE",
           "qr": "DEDICATED MANAGEMENT APP INCLUDED",
           "hosting": "MANAGED HOSTING",
-          "price": "[¥4,000/MO]"
+          "price": "[¥4,400/MO - TAX INCLUDED]"
         },
         "addons": {
           "auth": {
@@ -259,7 +245,7 @@
           },
           "seo": {
             "title": "SEO",
-            "desc": "appear in google search results."
+            "desc": "your site ready for google searches."
           },
           "social": {
             "title": "Social",

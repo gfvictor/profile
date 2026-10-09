@@ -1,39 +1,24 @@
 'use client'
 
-import { BuilderOption } from '@/ui'
+import { BuilderOption, IncludedCard } from '@/ui'
 import { useTranslation, Trans as Translate } from 'react-i18next'
 import { useBuilder } from '@/providers'
 
-export function Step5Addons() {
+export function Step3Addons() {
   const { t } = useTranslation()
-  const { plan, scope, addons, setAddons } = useBuilder()
+  const { plan, addons, setAddons } = useBuilder()
 
   return (
     <div className="flex flex-col gap-4">
       <h4 className="font-koho text-foreground mb-2 text-xl lowercase lg:mb-4 lg:text-2xl">
         {t('slides.builder.step3.title')}
       </h4>
-      <div className="border-accent/30 bg-accent/5 flex items-center justify-center border p-2 text-center lg:p-3">
-        <span className="text-foreground font-mono text-[8px] font-bold tracking-widest uppercase lg:text-[10px]">
-          {t('slides.builder.step3.included_card.qr')}
-          <br />
-          +
-          <br />
-          {t('slides.builder.step3.included_card.hosting')}{' '}
-          <span className="text-muted-foreground/80 font-medium">
-            {t('slides.builder.step3.included_card.price')}
-          </span>
-        </span>
-      </div>
+      <IncludedCard />
 
       <div className="grid grid-cols-2 gap-2 lg:gap-4">
         {(['auth', 'payments', 'seo', 'social'] as const).map((addon) => {
-          const isSimpleObjective =
-            scope.objective === 'Landing Page' || scope.objective === 'Site Institucional'
           const isDisabled =
-            addon === 'social'
-              ? plan !== 'advanced'
-              : (plan === 'basic' && addon !== 'seo') || (isSimpleObjective && addon !== 'seo')
+            addon === 'social' ? plan !== 'advanced' : plan === 'basic' && addon !== 'seo'
 
           return (
             <BuilderOption
@@ -57,7 +42,7 @@ export function Step5Addons() {
         })}
       </div>
 
-      <div className="text-muted-foreground/60 mt-1 text-center font-mono text-[8px] lowercase lg:mt-2 lg:text-[10px]">
+      <div className="text-muted-foreground/60 mt-1 text-center font-mono text-[10px] lowercase lg:mt-2 lg:text-[10px]">
         <Translate
           i18nKey="slides.builder.step3.payments_warning"
           components={[

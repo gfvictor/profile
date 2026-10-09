@@ -7,24 +7,35 @@ import { useTranslation } from 'react-i18next'
 import { sendEmailAction } from '@/actions'
 import { useBuilder } from '@/providers'
 
-import { Step1Choice, Step2Quiz, Step3Plan, Step4Scope, Step5Addons, Step6Contact } from '@/steps'
+import { Step1Plan, Step2Quiz, Step3Addons, Step4Scope, Step5Contact } from '@/steps'
 
 export type Plan = 'basic' | 'intermediate' | 'advanced' | 'scale' | null
 
 export function BuilderSlide() {
   const { t } = useTranslation()
-  const { step, setStep, plan, addons, scope, contact, status, setStatus } = useBuilder()
+  const { step, setStep, plan, addons, scope, contact, status, setStatus, quizAccepted } =
+    useBuilder()
 
   const pegatrouxaRef = useRef<HTMLInputElement>(null)
 
   const nextStep = () => {
-    if (step < 6) setStep(step + 1)
+    if (step === 1) {
+      setStep(3)
+      return
+    }
+    if (step < 5) setStep(step + 1)
   }
   const prevStep = () => {
-    if (step > 1) {
-      if (step === 6 && plan === 'scale') setStep(1)
-      else setStep(step - 1)
+    if (step === 1) return
+    if (step === 5 && plan === 'scale') {
+      setStep(1)
+      return
     }
+    if (step === 3) {
+      setStep(quizAccepted ? 2 : 1)
+      return
+    }
+    setStep(step - 1)
   }
 
   const submitRequest = async () => {
@@ -56,7 +67,7 @@ Add-ons:
 - Social: ${addons.social ? 'Sim' : 'Não'}
 
 Escopo:
-- Objetivo: ${scope.objective} ${scope.objective === 'Outro' ? `(${scope.customObjective})` : ''}
+- Objetivo: ${scope.objective}
 - Cores: ${scope.colors || 'N/A'}
 - Possui Logo: ${scope.hasLogo ? 'Sim' : 'Não (Precisa Criar)'}
 - Possui Imagens: ${scope.hasImages ? 'Sim' : 'Não (Precisa Criar)'}
@@ -139,17 +150,15 @@ ${contact.notes || 'Nenhuma observação.'}
   const renderStepContent = () => {
     switch (step) {
       case 1:
-        return <Step1Choice />
+        return <Step1Plan />
       case 2:
         return <Step2Quiz />
       case 3:
-        return <Step3Plan />
+        return <Step3Addons />
       case 4:
         return <Step4Scope />
       case 5:
-        return <Step5Addons />
-      case 6:
-        return <Step6Contact pegatrouxaRef={pegatrouxaRef} />
+        return <Step5Contact pegatrouxaRef={pegatrouxaRef} />
       default:
         return null
     }
@@ -181,7 +190,7 @@ ${contact.notes || 'Nenhuma observação.'}
         <div className="flex h-full w-full flex-col lg:order-1 lg:w-7/12">
           <div className="mb-6 flex items-center justify-between lg:mb-8">
             <div className="text-foreground font-mono text-[10px] font-bold tracking-widest uppercase lg:text-sm">
-              {t('slides.builder.step')} {step} <span className="text-accent">/</span> 6
+              {t('slides.builder.step')} {step} <span className="text-accent">/</span> 5
             </div>
             <h3 className="slide-eyebrow !mb-0 text-right">
               {t('slides.builder.eyebrow')}
@@ -230,7 +239,7 @@ ${contact.notes || 'Nenhuma observação.'}
             </AnimatePresence>
 
             <AnimatePresence>
-              {step >= 3 && (
+              {step !== 2 && (
                 <motion.div
                   key="step-nav"
                   initial={{ opacity: 0, y: 10 }}
@@ -240,16 +249,18 @@ ${contact.notes || 'Nenhuma observação.'}
                   className="border-border flex items-center justify-end border-t pt-2 lg:pt-6"
                 >
                   <div className="flex gap-4">
-                    <button
-                      className="text-muted-foreground hover:text-foreground font-mono text-xs font-bold tracking-widest uppercase transition-colors"
-                      onClick={prevStep}
-                    >
-                      {t('slides.builder.buttons.back')}
-                    </button>
-                    {step < 6 ? (
+                    {step > 1 && (
                       <button
-                        disabled={(step === 3 && !plan) || (step === 4 && !scope.objective)}
-                        className="border-accent text-accent hover:bg-accent disabled:border-border disabled:text-muted-foreground hover:text-background border px-6 py-2 font-mono text-xs font-bold tracking-widest uppercase transition-colors disabled:bg-transparent"
+                        className="text-muted-foreground hover:text-foreground font-mono text-xs font-bold tracking-widest uppercase transition-colors"
+                        onClick={prevStep}
+                      >
+                        {t('slides.builder.buttons.back')}
+                      </button>
+                    )}
+                    {step < 5 ? (
+                      <button
+                        disabled={(step === 1 && !plan) || (step === 4 && !scope.objective)}
+                        className="border-accent text-accent hover:bg-accent disabled:border-border disabled:text-muted-foreground hover:text-background border px-6 py-2 font-mono text-xs font-bold tracking-widest uppercase transition-colors disabled:bg-transparent disabled:opacity-40"
                         onClick={nextStep}
                       >
                         {t('slides.builder.buttons.next')}

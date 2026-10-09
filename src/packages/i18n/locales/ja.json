@@ -121,14 +121,8 @@
         "tax": "(税込)"
       },
       "choice": {
-        "title": "どのように始めますか?",
-        "know": {
-          "title": "モデルはもう決めた",
-          "desc": "手動選択に進む"
-        },
         "help": {
-          "title": "選び方を手伝ってほしい",
-          "desc": "簡単な質問に答える"
+          "title": "選び方を手伝ってほしい"
         },
         "examples": "サンプルを見る",
         "scale": {
@@ -198,21 +192,14 @@
       },
       "step1": {
         "title": "ベースを選択.",
-        "plans": {
-          "basic": {
-            "desc": "クリーンで要点を押さえたシングルページ。"
-          },
-          "intermediate": {
-            "desc": "複数ページ構成。アカウントと決済も利用可能。"
-          },
-          "advanced": {
-            "desc": "完全なプラットフォーム。チームアクセスと外部連携付き。"
-          },
-          "scale": {
-            "desc": "高いスケーラビリティを重視した最先端のソリューション。"
-          }
-        },
         "table": {
+          "sessions": {
+            "label": "セクション数",
+            "basic": "4セクション",
+            "intermediate": "7セクション",
+            "advanced": "オーダーメイド"
+          },
+          "integrations": "外部連携",
           "access": "アクセス",
           "access_solo": "ソロ",
           "access_team": "管理者 + チーム",
@@ -226,10 +213,8 @@
           "Landing Page": "ランディングページ",
           "Site Institucional": "コーポレートサイト",
           "Web App": "Webアプリ",
-          "Loja Virtual": "ECサイト",
-          "Outro": "その他"
+          "Loja Virtual": "ECサイト"
         },
-        "custom_objective_placeholder": "ビジョンを説明してください...",
         "colors_label": "カラーとブランドの意図",
         "colors_placeholder": "例：黒と黄色、ミニマリストな外観...",
         "assets_alert": "アセット作成には専用のデザインが必要です。これにより、納期に<0>追加費用と日数が加算</0>されます。",
@@ -239,11 +224,12 @@
         "btn_create": "作成する"
       },
       "step3": {
-        "title": "システムアドオン.",
+        "title": "サイトの機能.",
         "included_card": {
+          "site": "本格的なウェブサイト",
           "qr": "専用管理アプリ 込み",
           "hosting": "マネージドホスティング",
-          "price": "[¥4,000/月]"
+          "price": "[¥4,400/月 - 税込]"
         },
         "addons": {
           "auth": {
@@ -256,7 +242,7 @@
           },
           "seo": {
             "title": "SEO",
-            "desc": "Googleの検索結果に表示されるようにします。"
+            "desc": "Google検索に対応したサイトに。"
           },
           "social": {
             "title": "Social",
