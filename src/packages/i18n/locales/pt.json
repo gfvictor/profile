@@ -100,7 +100,7 @@
         "next": "AVANÇAR",
         "back": "VOLTAR",
         "restart": "COMEÇAR DE NOVO",
-        "send": "ENVIAR PEDIDO",
+        "send": "ENVIAR",
         "sending": "ENVIANDO...",
         "success": "ENVIADO!"
       },
@@ -117,20 +117,17 @@
         "tbd": "A definir",
         "work_days": "dias úteis",
         "awaiting": "Aguardando parâmetros...",
-        "tier": "tier",
+        "tier": "plano",
         "tax": "(IMPOSTO INCL.)"
       },
       "choice": {
-        "title": "como você quer começar?",
-        "know": {
-          "title": "já escolhi o modelo",
-          "desc": "ir direto pra escolha manual"
-        },
         "help": {
-          "title": "me ajude a escolher",
-          "desc": "responder um quiz rápido"
+          "title": "quer ajuda pra escolher?"
         },
-        "examples": "ver modelos de exemplo"
+        "examples": "ver modelos de exemplo",
+        "scale": {
+          "cta": "precisa de mais que isso?"
+        }
       },
       "exampleModels": {
         "title": "modelos de exemplo",
@@ -184,10 +181,10 @@
           "c": { "title": "sim, compra ou pagamento", "desc": "loja online" }
         },
         "q3": {
-          "title": "qual seu momento agora?",
-          "a": { "title": "testando uma ideia", "desc": "quero validar rápido" },
-          "b": { "title": "negócio já rodando", "desc": "quero presença mais forte" },
-          "c": { "title": "operação estabelecida", "desc": "preciso de algo robusto" }
+          "title": "só você vai usar o sistema, ou tem equipe?",
+          "a": { "title": "só eu", "desc": "cadastro único, sem complicação" },
+          "b": { "title": "eu + equipe", "desc": "preciso de múltiplos acessos" },
+          "c": { "title": "preciso integrar outro sistema", "desc": "ex: pdv, erp que já uso" }
         },
         "q4": {
           "title": "o que o site precisa fazer?",
@@ -197,76 +194,20 @@
         }
       },
       "step1": {
-        "title": "escolha a base.",
-        "plans": {
-          "basic": {
-            "desc": "página única com design limpo e direto ao ponto.",
-            "specs": [
-              {
-                "title": "Landing page estática rápida",
-                "desc": "ideal para testar ideias e capturar contatos."
-              },
-              {
-                "title": "Design responsivo e dinâmico",
-                "desc": "funciona perfeitamente em qualquer dispositivo."
-              },
-              {
-                "title": "Hospedagem em Cloud otimizada",
-                "desc": "carregamento ultra-rápido para não perder visitas."
-              }
-            ]
+        "title": "escolha o plano.",
+        "table": {
+          "sessions": {
+            "label": "Seções",
+            "basic": "4 seções",
+            "intermediate": "7 seções",
+            "advanced": "sob medida"
           },
-          "intermediate": {
-            "desc": "múltiplas páginas para apresentar o negócio.",
-            "specs": [
-              {
-                "title": "Até 5 páginas institucionais",
-                "desc": "base digital sólida para a apresentação da marca."
-              },
-              {
-                "title": "Sessão de Portfólio / Blog",
-                "desc": "apresente seu trabalho ou engaje com conteúdo."
-              },
-              {
-                "title": "Animações e micro-interações",
-                "desc": "detalhes visuais que elevam a percepção de valor."
-              }
-            ]
-          },
-          "advanced": {
-            "desc": "plataforma completa com painel administrativo.",
-            "specs": [
-              {
-                "title": "Plataforma robusta [Full-Stack]",
-                "desc": "sistema administrativo completo para gerenciamento."
-              },
-              {
-                "title": "Integração de APIs e Sistemas",
-                "desc": "integra ferramentas e processos de terceiros."
-              },
-              {
-                "title": "Escalabilidade e Performance",
-                "desc": "arquitetura pronta para receber alto volume de tráfego."
-              }
-            ]
-          },
-          "scale": {
-            "desc": "solução de ponta projetada para alta escalabilidade.",
-            "specs": [
-              {
-                "title": "Arquitetura feita sob medida",
-                "desc": "sistemas e infraestrutura desenhados para o seu escopo."
-              },
-              {
-                "title": "UX/UI Design exclusivo",
-                "desc": "visual focado totalmente na marca e audiência."
-              },
-              {
-                "title": "Consultoria técnica",
-                "desc": "acompanhamento lado a lado nas decisões arquiteturais."
-              }
-            ]
-          }
+          "integrations": "Integrações",
+          "access": "Acesso",
+          "access_solo": "solo",
+          "access_team": "admin + equipe",
+          "select": "selecionar",
+          "legend": "✓ = disponível como add-on (pago à parte)"
         }
       },
       "step2": {
@@ -275,10 +216,8 @@
           "Landing Page": "Landing Page",
           "Site Institucional": "Site Institucional",
           "Web App": "Web App",
-          "Loja Virtual": "Loja Virtual",
-          "Outro": "Outro"
+          "Loja Virtual": "Loja Virtual"
         },
-        "custom_objective_placeholder": "descreva sua visão...",
         "colors_label": "Cores e Intenção da Marca",
         "colors_placeholder": "ex: preto e amarelo, visual minimalista...",
         "assets_alert": "A criação de assets exige design sob medida. Isso implica em <0>acréscimo de custos e dias</0> ao prazo de entrega.",
@@ -288,32 +227,33 @@
         "btn_create": "CRIAR"
       },
       "step3": {
-        "title": "adicionais do sistema.",
+        "title": "funcionalidades do site.",
         "included_card": {
+          "site": "SITE PROFISSIONAL",
           "qr": "APP DE GERENCIAMENTO DEDICADO INCLUSO",
           "hosting": "HOSPEDAGEM GERENCIADA",
-          "price": "[¥4.000/MÊS]"
+          "price": "[¥4.400/MÊS - IMPOSTO INCL.]"
         },
         "addons": {
           "auth": {
-            "title": "Auth",
-            "desc": "permitir que usuários criem contas."
-          },
-          "db": {
-            "title": "Database",
-            "desc": "guardar informações com segurança."
+            "title": "Cadastro",
+            "desc": "cliente cria login pra agendar e ver o histórico."
           },
           "payments": {
-            "title": "Payments",
-            "desc": "receber pagamentos online."
+            "title": "Pagamento",
+            "desc": "cliente paga direto pelo site (stripe ou square)."
           },
           "seo": {
-            "title": "SEO",
-            "desc": "aparecer nos resultados do google."
+            "title": "Visibilidade",
+            "desc": "seu site pronto para pesquisas no google."
+          },
+          "social": {
+            "title": "Social",
+            "desc": "posts automáticos pra divulgar seu catálogo."
           }
         },
-        "auth_warning": "* sistemas com <0>auth</0> requerem obrigatoriamente a infra de <1>database</1>.",
-        "payments_warning": "* integração de <0>pagamentos (Stripe e Square)</0> requer <1>auth</1> e <2>database</2>."
+        "payments_warning": "* <0>pagamento</0> requer <1>cadastro</1>.",
+        "social_warning": "* <0>social</0> disponível só no plano advanced."
       },
       "step4": {
         "title": "finalizar solicitação.",

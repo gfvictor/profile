@@ -12,18 +12,17 @@ import React, {
 import { sendGAEvent } from '@/lib'
 import { Plan } from '@/slides'
 
-const BUILDER_STEP_NAMES = ['choice', 'quiz', 'plan', 'scope', 'addons', 'contact'] as const
+const BUILDER_STEP_NAMES = ['plan', 'quiz', 'addons', 'scope', 'contact'] as const
 
 interface Addons {
   auth: boolean
-  db: boolean
   payments: boolean
   seo: boolean
+  social: boolean
 }
 
 interface Scope {
   objective: string
-  customObjective: string
   colors: string
   hasLogo: boolean
   hasImages: boolean
@@ -40,7 +39,8 @@ interface Contact {
 export interface QuizAnswer {
   tier?: Exclude<Plan, null | 'scale'>
   objective?: string
-  addons?: { auth?: boolean; db?: boolean; payments?: boolean; seo?: boolean }
+  addons?: { auth?: boolean; payments?: boolean; seo?: boolean }
+  forceAdvanced?: boolean
 }
 
 export interface QuizState {
@@ -50,6 +50,25 @@ export interface QuizState {
 }
 
 const initialQuizState: QuizState = { questionIndex: 0, answers: [], showResult: false }
+
+export function getPlanObjectives(plan: Plan): string[] {
+  return plan === 'basic'
+    ? ['Landing Page']
+    : plan === 'intermediate'
+      ? ['Landing Page', 'Site Institucional', 'Web App', 'Loja Virtual']
+      : ['Landing Page', 'Site Institucional', 'Web App', 'Loja Virtual']
+}
+
+export function getAvailableObjectives(plan: Plan, addons: Addons): string[] {
+  const needsSystem = addons.auth || addons.payments || addons.social
+
+  return getPlanObjectives(plan).filter((obj) => {
+    if (obj === 'Landing Page') return !needsSystem
+    if (obj === 'Site Institucional') return !addons.social
+    if (obj === 'Loja Virtual') return addons.payments
+    return true
+  })
+}
 
 interface BuilderContextType {
   step: number
@@ -80,13 +99,12 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useState<Plan>(null)
   const [addons, setAddons] = useState<Addons>({
     auth: false,
-    db: false,
     payments: false,
     seo: false,
+    social: false,
   })
   const [scope, setScope] = useState<Scope>({
     objective: '',
-    customObjective: '',
     colors: '',
     hasLogo: true,
     hasImages: true,
@@ -108,10 +126,9 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   const resetBuilder = useCallback(() => {
     setStep(1)
     setPlan(null)
-    setAddons({ auth: false, db: false, payments: false, seo: false })
+    setAddons({ auth: false, payments: false, seo: false, social: false })
     setScope({
       objective: '',
-      customObjective: '',
       colors: '',
       hasLogo: true,
       hasImages: true,
@@ -142,10 +159,7 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
       if (plan === 'basic' && prev.objective !== 'Landing Page') {
         return { ...prev, objective: 'Landing Page' }
       }
-      if (
-        plan === 'intermediate' &&
-        !['Landing Page', 'Site Institucional', 'Web App'].includes(prev.objective)
-      ) {
+      if (plan === 'intermediate' && !getPlanObjectives(plan).includes(prev.objective)) {
         return { ...prev, objective: 'Site Institucional' }
       }
       return prev
@@ -155,23 +169,36 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
       setAddons(pendingQuizAddonsRef.current)
       pendingQuizAddonsRef.current = null
     } else {
-      setAddons({ auth: false, db: false, payments: false, seo: false })
+      setAddons({ auth: false, payments: false, seo: false, social: false })
     }
   }, [plan])
 
   useEffect(() => {
     setAddons((prev) => {
       const next = { ...prev }
-      const isSimple =
-        scope.objective === 'Landing Page' || scope.objective === 'Site Institucional'
-      if (isSimple) {
+      if (scope.objective === 'Landing Page') {
         next.auth = false
-        next.db = false
         next.payments = false
+        next.social = false
+      }
+      if (scope.objective === 'Site Institucional') {
+        next.social = false
+      }
+      if (plan !== 'advanced') {
+        next.social = false
       }
       return next
     })
-  }, [scope.objective])
+  }, [scope.objective, plan])
+
+  useEffect(() => {
+    setScope((prev) => {
+      if (prev.objective && !getAvailableObjectives(plan, addons).includes(prev.objective)) {
+        return { ...prev, objective: '' }
+      }
+      return prev
+    })
+  }, [addons, plan])
 
   return (
     <BuilderContext.Provider

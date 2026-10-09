@@ -25,6 +25,8 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 25.625rem;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -61,7 +63,8 @@
 
 @layer components {
   .slide-container {
-    @apply relative flex h-full w-full flex-col items-end overflow-hidden px-6 pt-[15svh] pb-6 text-right;
+    @apply relative flex h-full w-full flex-col items-end overflow-hidden px-6 pt-[8svh] pb-6 text-right;
+    @apply xs:pt-[15svh];
     @apply sm:px-20;
     @apply lg:px-12 lg:pt-[25svh] lg:pb-12;
     @apply xl:px-24 xl:pt-[25svh] xl:pb-24;
