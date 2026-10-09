@@ -146,12 +146,12 @@
         "intermediate": {
           "purpose": "ウェブアプリ — ログイン、予約、利用履歴付き。",
           "siteType": "ウェブアプリ",
-          "addons": "認証 + DB"
+          "addons": "Auth"
         },
         "advanced": {
           "purpose": "本格的なオンラインストア — カタログ、カート、決済まで。",
           "siteType": "オンラインストア",
-          "addons": "認証 + DB + 決済"
+          "addons": "Auth + Payments"
         }
       },
       "quiz": {
