@@ -125,7 +125,7 @@ export function Step5Contact({ pegatrouxaRef }: Step5ContactProps) {
             id="builder-terms"
             checked={contact.terms}
             onChange={(e) => setContact((prev) => ({ ...prev, terms: e.target.checked }))}
-            className="accent-accent h-3 w-3 cursor-pointer"
+            className="accent-accent h-4 w-4 cursor-pointer"
           />
           <label
             htmlFor="builder-terms"
