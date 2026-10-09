@@ -100,7 +100,7 @@
         "next": "NEXT",
         "back": "BACK",
         "restart": "START OVER",
-        "send": "SEND REQUEST",
+        "send": "SEND",
         "sending": "SENDING...",
         "success": "SENT!"
       },
