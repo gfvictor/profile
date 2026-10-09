@@ -2,18 +2,14 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation, Trans as Translate } from 'react-i18next'
-import { useBuilder } from '@/providers'
+import { useBuilder, getPlanObjectives, getAvailableObjectives } from '@/providers'
 
-export function Step2Scope() {
+export function Step4Scope() {
   const { t } = useTranslation()
-  const { plan, scope, setScope, quizAccepted } = useBuilder()
+  const { plan, scope, setScope, addons, quizAccepted } = useBuilder()
 
-  const availableObjs =
-    plan === 'basic'
-      ? ['Landing Page']
-      : plan === 'intermediate'
-        ? ['Landing Page', 'Site Institucional', 'Web App']
-        : ['Landing Page', 'Site Institucional', 'Web App', 'Loja Virtual', 'Outro']
+  const allObjs = getPlanObjectives(plan)
+  const availableObjs = getAvailableObjectives(plan, addons)
 
   return (
     <div className="flex flex-col gap-2 lg:gap-6">
@@ -24,41 +20,29 @@ export function Step2Scope() {
       {!quizAccepted && (
         <div className="flex flex-col">
           <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-4">
-            {availableObjs.map((obj) => (
-              <button
-                key={t(`slides.builder.step2.objectives.${obj}`)}
-                onClick={() => setScope((prev) => ({ ...prev, objective: obj }))}
-                className={`border p-2 font-mono text-[9px] uppercase transition-colors sm:p-2.5 sm:text-[10px] lg:p-3 lg:text-[10px] ${
-                  scope.objective === obj
-                    ? 'border-accent bg-accent/10 text-accent'
-                    : 'border-border text-muted-foreground hover:border-accent/50'
-                }`}
-              >
-                {t(`slides.builder.step2.objectives.${obj}`)}
-              </button>
-            ))}
+            {allObjs.map((obj) => {
+              const isDisabled = !availableObjs.includes(obj)
+              return (
+                <button
+                  key={t(`slides.builder.step2.objectives.${obj}`)}
+                  onClick={() => {
+                    if (isDisabled) return
+                    setScope((prev) => ({ ...prev, objective: obj }))
+                  }}
+                  disabled={isDisabled}
+                  className={`border p-2 font-mono text-[9px] uppercase transition-colors sm:p-2.5 sm:text-[10px] lg:p-3 lg:text-[10px] ${
+                    scope.objective === obj
+                      ? 'border-accent bg-accent/10 text-accent'
+                      : isDisabled
+                        ? 'border-border/40 text-muted-foreground/40 cursor-not-allowed'
+                        : 'border-border text-muted-foreground hover:border-accent/50'
+                  }`}
+                >
+                  {t(`slides.builder.step2.objectives.${obj}`)}
+                </button>
+              )
+            })}
           </div>
-
-          <AnimatePresence>
-            {scope.objective === 'Outro' && (
-              <motion.div
-                initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                animate={{ opacity: 1, height: 'auto', marginTop: 4 }}
-                exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-                className="overflow-hidden"
-              >
-                <textarea
-                  placeholder={t('slides.builder.step2.custom_objective_placeholder')}
-                  value={scope.customObjective}
-                  onChange={(e) =>
-                    setScope((prev) => ({ ...prev, customObjective: e.target.value }))
-                  }
-                  className="border-border bg-background/50 focus:border-accent placeholder:font-koho placeholder:text-muted-foreground/50 h-12 w-full resize-none border p-2 font-mono text-[10px] transition-colors outline-none placeholder:text-xs placeholder:lowercase sm:text-xs lg:h-20 lg:text-xs"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       )}
 

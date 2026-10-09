@@ -39,7 +39,7 @@ export function FeaturedSlide() {
           />
         </h3>
 
-        <div className="relative">
+        <div className="xs:mx-0 relative -mx-2">
           <motion.div
             initial={{ opacity: 0, x: -10, y: -4 }}
             animate={{ opacity: 1, x: 0, y: [0, -4, 0] }}
@@ -48,7 +48,7 @@ export function FeaturedSlide() {
               x: { duration: 0.6, delay: 0.6, ease: 'easeOut' },
               y: { duration: 2.4, delay: 0.6, repeat: Infinity, ease: 'easeInOut' },
             }}
-            className="text-accent absolute -top-4 left-0 flex items-start gap-1 font-mono text-[10px] font-bold tracking-widest whitespace-nowrap uppercase sm:-top-5"
+            className="text-accent xs:left-0 absolute -top-4 left-2 flex items-start gap-1 font-mono text-[10px] font-bold tracking-widest whitespace-nowrap uppercase sm:-top-5"
           >
             <CornerLeftDown className="h-3.5 w-3.5" />
             <span className="-mt-1">{t('slides.codifylab.testCta')}</span>
@@ -58,7 +58,7 @@ export function FeaturedSlide() {
             initial={{ opacity: 0, x: 15 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, ease: 'linear' }}
-            className="text-foreground mb-4 text-xl font-medium tracking-tight sm:text-2xl lg:mb-6 lg:max-w-2xl lg:text-3xl"
+            className="xs:mb-4 xs:whitespace-normal text-foreground mb-2 text-xl font-medium tracking-tight whitespace-nowrap sm:text-2xl lg:mb-6 lg:max-w-2xl lg:text-3xl"
           >
             <a
               href={TESTER_URL}
@@ -72,7 +72,7 @@ export function FeaturedSlide() {
                 width={720}
                 height={180}
                 unoptimized
-                className="inline-block h-9 w-auto -translate-y-[4px]"
+                className="xs:h-9 xs:-translate-y-[4px] inline-block h-8 w-auto -translate-y-[3px]"
               />
             </a>
             {t('slides.codifylab.headline_suffix')}
@@ -93,7 +93,7 @@ export function FeaturedSlide() {
           />
         </motion.p>
 
-        <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-2xl">
+        <div className="xs:max-w-[320px] relative w-full max-w-[250px] sm:max-w-md lg:max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -107,13 +107,13 @@ export function FeaturedSlide() {
             <motion.div
               animate={{ x: ['0%', '-33.333333%'] }}
               transition={{ duration: 25, ease: 'linear', repeat: Infinity }}
-              className="flex w-max gap-8 py-4 pr-8"
+              className="xs:gap-8 xs:py-4 xs:pr-8 flex w-max gap-4 py-2 pr-4"
             >
               {duplicatedImages.map((img, idx) => (
                 <div
                   key={idx}
                   onClick={() => setLightboxIndex(idx % images.length)}
-                  className="border-border/30 bg-muted/40 relative aspect-[4/5] w-[140px] shrink-0 cursor-pointer overflow-hidden rounded-md border shadow-sm lg:w-[180px]"
+                  className="border-border/30 bg-muted/40 xs:w-[140px] relative aspect-[4/5] w-[105px] shrink-0 cursor-pointer overflow-hidden rounded-md border shadow-sm lg:w-[180px]"
                 >
                   <div
                     className="absolute inset-0 m-0 bg-cover bg-center bg-no-repeat"

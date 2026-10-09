@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { useBuilder, type QuizAnswer } from '@/providers'
+import { useBuilder, getPlanObjectives, type QuizAnswer } from '@/providers'
 import type { Plan } from '@/slides'
+import { ExampleModelsModal } from './example-models'
 
 type Tier = Exclude<Plan, null | 'scale'>
 
@@ -41,31 +42,31 @@ const QUESTIONS: {
     answers: {
       a: { tier: 'basic' },
       b: { tier: 'intermediate' },
-      c: { tier: 'advanced' },
+      c: { tier: 'intermediate', addons: { auth: true, payments: true } },
     },
   },
   {
     key: 'q2',
     answers: {
       a: { tier: 'basic' },
-      b: { tier: 'intermediate', addons: { db: true } },
-      c: { tier: 'advanced', addons: { auth: true, db: true, payments: true } },
+      b: { tier: 'intermediate', addons: { auth: true } },
+      c: { tier: 'intermediate', addons: { auth: true, payments: true } },
     },
   },
   {
     key: 'q3',
     answers: {
-      a: { tier: 'basic' },
-      b: { tier: 'intermediate', addons: { seo: true } },
-      c: { tier: 'advanced', addons: { seo: true, db: true } },
+      a: {},
+      b: { forceAdvanced: true },
+      c: { forceAdvanced: true },
     },
   },
   {
     key: 'q4',
     answers: {
       a: { objective: 'Site Institucional' },
-      b: { objective: 'Web App', addons: { auth: true, db: true } },
-      c: { objective: 'Loja Virtual', addons: { auth: true, db: true, payments: true } },
+      b: { objective: 'Web App', addons: { auth: true } },
+      c: { objective: 'Loja Virtual', addons: { auth: true, payments: true } },
     },
   },
 ]
@@ -82,6 +83,7 @@ export function Step2Quiz() {
     setQuizAccepted,
   } = useBuilder()
   const { questionIndex, answers, showResult } = quiz
+  const [isExamplesOpen, setIsExamplesOpen] = useState(false)
 
   const showResultRef = useRef(showResult)
   useEffect(() => {
@@ -119,6 +121,8 @@ export function Step2Quiz() {
   }
 
   const computeResult = () => {
+    const forceAdvanced = answers.some((a) => a.forceAdvanced)
+
     const tierVotes = answers.map((a) => a.tier).filter(Boolean) as Tier[]
     const counts: Record<Tier, number> = { basic: 0, intermediate: 0, advanced: 0 }
     tierVotes.forEach((vote) => counts[vote]++)
@@ -127,33 +131,33 @@ export function Step2Quiz() {
     const leaders = (['basic', 'intermediate', 'advanced'] as Tier[]).filter(
       (candidate) => counts[candidate] === maxCount,
     )
-    const tier = leaders.length === 1 ? leaders[0] : tierVotes[0] || 'basic'
+    const tier = forceAdvanced
+      ? 'advanced'
+      : leaders.length === 1
+        ? leaders[0]
+        : tierVotes[0] || 'basic'
 
     let objective = answers.find((a) => a.objective)?.objective || 'Site Institucional'
     if (tier === 'basic') {
       objective = 'Landing Page'
-    } else if (
-      tier === 'intermediate' &&
-      !['Landing Page', 'Site Institucional', 'Web App'].includes(objective)
-    ) {
+    } else if (!getPlanObjectives(tier).includes(objective)) {
       objective = 'Site Institucional'
     }
 
     const rawAddons = answers.reduce(
       (acc, a) => ({
         auth: acc.auth || !!a.addons?.auth,
-        db: acc.db || !!a.addons?.db,
         payments: acc.payments || !!a.addons?.payments,
         seo: acc.seo || !!a.addons?.seo,
       }),
-      { auth: false, db: false, payments: false, seo: false },
+      { auth: false, payments: false, seo: false },
     )
-    const isSimple = objective === 'Landing Page' || objective === 'Site Institucional'
+    const isLandingPage = objective === 'Landing Page'
     const addons = {
-      auth: isSimple ? false : rawAddons.auth,
-      db: isSimple ? false : rawAddons.db,
-      payments: isSimple ? false : rawAddons.payments && tier !== 'intermediate',
+      auth: isLandingPage ? false : rawAddons.auth,
+      payments: isLandingPage ? false : rawAddons.payments,
       seo: rawAddons.seo,
+      social: false,
     }
 
     return { tier, objective, addons }
@@ -163,11 +167,11 @@ export function Step2Quiz() {
     const { tier, objective, addons } = computeResult()
     applyQuizRecommendation(tier, objective, addons)
     setQuizAccepted(true)
-    setStep(4)
+    setStep(3)
   }
 
   const { tier, objective, addons } = computeResult()
-  const activeAddons = (['auth', 'db', 'payments', 'seo'] as const).filter((key) => addons[key])
+  const activeAddons = (['auth', 'payments', 'seo'] as const).filter((key) => addons[key])
 
   return (
     <div className="flex h-full flex-col">
@@ -181,7 +185,7 @@ export function Step2Quiz() {
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="flex h-full flex-col items-center justify-center gap-3 text-center"
           >
-            <span className="text-muted-foreground font-mono text-[10px] tracking-widest uppercase lg:text-xs">
+            <span className="text-muted-foreground mt-8 font-mono text-[10px] tracking-widest uppercase lg:text-xs">
               {t('slides.builder.quiz.recommendation_title')}
             </span>
             <span className="text-accent font-koho text-3xl lowercase lg:text-4xl">{tier}</span>
@@ -205,7 +209,7 @@ export function Step2Quiz() {
               </span>
             </div>
 
-            <div className="mt-4 flex flex-col items-center gap-3">
+            <div className="mt-4 flex flex-col items-center gap-4">
               <button
                 onClick={acceptRecommendation}
                 className="border-accent text-accent hover:bg-accent hover:text-background border px-6 py-2 font-mono text-xs font-bold tracking-widest uppercase transition-colors"
@@ -215,14 +219,20 @@ export function Step2Quiz() {
               <button
                 onClick={() => {
                   setQuizAccepted(false)
-                  setStep(3)
+                  setStep(1)
                 }}
                 className="border-border text-muted-foreground hover:border-foreground/50 hover:text-foreground border px-6 py-2 font-mono text-[10px] tracking-widest uppercase transition-colors"
               >
                 {t('slides.builder.quiz.manual')}
               </button>
+              <button
+                onClick={() => setIsExamplesOpen(true)}
+                className="text-muted-foreground hover:text-accent mt-4 font-mono text-[10px] tracking-widest uppercase underline underline-offset-8 transition-colors"
+              >
+                {t('slides.builder.choice.examples')}
+              </button>
             </div>
-            <div className="mt-2 flex flex-col items-center gap-8">
+            <div className="mt-10 flex flex-col items-center gap-8">
               <button
                 onClick={goBack}
                 className="text-muted-foreground/60 hover:text-foreground font-mono text-xs tracking-widest uppercase transition-colors"
@@ -266,13 +276,15 @@ export function Step2Quiz() {
 
             <button
               onClick={goBack}
-              className="text-muted-foreground hover:text-foreground mt-4 self-center font-mono text-xs tracking-widest uppercase transition-colors"
+              className="text-muted-foreground hover:text-foreground mt-8 self-center font-mono text-xs tracking-widest uppercase transition-colors"
             >
               {t('slides.builder.quiz.back')}
             </button>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ExampleModelsModal isOpen={isExamplesOpen} onClose={() => setIsExamplesOpen(false)} />
     </div>
   )
 }

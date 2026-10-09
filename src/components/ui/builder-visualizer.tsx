@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 interface BuilderVisualizerProps {
   plan: Plan
-  addons: { auth: boolean; db: boolean; payments: boolean; seo: boolean }
+  addons: { auth: boolean; payments: boolean; seo: boolean; social: boolean }
   price: string
   time: string
 }
@@ -99,18 +99,6 @@ export function BuilderVisualizer({ plan, addons, price, time }: BuilderVisualiz
                     Auth
                   </motion.span>
                 )}
-                {addons.db && (
-                  <motion.span
-                    key="db"
-                    layout
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    className="border-accent/50 bg-accent/10 border px-1.5 py-0.5 font-mono text-[6px] uppercase sm:text-[8px] lg:px-2 lg:py-1 lg:text-[10px]"
-                  >
-                    DB
-                  </motion.span>
-                )}
                 {addons.payments && (
                   <motion.span
                     key="pay"
@@ -135,6 +123,18 @@ export function BuilderVisualizer({ plan, addons, price, time }: BuilderVisualiz
                     SEO
                   </motion.span>
                 )}
+                {addons.social && (
+                  <motion.span
+                    key="social"
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="border-accent/50 bg-accent/10 border px-1.5 py-0.5 font-mono text-[6px] uppercase sm:text-[8px] lg:px-2 lg:py-1 lg:text-[10px]"
+                  >
+                    Social
+                  </motion.span>
+                )}
               </AnimatePresence>
             </div>
           </div>
@@ -152,7 +152,7 @@ export function BuilderVisualizer({ plan, addons, price, time }: BuilderVisualiz
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="text-foreground inline-block font-mono text-xs font-bold sm:text-sm lg:text-xl"
+                    className="text-foreground xs:text-xs inline-block font-mono text-[11px] font-bold sm:text-sm lg:text-xl"
                   >
                     {price}
                     {plan && plan !== 'scale' && (

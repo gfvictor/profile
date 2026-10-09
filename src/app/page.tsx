@@ -24,7 +24,8 @@ export default function Home() {
   const { step } = useBuilder()
 
   const isBuilderActive = slides[activeSlide]?.id === 'builder'
-  const isHeaderCompact = isBuilderActive && step >= 3
+  const isHeaderCompact = isBuilderActive && step !== 2
+  const isHeaderCompactDesktop = isBuilderActive && step >= 3
 
   useEffect(() => {
     setMounted(true)
@@ -95,10 +96,8 @@ export default function Home() {
 
       <header
         className={`bg-background relative z-50 order-1 w-full flex-shrink-0 touch-none transition-all duration-700 ease-in-out lg:order-2 lg:h-[100vh] lg:border-b-0 lg:border-l lg:bg-transparent ${
-          isHeaderCompact
-            ? 'border-accent/20 h-[12svh] border-b lg:w-[25%] xl:w-[22%]'
-            : 'h-[25svh] rounded-br-[4px] lg:w-[40%]'
-        }`}
+          isHeaderCompact ? 'border-accent/20 h-[12svh] border-b' : 'h-[25svh] rounded-br-[4px]'
+        } ${isHeaderCompactDesktop ? 'lg:w-[25%] xl:w-[22%]' : 'lg:w-[40%]'}`}
       >
         <div className="bg-background/40 absolute top-4 left-4 z-50 flex items-center gap-2 rounded-full p-1.5 backdrop-blur-sm lg:top-8 lg:left-8 lg:bg-transparent lg:backdrop-blur-none">
           <LanguageToggle />
@@ -109,7 +108,7 @@ export default function Home() {
           className={`absolute inset-0 overflow-hidden ${!isHeaderCompact ? 'rounded-br-[4px] lg:rounded-none' : ''}`}
         >
           <div
-            className={`h-full w-full transition-opacity duration-700 ${isHeaderCompact ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
+            className={`h-full w-full transition-opacity duration-700 ${isHeaderCompact ? 'pointer-events-none opacity-0' : 'opacity-100'} ${isHeaderCompactDesktop ? 'lg:pointer-events-none lg:opacity-0' : 'lg:pointer-events-auto lg:opacity-100'}`}
           >
             <div
               className="absolute top-0 right-0 z-0 h-full w-[60%] lg:w-[80%]"
@@ -148,8 +147,12 @@ export default function Home() {
           <div
             className={`pointer-events-none absolute bottom-0 left-0 z-10 flex w-full flex-col justify-end transition-all duration-700 ${
               isHeaderCompact
-                ? 'h-full p-4 pl-[45vw] sm:pl-[40vw] lg:p-8 lg:pl-8 xl:p-12'
-                : 'h-full w-[80%] p-6 sm:w-full sm:px-20 lg:w-full lg:p-12 xl:px-24 xl:pt-24 xl:pb-12 2xl:pb-24'
+                ? 'h-full p-4 pl-[45vw] sm:pl-[40vw]'
+                : 'h-full w-[80%] p-6 sm:w-full sm:px-20'
+            } ${
+              isHeaderCompactDesktop
+                ? 'lg:p-8 lg:pl-8 xl:p-12'
+                : 'lg:w-full lg:p-12 xl:px-24 xl:pt-24 xl:pb-12 2xl:pb-24'
             }`}
           >
             <div className="pointer-events-none lg:w-[120%] 2xl:w-[150%]">
@@ -162,10 +165,10 @@ export default function Home() {
                 {i18n.language === 'ja' ? 'Farias Victor.' : 'Victor Farias.'}
               </h1>
               <h2
-                className={`text-foreground font-medium whitespace-pre-line transition-all duration-700 ${
-                  isHeaderCompact
-                    ? 'mt-1 text-xs sm:text-sm lg:mt-2 lg:text-lg 2xl:text-xl'
-                    : 'mt-1 text-xs sm:text-sm lg:mt-2 lg:text-xl 2xl:mt-4 2xl:text-3xl'
+                className={`text-foreground mt-1 text-xs font-medium whitespace-pre-line transition-all duration-700 sm:text-sm ${
+                  isHeaderCompactDesktop
+                    ? 'lg:mt-2 lg:text-lg 2xl:text-xl'
+                    : 'lg:mt-2 lg:text-xl 2xl:mt-4 2xl:text-3xl'
                 }`}
               >
                 {t('hero.role')}
@@ -174,7 +177,11 @@ export default function Home() {
                 className={`grid transition-all duration-500 ease-in-out ${
                   isHeaderCompact
                     ? 'pointer-events-none grid-rows-[0fr] opacity-0'
-                    : 'mt-2 grid-rows-[1fr] opacity-100 lg:mt-2 2xl:mt-4'
+                    : 'mt-2 grid-rows-[1fr] opacity-100'
+                } ${
+                  isHeaderCompactDesktop
+                    ? 'lg:pointer-events-none lg:grid-rows-[0fr] lg:opacity-0'
+                    : 'lg:mt-2 lg:grid-rows-[1fr] lg:opacity-100 2xl:mt-4'
                 }`}
               >
                 <div className="overflow-hidden">

@@ -100,7 +100,7 @@
         "next": "NEXT",
         "back": "BACK",
         "restart": "START OVER",
-        "send": "SEND REQUEST",
+        "send": "SEND",
         "sending": "SENDING...",
         "success": "SENT!"
       },
@@ -121,16 +121,13 @@
         "tax": "(TAX INCLUDED)"
       },
       "choice": {
-        "title": "how do you want to start?",
-        "know": {
-          "title": "i've already picked a model",
-          "desc": "go straight to manual selection"
-        },
         "help": {
-          "title": "help me choose",
-          "desc": "answer a quick quiz"
+          "title": "help me choose"
         },
-        "examples": "view example models"
+        "examples": "view example models",
+        "scale": {
+          "cta": "need more than this?"
+        }
       },
       "exampleModels": {
         "title": "example models",
@@ -181,10 +178,13 @@
           "c": { "title": "yes, purchase or payment", "desc": "online store" }
         },
         "q3": {
-          "title": "what's your moment right now?",
-          "a": { "title": "testing an idea", "desc": "want to validate fast" },
-          "b": { "title": "business already running", "desc": "want a stronger presence" },
-          "c": { "title": "established operation", "desc": "need something robust" }
+          "title": "just you, or does your team need access too?",
+          "a": { "title": "just me", "desc": "single login, no fuss" },
+          "b": { "title": "me + team", "desc": "need multiple accounts" },
+          "c": {
+            "title": "need to integrate another system",
+            "desc": "e.g. a POS or ERP i already use"
+          }
         },
         "q4": {
           "title": "what does the site need to do?",
@@ -195,75 +195,19 @@
       },
       "step1": {
         "title": "select foundation.",
-        "plans": {
-          "basic": {
-            "desc": "single-page with a clean and straight-to-the-point design.",
-            "specs": [
-              {
-                "title": "Fast static landing page",
-                "desc": "ideal for testing ideas and capturing leads."
-              },
-              {
-                "title": "Responsive and dynamic design",
-                "desc": "works perfectly on any device."
-              },
-              {
-                "title": "Optimized Cloud hosting",
-                "desc": "ultra-fast loading to retain visitors."
-              }
-            ]
+        "table": {
+          "sessions": {
+            "label": "Sections",
+            "basic": "4 sections",
+            "intermediate": "7 sections",
+            "advanced": "tailored"
           },
-          "intermediate": {
-            "desc": "multiple pages to present your business.",
-            "specs": [
-              {
-                "title": "Up to 5 institutional pages",
-                "desc": "solid digital base for brand presentation."
-              },
-              {
-                "title": "Portfolio / Blog section",
-                "desc": "showcase your work or engage with content."
-              },
-              {
-                "title": "Animations and micro-interactions",
-                "desc": "visual details that elevate perceived value."
-              }
-            ]
-          },
-          "advanced": {
-            "desc": "complete platform with admin dashboard.",
-            "specs": [
-              {
-                "title": "Robust platform [Full-Stack]",
-                "desc": "complete administrative system for management."
-              },
-              {
-                "title": "API and Systems Integration",
-                "desc": "integrates third-party tools and processes."
-              },
-              {
-                "title": "Scalability and Performance",
-                "desc": "architecture ready to handle high traffic volumes."
-              }
-            ]
-          },
-          "scale": {
-            "desc": "cutting-edge solution designed for high scalability.",
-            "specs": [
-              {
-                "title": "Custom-tailored architecture",
-                "desc": "systems and infrastructure designed for your scope."
-              },
-              {
-                "title": "Exclusive UX/UI Design",
-                "desc": "visuals entirely focused on the brand and audience."
-              },
-              {
-                "title": "Technical consulting",
-                "desc": "side-by-side guidance on architectural decisions."
-              }
-            ]
-          }
+          "integrations": "Integrations",
+          "access": "Access",
+          "access_solo": "solo",
+          "access_team": "admin + team",
+          "select": "select",
+          "legend": "✓ = available as an add-on (priced separately)"
         }
       },
       "step2": {
@@ -272,10 +216,8 @@
           "Landing Page": "Landing Page",
           "Site Institucional": "Corporate Site",
           "Web App": "Web App",
-          "Loja Virtual": "E-Commerce",
-          "Outro": "Other"
+          "Loja Virtual": "E-Commerce"
         },
-        "custom_objective_placeholder": "describe your vision...",
         "colors_label": "Colors and Brand Intention",
         "colors_placeholder": "e.g.: black and yellow, minimalist look...",
         "assets_alert": "Asset creation requires bespoke design. This implies <0>additional costs and days</0> to the delivery time.",
@@ -285,20 +227,17 @@
         "btn_create": "CREATE"
       },
       "step3": {
-        "title": "system add-ons.",
+        "title": "site features.",
         "included_card": {
+          "site": "PROFESSIONAL WEBSITE",
           "qr": "DEDICATED MANAGEMENT APP INCLUDED",
           "hosting": "MANAGED HOSTING",
-          "price": "[¥4,000/MO]"
+          "price": "[¥4,400/MO - TAX INCLUDED]"
         },
         "addons": {
           "auth": {
             "title": "Auth",
-            "desc": "allow users to create accounts."
-          },
-          "db": {
-            "title": "Database",
-            "desc": "store information securely."
+            "desc": "accounts, login and data storage."
           },
           "payments": {
             "title": "Payments",
@@ -306,11 +245,15 @@
           },
           "seo": {
             "title": "SEO",
-            "desc": "appear in google search results."
+            "desc": "your site ready for google searches."
+          },
+          "social": {
+            "title": "Social",
+            "desc": "automatic posts to promote your catalog."
           }
         },
-        "auth_warning": "* systems with <0>auth</0> strictly require <1>database</1> infrastructure.",
-        "payments_warning": "* <0>payments (Stripe)</0> integration strictly requires <1>auth</1> and <2>database</2>."
+        "payments_warning": "* <0>payments</0> requires <1>auth</1>.",
+        "social_warning": "* <0>social</0> only available on the advanced plan."
       },
       "step4": {
         "title": "finalize request.",

@@ -6,11 +6,11 @@ import { useTranslation, Trans as Translate } from 'react-i18next'
 import { TermsModal } from '@/ui'
 import { useBuilder } from '@/providers'
 
-interface Step4ContactProps {
+interface Step5ContactProps {
   pegatrouxaRef: React.RefObject<HTMLInputElement | null>
 }
 
-export function Step4Contact({ pegatrouxaRef }: Step4ContactProps) {
+export function Step5Contact({ pegatrouxaRef }: Step5ContactProps) {
   const { t } = useTranslation()
   const { contact, setContact, status, setStatus, setStep, setPlan } = useBuilder()
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -111,7 +111,7 @@ export function Step4Contact({ pegatrouxaRef }: Step4ContactProps) {
             onWheel={(e) => e.stopPropagation()}
             onTouchStart={(e) => e.stopPropagation()}
             onTouchEnd={(e) => e.stopPropagation()}
-            className="peer text-foreground border-accent/30 focus:border-accent placeholder:font-koho h-24 w-full touch-pan-y resize-none border bg-transparent p-2 font-mono text-[16px] transition-colors placeholder:text-transparent placeholder:lowercase focus:outline-none sm:text-sm"
+            className="peer text-foreground border-accent/30 focus:border-accent placeholder:font-koho xs:h-24 h-16 w-full touch-pan-y resize-none border bg-transparent p-2 font-mono text-[16px] transition-colors placeholder:text-transparent placeholder:lowercase focus:outline-none sm:text-sm"
           />
           <div className="text-muted-foreground/50 pointer-events-none absolute top-2 left-2 font-mono text-xs transition-opacity peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0 sm:text-sm">
             {t('slides.builder.step4.notes_placeholder')}{' '}
@@ -125,7 +125,7 @@ export function Step4Contact({ pegatrouxaRef }: Step4ContactProps) {
             id="builder-terms"
             checked={contact.terms}
             onChange={(e) => setContact((prev) => ({ ...prev, terms: e.target.checked }))}
-            className="accent-accent h-3 w-3 cursor-pointer"
+            className="accent-accent h-4 w-4 cursor-pointer"
           />
           <label
             htmlFor="builder-terms"
