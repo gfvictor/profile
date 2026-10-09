@@ -46,14 +46,14 @@ export function Step1Plan() {
   }
 
   return (
-    <div className="xs:gap-4 flex flex-col gap-1.5 lg:gap-4">
-      <h4 className="font-koho text-foreground xs:mb-1 xs:text-xl mb-0 text-lg lowercase lg:mb-2 lg:text-2xl">
+    <div className="xs:gap-4 flex flex-col gap-1.5 lg:gap-2">
+      <h4 className="font-koho text-foreground xs:mb-1 xs:text-xl mb-0 text-lg lowercase lg:mb-1 lg:text-xl">
         {t('slides.builder.step1.title')}
       </h4>
       <IncludedCard />
 
       <div className="w-full min-w-0">
-        <div className="xs:gap-y-2 grid grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,1fr))] items-center gap-x-1 gap-y-0.5 lg:gap-x-4 lg:gap-y-4">
+        <div className="xs:gap-y-2 grid grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,1fr))] items-center gap-x-1 gap-y-0.5 lg:gap-x-4 lg:gap-y-1">
           <div />
           {TIERS.map((tier) => (
             <div key={tier} className="flex min-w-0 flex-col items-center gap-0.5 text-center">
@@ -89,7 +89,7 @@ export function Step1Plan() {
               {TIERS.map((tier) => (
                 <div
                   key={`${row.key}-${tier}`}
-                  className="xs:text-xs flex min-w-0 items-center justify-center font-mono text-[10px] lg:text-sm"
+                  className="xs:text-xs flex min-w-0 items-center justify-center font-mono text-[10px] lg:text-xs"
                 >
                   {row.included[tier] ? (
                     <span className="text-accent">✓</span>
@@ -107,7 +107,7 @@ export function Step1Plan() {
           {TIERS.map((tier) => (
             <div
               key={`integrations-${tier}`}
-              className="xs:text-xs flex min-w-0 items-center justify-center font-mono text-[10px] lg:text-sm"
+              className="xs:text-xs flex min-w-0 items-center justify-center font-mono text-[10px] lg:text-xs"
             >
               {INTEGRATIONS[tier] ? (
                 <span className="text-accent">✓</span>
@@ -135,7 +135,7 @@ export function Step1Plan() {
             <button
               key={`select-${tier}`}
               onClick={() => selectPlan(tier)}
-              className={`min-w-0 truncate border px-1 py-1 font-mono text-[10px] tracking-wider uppercase transition-colors lg:px-2 lg:py-1.5 lg:text-[10px] ${
+              className={`min-w-0 truncate border px-1 py-1 font-mono text-[10px] tracking-wider uppercase transition-colors lg:px-2 lg:py-1 lg:text-[10px] ${
                 plan === tier
                   ? 'border-accent bg-accent/10 text-accent'
                   : 'border-border text-muted-foreground hover:border-accent/50'
@@ -151,11 +151,11 @@ export function Step1Plan() {
         {t('slides.builder.step1.table.legend')}
       </p>
 
-      <div className="xs:mt-2 xs:gap-4 mt-1 flex items-stretch justify-center gap-2">
+      <div className="xs:mt-4 xs:gap-4 mt-4 flex items-stretch justify-center gap-2 lg:mt-5">
         <button
           type="button"
           onClick={() => setStep(2)}
-          className="border-accent text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/5 xs:flex-initial xs:px-5 xs:py-2 xs:text-[10px] flex-1 border px-2 py-1.5 text-center font-mono text-[10px] leading-tight tracking-wide uppercase transition-colors"
+          className="border-accent text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/5 xs:px-5 xs:py-2 flex-1 border px-2 py-1.5 text-center font-mono text-[10px] leading-tight tracking-wide uppercase transition-colors lg:px-4 lg:py-2 lg:text-xs lg:whitespace-nowrap"
         >
           {t('slides.builder.choice.help.title')}
         </button>
@@ -165,7 +165,7 @@ export function Step1Plan() {
             setPlan('scale')
             setStep(5)
           }}
-          className="border-accent text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/5 xs:flex-initial xs:px-5 xs:py-2 xs:text-[10px] flex-1 border px-2 py-1.5 text-center font-mono text-[10px] leading-tight tracking-wide uppercase transition-colors"
+          className="border-accent text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/5 xs:px-5 xs:py-2 flex-1 border px-2 py-1.5 text-center font-mono text-[10px] leading-tight tracking-wide uppercase transition-colors lg:px-4 lg:py-2 lg:text-xs lg:whitespace-nowrap"
         >
           {t('slides.builder.choice.scale.cta')}
         </button>
