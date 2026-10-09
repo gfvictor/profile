@@ -24,7 +24,7 @@ export default function Home() {
   const { step } = useBuilder()
 
   const isBuilderActive = slides[activeSlide]?.id === 'builder'
-  const isHeaderCompact = isBuilderActive && step >= 3
+  const isHeaderCompact = isBuilderActive && step !== 2
 
   useEffect(() => {
     setMounted(true)
