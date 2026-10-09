@@ -152,7 +152,7 @@ export function BuilderVisualizer({ plan, addons, price, time }: BuilderVisualiz
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="text-foreground inline-block font-mono text-xs font-bold sm:text-sm lg:text-xl"
+                    className="text-foreground xs:text-xs inline-block font-mono text-[11px] font-bold sm:text-sm lg:text-xl"
                   >
                     {price}
                     {plan && plan !== 'scale' && (
