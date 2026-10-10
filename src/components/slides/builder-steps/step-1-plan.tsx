@@ -61,7 +61,7 @@ export function Step1Plan() {
                 {tier}
               </span>
               <span className="text-accent xs:text-[11px] w-full truncate font-mono text-[11px] font-bold lg:text-[11px]">
-                {formatPrice(BASE[tier].price)}
+                {formatPrice(BASE[tier].price)}~
               </span>
               <span className="text-muted-foreground xs:text-[9px] w-full truncate font-mono text-[9px] lowercase lg:text-[9px]">
                 {BASE[tier].days} {t('slides.builder.visualizer.work_days')}
